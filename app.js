@@ -171,7 +171,7 @@ function home() {
   const explore = Object.values(prefs()).filter(p => p.explore).length;
   const genres = new Set(artists.map(a => a.primary_genre).filter(Boolean)).size;
   const recent = (state.recent || []).slice(0, 4);
-  layout(`${hero()}<section class="section"><div class="eyebrow">Artists That Matter / ATM</div><h1 class="title">Your music map.</h1><p class="subtitle">A smaller, independent ATM made for your phone. Start with something you love, or let ATM send you somewhere new.</p><div class="actions"><button class="btn primary" data-nav="discover">Discover artists →</button><button class="btn" data-nav="lucky">✦ I’m Feeling Lucky</button></div></section><section class="section grid">${kpi(artists.length, 'Artists in ATM')}${kpi(favs.length, 'Favourites')}${kpi(explore, 'Want to explore')}${kpi(genres, 'Primary genres')}</section><section class="section panel" style="padding:16px"><div class="eyebrow">Recent</div>${recent.length ? recent.map(x => rowHtml(x.artist, x.action)).join('') : '<div class="empty">Your recent artists will appear here.</div>'}</section><section class="section install-card panel"><b>ATM Mobile v0.2</b><p class="small">Real artist artwork is now loaded securely through the ATM artwork service. Favourites, dislikes, notes and history remain local to this phone.</p><button id="installHome" class="btn" style="display:none">Install ATM</button></section>`, 'home');
+  layout(`${hero()}<section class="section"><div class="eyebrow">Artists That Matter / ATM</div><h1 class="title">Your music map.</h1><p class="subtitle">A smaller, independent ATM made for your phone. Start with something you love, or let ATM send you somewhere new.</p><div class="actions"><button class="btn primary" data-nav="discover">Discover artists →</button><button class="btn" data-nav="lucky">✦ I’m Feeling Lucky</button></div></section><section class="section grid">${kpi(artists.length, 'Artists in ATM')}${kpi(favs.length, 'Favourites')}${kpi(explore, 'Want to explore')}${kpi(genres, 'Primary genres')}</section><section class="section panel" style="padding:16px"><div class="eyebrow">Recent</div>${recent.length ? recent.map(x => rowHtml(x.artist, x.action)).join('') : '<div class="empty">Your recent artists will appear here.</div>'}</section><section class="section install-card panel"><b>ATM Mobile v0.2.1</b><p class="small">Real artist artwork is now loaded securely through the ATM artwork service. Favourites, dislikes, notes and history remain local to this phone.</p><button id="installHome" class="btn" style="display:none">Install ATM</button></section>`, 'home');
   document.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openArtist(b.dataset.open));
   const ih = document.getElementById('installHome');
   if (deferredInstall) { ih.style.display = 'block'; ih.onclick = installApp; }
@@ -195,11 +195,11 @@ function recCard(r, rank) {
   const a = r.artist;
   return `<article class="card"><div class="card-top">${art(a.artist)}<div class="card-body"><div class="rank">#${rank}</div><div class="artist-name">${esc(a.artist)}</div><div class="match">${Math.round(r.score * 100)}% match</div>${tagsHtml(a, 3)}<div class="why">${esc(r.why)}</div></div></div><div class="card-actions"><button class="btn" data-open="${attr(a.artist)}">Profile</button><a class="link yt" href="${yt(a.artist)}" target="_blank" rel="noopener">▶ YouTube Music</a></div></article>`;
 }
-function defaultArtistChoices(limit = 50) {
+function defaultArtistChoices() {
   const out = [];
   const seen = new Set();
   const push = name => {
-    if (!name || seen.has(name) || !byName.has(name) || out.length >= limit) return;
+    if (!name || seen.has(name) || !byName.has(name)) return;
     seen.add(name);
     out.push(byName.get(name));
   };
@@ -208,9 +208,9 @@ function defaultArtistChoices(limit = 50) {
   artists.forEach(a => push(a.artist));
   return out;
 }
-function filteredArtistChoices(query, limit = 60) {
+function filteredArtistChoices(query) {
   const q = query.trim().toLocaleLowerCase();
-  if (!q) return defaultArtistChoices(limit);
+  if (!q) return defaultArtistChoices();
   return artists
     .map(a => {
       const n = a.artist.toLocaleLowerCase();
@@ -223,7 +223,6 @@ function filteredArtistChoices(query, limit = 60) {
     })
     .filter(x => x.rank < 99)
     .sort((x, y) => x.rank - y.rank || x.a.artist.localeCompare(y.a.artist))
-    .slice(0, limit)
     .map(x => x.a);
 }
 function bindDiscover() {
@@ -232,22 +231,64 @@ function bindDiscover() {
   const toggle = document.getElementById('showArtistList');
   const initialValue = inp.value;
   let userEdited = false;
+  const PAGE_SIZE = 80;
+  let currentMatches = [];
+  let renderedCount = 0;
+  let currentQuery = '';
+
+  function suggestionHtml(a) {
+    return `<button class="suggestion" data-pick="${attr(a.artist)}"><b>${esc(a.artist)}</b><small>${esc(a.primary_genre || '')} · ${esc(a.style_tags || '')}</small></button>`;
+  }
+
+  function updateNote() {
+    const note = sug.querySelector('.suggestion-note');
+    if (!note) return;
+    const prefix = currentQuery ? `Matches for “${esc(currentQuery)}”` : 'Choose an artist · type to filter';
+    note.innerHTML = `${prefix}<span>${Math.min(renderedCount, currentMatches.length)} of ${currentMatches.length}</span>`;
+  }
+
+  function appendMore() {
+    if (renderedCount >= currentMatches.length) return;
+    const next = currentMatches.slice(renderedCount, renderedCount + PAGE_SIZE);
+    sug.insertAdjacentHTML('beforeend', next.map(suggestionHtml).join(''));
+    renderedCount += next.length;
+    updateNote();
+  }
 
   function showList(forceAll = false) {
-    const query = forceAll || (!userEdited && inp.value === initialValue) ? '' : inp.value;
-    const matches = filteredArtistChoices(query);
+    currentQuery = forceAll || (!userEdited && inp.value === initialValue) ? '' : inp.value;
+    currentMatches = filteredArtistChoices(currentQuery);
+    renderedCount = 0;
     sug.className = 'suggestions';
-    sug.innerHTML = matches.length
-      ? `<div class="suggestion-note">${query ? `Matches for “${esc(query)}”` : 'Choose an artist · type to filter all 1,820'}</div>${matches.map(a => `<button class="suggestion" data-pick="${attr(a.artist)}"><b>${esc(a.artist)}</b><small>${esc(a.primary_genre || '')} · ${esc(a.style_tags || '')}</small></button>`).join('')}`
-      : '<div class="suggestion-note">No artists found.</div>';
-    sug.querySelectorAll('[data-pick]').forEach(b => b.onclick = () => {
-      state.selected = b.dataset.pick;
-      touch(state.selected, 'discover');
-      saveState();
-      render();
-    });
+    if (!currentMatches.length) {
+      sug.innerHTML = '<div class="suggestion-note">No artists found.</div>';
+      return;
+    }
+    sug.innerHTML = '<div class="suggestion-note"></div>';
+    appendMore();
+    sug.scrollTop = 0;
   }
-  function hideList() { sug.className = ''; sug.innerHTML = ''; }
+
+  function hideList() {
+    sug.className = '';
+    sug.innerHTML = '';
+    currentMatches = [];
+    renderedCount = 0;
+  }
+
+  sug.onclick = e => {
+    const pick = e.target.closest('[data-pick]');
+    if (!pick) return;
+    state.selected = pick.dataset.pick;
+    touch(state.selected, 'discover');
+    saveState();
+    render();
+  };
+
+  sug.onscroll = () => {
+    const remaining = sug.scrollHeight - sug.scrollTop - sug.clientHeight;
+    if (remaining < 180) appendMore();
+  };
 
   inp.onfocus = () => showList(false);
   inp.onclick = () => showList(false);
