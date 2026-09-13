@@ -40,17 +40,24 @@
     if(!bits.length) bits.push('An adjacent match across mood, era and sonic profile');
     let t=bits.slice(0,3).join('; '); return t.charAt(0).toUpperCase()+t.slice(1)+'.';
   }
-  function recommend(selected,catalog,mode='Similar',reach=20,limit=12,disliked=new Set()){
-    const mk=mode.toLocaleLowerCase(), r=Math.max(0,Math.min(1,reach/100));
+  function recommend(selected,catalog,mode='Similar',limit=12,disliked=new Set()){
+    const mk=mode.toLocaleLowerCase();
     const results=[];
     for(const candidate of catalog){
       if(candidate.artist===selected.artist||disliked.has(candidate.artist)) continue;
       const fp=fingerprint(candidate,selected), sc=scores(candidate,selected,fp); let base,score;
+      const novelty=.50*(1-fp.tag)+.30*(1-fp.family)+.20*(fp.genre?0:1);
       if(mk==='adjacent'){
-        base=sc.adjacent; const novelty=.55*(1-fp.tag)+.30*(1-fp.family)+.15*(fp.genre?0:1);
-        score=base*(1-.10*r)+sc.wildcard*(.08*r)+novelty*(.04*r);
-      } else if(mk==='wildcard'){ base=sc.wildcard; score=base; }
-      else { base=sc.similar; const novelty=.50*(1-fp.tag)+.30*(1-fp.family)+.20*(fp.genre?0:1); score=base*(1-.08*r)+sc.adjacent*(.05*r)+novelty*(.025*r); }
+        base=sc.adjacent;
+        // Broaden It intentionally gives some weight to lateral fit and novelty.
+        score=.78*sc.adjacent+.12*sc.wildcard+.10*novelty;
+      } else if(mk==='wildcard'){
+        base=sc.wildcard;
+        score=sc.wildcard;
+      } else {
+        base=sc.similar;
+        score=sc.similar;
+      }
       results.push({artist:candidate,score:Math.max(0,Math.min(1,score)),base_score:base,tag_overlap:fp.tag,family_overlap:fp.family,sonic_similarity:fp.sonic,why:reason(candidate,selected,fp)});
     }
     results.sort((x,y)=> (y.score-x.score) || (Number(y.artist.specificity||0)-Number(x.artist.specificity||0)) || (y.tag_overlap-x.tag_overlap) || (y.family_overlap-x.family_overlap) || (y.sonic_similarity-x.sonic_similarity));

@@ -3,7 +3,7 @@ let byName = new Map();
 let deferredInstall = null;
 let vibeData = { genres: [], styles: [], moods: [] };
 
-const APP_VERSION = '0.3';
+const APP_VERSION = '0.4';
 const storeKey = 'atm-mobile-v01'; // Intentionally stable so personal data survives app updates.
 const artworkCacheKey = 'atm-mobile-artwork-v1';
 const ARTWORK_ENDPOINT = 'https://atm-artwork.zanderiii88.workers.dev/';
@@ -14,7 +14,6 @@ const state = {
   page: 'home',
   selected: null,
   mode: 'Similar',
-  reach: 20,
   prefs: {},
   recent: [],
   vibe: { genres: [], styles: [], moods: [] },
@@ -39,7 +38,6 @@ function saveState() {
   localStorage.setItem(storeKey, JSON.stringify({
     selected: state.selected,
     mode: state.mode,
-    reach: state.reach,
     prefs: state.prefs || {},
     recent: state.recent || [],
     vibe: state.vibe || { genres: [], styles: [], moods: [] },
@@ -235,17 +233,16 @@ function rowHtml(name, detail, matched = '') {
 }
 
 const discoverModes = {
-  Similar: { label: 'Closest Match', help: 'Stay closest to the artist’s scene, tags and overall sonic profile.' },
-  Adjacent: { label: 'Broaden It', help: 'Keep a meaningful musical connection while allowing more stylistic distance.' },
-  Wildcard: { label: 'Wildcard', help: 'Push further afield while keeping at least a thread of overlap.' },
+  Similar: { label: 'Closest Match', help: 'Prioritises shared styles, scene, sonic profile and era.' },
+  Adjacent: { label: 'Broaden It', help: 'Keeps a clear musical connection but deliberately rewards a little more stylistic distance.' },
+  Wildcard: { label: 'Wildcard', help: 'Looks for a plausible sideways connection rather than a near-neighbour.' },
 };
 function discover() {
   const sel = state.selected ? byName.get(state.selected) : null;
   const disliked = new Set(Object.entries(prefs()).filter(([, p]) => p.disliked).map(([n]) => n));
-  const recs = sel ? ATMEngine.recommend(sel, artists, state.mode, state.reach, 8, disliked) : [];
+  const recs = sel ? ATMEngine.recommend(sel, artists, state.mode, 8, disliked) : [];
   const mode = discoverModes[state.mode] || discoverModes.Similar;
-  const reach = state.mode === 'Wildcard' ? '' : `<div class="range-title"><b>Adventure</b><span>${state.mode === 'Similar' ? 'Fine-tune how far the closest matches can wander.' : 'Increase this to give Broaden It more room.'}</span></div><div class="range-row"><span>Safe</span><input id="reach" type="range" min="0" max="100" step="5" value="${state.reach}"><span>Wild <b id="reachVal">${state.reach}</b></span></div>`;
-  layout(`<section><div class="eyebrow">Find something new</div><h1 class="title">Discover</h1><p class="subtitle">Choose an artist, then tell ATM how closely you want the recommendations to stay to it.</p><div class="searchbox"><input id="artistSearch" class="field" autocomplete="off" inputmode="search" placeholder="Choose or search for an artist…" value="${sel ? esc(sel.artist) : ''}" aria-label="Choose an artist"><button id="showArtistList" class="search-toggle" type="button" aria-label="Show artist list">⌄</button><div id="suggestions"></div></div><div class="seg discover-seg">${Object.entries(discoverModes).map(([key, info]) => `<button data-mode="${key}" class="${state.mode === key ? 'active' : ''}">${esc(info.label)}</button>`).join('')}</div><div class="mode-help"><b>${esc(mode.label)}</b><span>${esc(mode.help)}</span></div>${reach}</section>${sel ? selectedHead(sel) + `<section class="section"><div class="eyebrow">Top recommendations</div><div class="cards">${recs.map((r, i) => recCard(r, i + 1)).join('')}</div></section>` : '<div class="panel empty section">Choose an artist above, or tap ✦ Lucky.</div>'}`, 'discover');
+  layout(`<section><div class="eyebrow">Find something new</div><h1 class="title">Discover</h1><p class="subtitle">Choose an artist, then pick how tightly ATM should follow their musical neighbourhood.</p><div class="searchbox"><input id="artistSearch" class="field" autocomplete="off" inputmode="search" placeholder="Choose or search for an artist…" value="${sel ? esc(sel.artist) : ''}" aria-label="Choose an artist"><button id="showArtistList" class="search-toggle" type="button" aria-label="Show artist list">⌄</button><div id="suggestions"></div></div><div class="seg discover-seg">${Object.entries(discoverModes).map(([key, info]) => `<button data-mode="${key}" class="${state.mode === key ? 'active' : ''}">${esc(info.label)}</button>`).join('')}</div><div class="mode-help"><b>${esc(mode.label)}</b><span>${esc(mode.help)}</span></div></section>${sel ? selectedHead(sel) + `<section class="section"><div class="eyebrow">Top recommendations</div><div class="cards">${recs.map((r, i) => recCard(r, i + 1)).join('')}</div></section>` : '<div class="panel empty section">Choose an artist above, or tap ✦ Lucky.</div>'}`, 'discover');
   bindDiscover();
 }
 function selectedHead(a) {
@@ -310,11 +307,6 @@ function bindDiscover() {
   toggle.onclick = e => { e.preventDefault(); e.stopPropagation(); inp.focus(); showList(true); };
   document.onclick = e => { if (!e.target.closest('.searchbox')) hideList(); };
   document.querySelectorAll('[data-mode]').forEach(b => b.onclick = () => { state.mode = b.dataset.mode; saveState(); render(); });
-  const rg = document.getElementById('reach');
-  if (rg) {
-    rg.oninput = () => document.getElementById('reachVal').textContent = rg.value;
-    rg.onchange = () => { state.reach = Number(rg.value); saveState(); render(); };
-  }
   document.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openArtist(b.dataset.open));
   document.querySelectorAll('[data-flag]').forEach(b => b.onclick = () => setFlag(state.selected, b.dataset.flag));
 }
@@ -487,7 +479,7 @@ function bindVibe() {
 }
 
 function guide() {
-  layout(`<section><div class="eyebrow">Help & how it works</div><h1 class="title">Guide</h1><p class="subtitle">ATM is designed to answer two simple questions: “I like this — what else?” and “I fancy this kind of thing — who should I try?”</p></section><section class="guide-stack"><article class="panel guide-card"><h2>⌕ Discover</h2><p>Pick any artist from the full catalogue. <b>Closest Match</b> stays nearest to their scene and sonic profile. <b>Broaden It</b> keeps a meaningful connection but allows more distance. <b>Wildcard</b> deliberately pushes further away.</p><p>The Adventure slider fine-tunes Closest Match and Broaden It. Wildcard has no slider because it is already designed to roam.</p></article><article class="panel guide-card"><h2>◇ Explore by Vibe</h2><p>Mix primary genres, sub-genres/styles and moods, then tap <b>Show artists</b>. Results are alphabetical by default, with an optional Best Match sort.</p><p><b>Match all</b> requires every selected style and mood to fit; if you choose several primary genres, an artist can belong to any one of them. <b>Match any</b> gives a much broader pool. Disliked artists are excluded.</p></article><article class="panel guide-card"><h2>★ Your lists</h2><p><b>Favourite</b> is for artists you already value. <b>Want to Explore</b> is your listening queue. Both lists can be searched and sorted A–Z or by recently added. <b>Dislike</b> removes an artist from those lists and keeps them out of Lucky and Vibe results.</p></article><article class="panel guide-card"><h2>✦ Lucky & listening</h2><p><b>I’m Feeling Lucky</b> picks a random artist from ATM, excluding dislikes. Artist pages link directly to YouTube Music first, with Spotify as a secondary option.</p></article><article class="panel guide-card"><h2>↩ Navigation</h2><p>ATM now uses normal app/browser history, so Back should return through the artist pages and screens you visited rather than throwing you somewhere unrelated.</p></article><article class="panel guide-card"><h2>▣ Your data & backup</h2><p>Favourites, Want to Explore, dislikes, notes and history are stored locally on this device. They are not shared with other family members using the same hosted ATM site.</p><p>Use <b>Export my ATM data</b> to download a small JSON backup. <b>Restore backup</b> can restore one of those files on this device. Restoring replaces the current local ATM personal data.</p><div class="mini-actions"><button id="exportGuide" class="btn primary">Export my ATM data</button><button id="importGuide" class="btn">Restore backup</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></article><article class="panel guide-card"><h2>▤ Updates & artwork</h2><p>ATM Mobile is a PWA. New versions are published to the same GitHub Pages address and installed copies normally update when reopened online. Artist images come through the secure ATM artwork service; the YouTube API key is not stored in this app.</p><div class="version-line"><b>ATM Mobile v${APP_VERSION}</b><span id="versionStatus">Checking for updates…</span></div></article></section>`, '');
+  layout(`<section><div class="eyebrow">Help & how it works</div><h1 class="title">Guide</h1><p class="subtitle">ATM is designed to answer two simple questions: “I like this — what else?” and “I fancy this kind of thing — who should I try?”</p></section><section class="guide-stack"><article class="panel guide-card"><h2>⌕ Discover</h2><p>Pick any artist from the full catalogue. <b>Closest Match</b> prioritises shared style, scene, sonic profile and era. <b>Broaden It</b> keeps a real connection while deliberately widening the net. <b>Wildcard</b> looks for a plausible sideways jump rather than a near-neighbour.</p><p>There is no extra distance slider: the three modes are intentionally distinct so the choice itself is clear and predictable.</p></article><article class="panel guide-card"><h2>◇ Explore by Vibe</h2><p>Mix primary genres, sub-genres/styles and moods, then tap <b>Show artists</b>. Results are alphabetical by default, with an optional Best Match sort.</p><p><b>Match all</b> requires every selected style and mood to fit; if you choose several primary genres, an artist can belong to any one of them. <b>Match any</b> gives a much broader pool. Disliked artists are excluded.</p></article><article class="panel guide-card"><h2>★ Your lists</h2><p><b>Favourite</b> is for artists you already value. <b>Want to Explore</b> is your listening queue. Both lists can be searched and sorted A–Z or by recently added. <b>Dislike</b> removes an artist from those lists and keeps them out of Lucky and Vibe results.</p></article><article class="panel guide-card"><h2>✦ Lucky & listening</h2><p><b>I’m Feeling Lucky</b> picks a random artist from ATM, excluding dislikes. Artist pages link directly to YouTube Music first, with Spotify as a secondary option.</p></article><article class="panel guide-card"><h2>↩ Navigation</h2><p>ATM now uses normal app/browser history, so Back should return through the artist pages and screens you visited rather than throwing you somewhere unrelated.</p></article><article class="panel guide-card"><h2>▣ Your data & backup</h2><p>Favourites, Want to Explore, dislikes, notes and history are stored locally on this device. They are not shared with other family members using the same hosted ATM site.</p><p>Use <b>Export my ATM data</b> to download a small JSON backup. <b>Restore backup</b> can restore one of those files on this device. Restoring replaces the current local ATM personal data.</p><div class="mini-actions"><button id="exportGuide" class="btn primary">Export my ATM data</button><button id="importGuide" class="btn">Restore backup</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></article><article class="panel guide-card"><h2>▤ Updates & artwork</h2><p>ATM Mobile is a PWA. New versions are published to the same GitHub Pages address and installed copies normally update when reopened online. Artist images come through the secure ATM artwork service; the YouTube API key is not stored in this app.</p><div class="version-line"><b>ATM Mobile v${APP_VERSION}</b><span id="versionStatus">Checking for updates…</span></div></article></section>`, '');
   document.getElementById('exportGuide').onclick = exportPersonalData;
   const importBtn = document.getElementById('importGuide');
   const importFile = document.getElementById('importFile');
@@ -503,7 +495,7 @@ function exportPersonalData() {
     exportedAt: new Date().toISOString(),
     prefs: state.prefs || {},
     recent: state.recent || [],
-    discovery: { selected: state.selected, mode: state.mode, reach: state.reach },
+    discovery: { selected: state.selected, mode: state.mode },
     vibe: { filters: state.vibe, match: state.vibeMatch, sort: state.vibeSort },
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -525,7 +517,6 @@ async function restorePersonalData(file) {
     if (data.discovery) {
       state.selected = data.discovery.selected || state.selected;
       state.mode = data.discovery.mode || state.mode;
-      state.reach = Number.isFinite(Number(data.discovery.reach)) ? Number(data.discovery.reach) : state.reach;
     }
     if (data.vibe) {
       state.vibe = { genres: [], styles: [], moods: [], ...(data.vibe.filters || {}) };

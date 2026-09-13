@@ -1,5 +1,5 @@
-const CACHE='atm-mobile-v030';
-const CORE=['./','index.html','styles.css','engine.js','app.js','catalog.json','manifest.webmanifest','assets/icon-192.png','assets/icon-512.png','assets/banner_crowd.png'];
+const CACHE='atm-mobile-v040';
+const CORE=['./','index.html','styles.css','engine.js','app.js','catalog.json','manifest.webmanifest','assets/icon-v04-192.png','assets/icon-v04-512.png','assets/icon-maskable-v04-192.png','assets/icon-maskable-v04-512.png','assets/banner_crowd.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{
