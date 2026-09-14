@@ -3,7 +3,7 @@ let byName = new Map();
 let deferredInstall = null;
 let vibeData = { genres: [], styles: [], moods: [] };
 
-const APP_VERSION = '0.4';
+const APP_VERSION = '0.5';
 const storeKey = 'atm-mobile-v01'; // Intentionally stable so personal data survives app updates.
 const artworkCacheKey = 'atm-mobile-artwork-v1';
 const ARTWORK_ENDPOINT = 'https://atm-artwork.zanderiii88.workers.dev/';
@@ -21,6 +21,7 @@ const state = {
   vibeSort: 'az',
   vibeApplied: false,
   listSort: { favourite: 'az', explore: 'az' },
+  musicForPreset: '',
   ...persisted,
 };
 state.vibe = { genres: [], styles: [], moods: [], ...(state.vibe || {}) };
@@ -45,6 +46,7 @@ function saveState() {
     vibeSort: state.vibeSort || 'az',
     vibeApplied: !!state.vibeApplied,
     listSort: state.listSort || { favourite: 'az', explore: 'az' },
+    musicForPreset: state.musicForPreset || '',
   }));
 }
 function loadArtworkCache() {
@@ -217,7 +219,7 @@ function home() {
   const favs = Object.entries(prefs()).filter(([, p]) => p.favourite).map(([n]) => n);
   const explore = Object.entries(prefs()).filter(([, p]) => p.explore).map(([n]) => n);
   const recent = (state.recent || []).slice(0, 4);
-  layout(`${hero()}<section class="section"><div class="eyebrow">Artists That Matter / ATM</div><h1 class="title">Your music map.</h1><p class="subtitle">Start with something you love, build your own lists, or describe the kind of thing you fancy and let ATM find the artists.</p><div class="actions"><button class="btn primary" data-nav="discover">Discover artists →</button><button class="btn" data-nav="lucky">✦ I’m Feeling Lucky</button></div></section><section class="section grid home-grid">${kpi(artists.length, 'Artists in ATM')}${kpiLink(favs.length, 'Favourites', 'favourites', 'Your starred artists')}${kpiLink(explore.length, 'Want to explore', 'explore', 'Your listening queue')}${kpiLink('Mix', 'Explore by Vibe', 'vibe', 'Genres, styles & moods')}</section><section class="section panel pad"><div class="eyebrow">Recently viewed</div>${recent.length ? recent.map(x => rowHtml(x.artist, humanAction(x.action))).join('') : '<div class="empty">Your recent artists will appear here.</div>'}</section><section class="section install-card panel"><div class="version-line"><b>ATM Mobile v${APP_VERSION}</b><span id="versionStatus">Checking for updates…</span></div><p class="small">Your favourites, Want to Explore list, dislikes, notes and history stay on this device.</p><div class="mini-actions"><button class="btn" data-nav="guide">Guide</button><button id="exportHome" class="btn">Export my ATM data</button><button id="installHome" class="btn" style="display:none">Install ATM</button></div></section>`, 'home');
+  layout(`${hero()}<section class="section"><div class="eyebrow">Artists That Matter / ATM</div><h1 class="title">Your music map.</h1><p class="subtitle">Start with something you love, build your own lists, or describe the kind of thing you fancy and let ATM find the artists.</p><div class="actions"><button class="btn primary" data-nav="discover">Discover artists →</button><button class="btn" data-nav="lucky">✦ I’m Feeling Lucky</button></div></section><section class="section grid home-grid">${kpi(artists.length, 'Artists in ATM')}${kpiLink(favs.length, 'Favourites', 'favourites', 'Your starred artists')}${kpiLink(explore.length, 'Want to explore', 'explore', 'Your listening queue')}${kpiLink('Mix', 'Explore by Vibe', 'vibe', 'Genres, styles & moods')}${kpiLink('Play', 'Music for…', 'musicfor', 'Moments, moods & dancing')}</section><section class="section panel pad"><div class="eyebrow">Recently viewed</div>${recent.length ? recent.map(x => rowHtml(x.artist, humanAction(x.action))).join('') : '<div class="empty">Your recent artists will appear here.</div>'}</section><section class="section install-card panel"><div class="version-line"><b>ATM Mobile v${APP_VERSION}</b><span id="versionStatus">Checking for updates…</span></div><p class="small">Your favourites, Want to Explore list, dislikes, notes and history stay on this device.</p><div class="mini-actions"><button class="btn" data-nav="guide">Guide</button><button id="exportHome" class="btn">Export my ATM data</button><button id="installHome" class="btn" style="display:none">Install ATM</button></div></section>`, 'home');
   document.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openArtist(b.dataset.open));
   const ih = document.getElementById('installHome');
   if (deferredInstall && ih) { ih.style.display = 'block'; ih.onclick = installApp; }
@@ -478,8 +480,65 @@ function bindVibe() {
   document.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openArtist(b.dataset.open));
 }
 
+const musicForPresets = [
+  { group: 'Time & place', label: 'Rainy Days', blurb: 'Reflective, textured and a little grey around the edges.', target: { energy: 4, darkness: 6, accessibility: 6 }, words: ['reflective', 'melancholic', 'atmospheric', 'dream', 'intimate'] },
+  { group: 'Time & place', label: 'Sunday Morning', blurb: 'Warm, unhurried listening for a slower start.', target: { energy: 3, aggression: 1, darkness: 3, accessibility: 7 }, words: ['warm', 'gentle', 'serene', 'laid-back', 'soul', 'folk'] },
+  { group: 'Time & place', label: '3AM', blurb: 'Nocturnal, inward-looking and slightly strange.', target: { energy: 4, darkness: 8, experimental: 7 }, words: ['nocturnal', 'hypnotic', 'ambient', 'dream', 'introspective'] },
+  { group: 'Time & place', label: 'Sunset', blurb: 'Glowing, spacious music for the end of the day.', target: { energy: 5, darkness: 3, accessibility: 7 }, words: ['warm', 'dreamy', 'serene', 'lush', 'psychedelic'] },
+  { group: 'Time & place', label: 'Night Driving', blurb: 'Propulsive, cinematic and built for lights passing by.', target: { energy: 7, darkness: 6, rhythm: 8, organic_electronic: 8 }, words: ['nocturnal', 'driving', 'synth', 'electronic', 'cinematic'] },
+  { group: 'Going out', label: 'Getting Ready to Go Out', blurb: 'Confident, bright and steadily raising the temperature.', target: { energy: 8, rhythm: 8, accessibility: 8 }, words: ['confident', 'euphoric', 'dance', 'pop', 'funk'] },
+  { group: 'Going out', label: 'After the Party', blurb: 'The comedown: hazy, tender and quietly nocturnal.', target: { energy: 3, darkness: 6, accessibility: 6 }, words: ['hazy', 'intimate', 'melancholic', 'nocturnal', 'ambient'] },
+  { group: 'Time & place', label: 'That First Coffee', blurb: 'A gentle lift before the day properly begins.', target: { energy: 5, aggression: 1, darkness: 2, accessibility: 8 }, words: ['warm', 'playful', 'soulful', 'bright', 'acoustic'] },
+  { group: 'Heart stuff', label: 'Heartbreak', blurb: 'Songs for the raw bit, the reflective bit and everything after.', target: { energy: 4, darkness: 7, accessibility: 8 }, words: ['heartbreak', 'melancholic', 'romantic', 'vulnerable', 'sad'] },
+  { group: 'Heart stuff', label: 'Falling in Love', blurb: 'Warm, open-hearted and a little bit giddy.', target: { energy: 6, darkness: 2, accessibility: 8 }, words: ['romantic', 'joyful', 'warm', 'dreamy', 'euphoric'] },
+  { group: 'Heart stuff', label: 'Moping', blurb: 'Low-energy company for leaning into it.', target: { energy: 2, darkness: 7, accessibility: 7 }, words: ['melancholic', 'sad', 'intimate', 'reflective', 'slow'] },
+  { group: 'Heart stuff', label: 'Brooding', blurb: 'Dark, tense and deliberate rather than defeated.', target: { energy: 5, aggression: 5, darkness: 9 }, words: ['brooding', 'dark', 'ominous', 'tense', 'gothic'] },
+  { group: 'Change the energy', label: 'Need to Wake Up', blurb: 'Immediate, bright and hard to sleep through.', target: { energy: 9, rhythm: 8, accessibility: 8 }, words: ['energetic', 'urgent', 'bright', 'punk', 'dance'] },
+  { group: 'Change the energy', label: 'Need to Calm Down', blurb: 'Soft edges, low intensity and room to breathe.', target: { energy: 2, aggression: 1, darkness: 3 }, words: ['calm', 'serene', 'ambient', 'gentle', 'minimal'] },
+  { group: 'Change the energy', label: 'Getting Hyped', blurb: 'Big energy, momentum and zero interest in subtlety.', target: { energy: 10, aggression: 8, rhythm: 9 }, words: ['hype', 'intense', 'triumphant', 'rap', 'metal'] },
+  { group: 'Dancing', label: 'Dancing… to Pop', blurb: 'Hooks first: glossy, immediate and properly danceable.', target: { energy: 8, rhythm: 9, accessibility: 9 }, genres: ['Pop'], words: ['dance-pop', 'electropop', 'synthpop', 'disco'] },
+  { group: 'Dancing', label: 'Dancing… to Funk & Disco', blurb: 'Basslines, groove and a bit of sparkle.', target: { energy: 8, rhythm: 10, accessibility: 8 }, words: ['funk', 'disco', 'boogie', 'soul'] },
+  { group: 'Dancing', label: 'Dancing… to House', blurb: 'Four-on-the-floor movement from warm to euphoric.', target: { energy: 8, rhythm: 10, organic_electronic: 9 }, words: ['house', 'garage', 'club', 'dance'] },
+];
+
+function musicForScore(a, preset) {
+  const haystack = `${a.primary_genre || ''} ${a.style_tags || ''} ${a.mood || ''} ${a.atmosphere || ''}`.toLowerCase();
+  let score = 0, weight = 0;
+  Object.entries(preset.target || {}).forEach(([key, wanted]) => {
+    const actual = Number(a[key] || 0);
+    score += Math.max(0, 1 - Math.abs(actual - wanted) / 9) * 2;
+    weight += 2;
+  });
+  const wordHits = (preset.words || []).filter(word => haystack.includes(word.toLowerCase())).length;
+  score += wordHits * 1.7; weight += Math.max(1, (preset.words || []).length * .55);
+  if ((preset.genres || []).includes(a.primary_genre)) score += 3;
+  if (preset.genres?.length) weight += 3;
+  return Math.max(0, Math.min(1, score / Math.max(1, weight)));
+}
+function musicForResults(preset) {
+  const disliked = new Set(Object.entries(prefs()).filter(([, p]) => p.disliked).map(([name]) => name));
+  return artists.filter(a => !disliked.has(a.artist)).map(a => ({ a, score: musicForScore(a, preset) }))
+    .filter(row => row.score >= .54).sort((x, y) => y.score - x.score || x.a.artist.localeCompare(y.a.artist)).slice(0, 36);
+}
+function musicFor() {
+  const selectedLabel = state.musicForPreset || '';
+  const selected = musicForPresets.find(p => p.label === selectedLabel);
+  const groups = [...new Set(musicForPresets.map(p => p.group))];
+  const choices = groups.map(group => `<div class="occasion-group"><div class="eyebrow">${esc(group)}</div><div class="occasion-grid">${musicForPresets.filter(p => p.group === group).map(p => `<button class="occasion-card ${selectedLabel === p.label ? 'active' : ''}" data-occasion="${attr(p.label)}"><b>${esc(p.label)}</b><span>${esc(p.blurb)}</span></button>`).join('')}</div></div>`).join('');
+  let results = '';
+  if (selected) {
+    const rows = musicForResults(selected);
+    results = `<section class="section music-results"><div class="result-head"><div><div class="eyebrow">Music for…</div><h2>${esc(selected.label)}</h2><p class="small">${esc(selected.blurb)} Suggestions use the ATM profile data and exclude disliked artists.</p></div><button id="occasionSurprise" class="btn" ${rows.length ? '' : 'disabled'}>✦ Pick one</button></div><div class="cards">${rows.slice(0, 18).map((row, i) => recCard({ artist: row.a, score: row.score, why: `Fits ${selected.label.toLowerCase()} through its mood, energy and musical profile.` }, i + 1)).join('')}</div></section>`;
+  }
+  layout(`<section><div class="eyebrow">Choose the moment</div><h1 class="title">Music for…</h1><p class="subtitle">Pick what the music is for, then let ATM use the catalogue’s mood, energy, rhythm and style profiles to make a shortlist.</p></section><section class="section occasion-stack">${choices}</section>${results || '<div class="panel empty section">Choose a moment above to see matching artists.</div>'}`, '');
+  document.querySelectorAll('[data-occasion]').forEach(button => button.onclick = () => { state.musicForPreset = button.dataset.occasion; saveState(); render(); setTimeout(() => document.querySelector('.music-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); });
+  document.querySelectorAll('[data-open]').forEach(button => button.onclick = () => openArtist(button.dataset.open));
+  const surprise = document.getElementById('occasionSurprise');
+  if (surprise && selected) surprise.onclick = () => { const rows = musicForResults(selected); if (rows.length) openArtist(rows[Math.floor(Math.random() * rows.length)].a.artist); };
+}
+
 function guide() {
-  layout(`<section><div class="eyebrow">Help & how it works</div><h1 class="title">Guide</h1><p class="subtitle">ATM is designed to answer two simple questions: “I like this — what else?” and “I fancy this kind of thing — who should I try?”</p></section><section class="guide-stack"><article class="panel guide-card"><h2>⌕ Discover</h2><p>Pick any artist from the full catalogue. <b>Closest Match</b> prioritises shared style, scene, sonic profile and era. <b>Broaden It</b> keeps a real connection while deliberately widening the net. <b>Wildcard</b> looks for a plausible sideways jump rather than a near-neighbour.</p><p>There is no extra distance slider: the three modes are intentionally distinct so the choice itself is clear and predictable.</p></article><article class="panel guide-card"><h2>◇ Explore by Vibe</h2><p>Mix primary genres, sub-genres/styles and moods, then tap <b>Show artists</b>. Results are alphabetical by default, with an optional Best Match sort.</p><p><b>Match all</b> requires every selected style and mood to fit; if you choose several primary genres, an artist can belong to any one of them. <b>Match any</b> gives a much broader pool. Disliked artists are excluded.</p></article><article class="panel guide-card"><h2>★ Your lists</h2><p><b>Favourite</b> is for artists you already value. <b>Want to Explore</b> is your listening queue. Both lists can be searched and sorted A–Z or by recently added. <b>Dislike</b> removes an artist from those lists and keeps them out of Lucky and Vibe results.</p></article><article class="panel guide-card"><h2>✦ Lucky & listening</h2><p><b>I’m Feeling Lucky</b> picks a random artist from ATM, excluding dislikes. Artist pages link directly to YouTube Music first, with Spotify as a secondary option.</p></article><article class="panel guide-card"><h2>↩ Navigation</h2><p>ATM now uses normal app/browser history, so Back should return through the artist pages and screens you visited rather than throwing you somewhere unrelated.</p></article><article class="panel guide-card"><h2>▣ Your data & backup</h2><p>Favourites, Want to Explore, dislikes, notes and history are stored locally on this device. They are not shared with other family members using the same hosted ATM site.</p><p>Use <b>Export my ATM data</b> to download a small JSON backup. <b>Restore backup</b> can restore one of those files on this device. Restoring replaces the current local ATM personal data.</p><div class="mini-actions"><button id="exportGuide" class="btn primary">Export my ATM data</button><button id="importGuide" class="btn">Restore backup</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></article><article class="panel guide-card"><h2>▤ Updates & artwork</h2><p>ATM Mobile is a PWA. New versions are published to the same GitHub Pages address and installed copies normally update when reopened online. Artist images come through the secure ATM artwork service; the YouTube API key is not stored in this app.</p><div class="version-line"><b>ATM Mobile v${APP_VERSION}</b><span id="versionStatus">Checking for updates…</span></div></article></section>`, '');
+  layout(`<section><div class="eyebrow">Help & how it works</div><h1 class="title">Guide</h1><p class="subtitle">ATM is designed to answer two simple questions: “I like this — what else?” and “I fancy this kind of thing — who should I try?”</p></section><section class="guide-stack"><article class="panel guide-card"><h2>⌕ Discover</h2><p>Pick any artist from the full catalogue. <b>Closest Match</b> prioritises shared style, scene, sonic profile and era. <b>Broaden It</b> keeps a real connection while deliberately widening the net. <b>Wildcard</b> looks for a plausible sideways jump rather than a near-neighbour.</p><p>There is no extra distance slider: the three modes are intentionally distinct so the choice itself is clear and predictable.</p></article><article class="panel guide-card"><h2>◇ Explore by Vibe</h2><p>Mix primary genres, sub-genres/styles and moods, then tap <b>Show artists</b>. Results are alphabetical by default, with an optional Best Match sort.</p><p><b>Match all</b> requires every selected style and mood to fit; if you choose several primary genres, an artist can belong to any one of them. <b>Match any</b> gives a much broader pool. Disliked artists are excluded.</p></article><article class="panel guide-card"><h2>Play Music for…</h2><p>Choose a real-life moment such as <b>Rainy Days</b>, <b>Night Driving</b>, <b>Moping</b> or one of the dancing options. ATM scores the catalogue using mood, energy, rhythm and style, then gives you a focused shortlist.</p></article><article class="panel guide-card"><h2>★ Your lists</h2><p><b>Favourite</b> is for artists you already value. <b>Want to Explore</b> is your listening queue. Both lists can be searched and sorted A–Z or by recently added. <b>Dislike</b> removes an artist from those lists and keeps them out of Lucky, Vibe and Music for… results.</p></article><article class="panel guide-card"><h2>✦ Lucky & listening</h2><p><b>I’m Feeling Lucky</b> picks a random artist from ATM, excluding dislikes. Artist pages link directly to YouTube Music first, with Spotify as a secondary option.</p></article><article class="panel guide-card"><h2>↩ Navigation</h2><p>ATM uses normal app/browser history, so Back should return through the artist pages and screens you visited rather than throwing you somewhere unrelated.</p></article><article class="panel guide-card"><h2>▣ Your data & backup</h2><p>Favourites, Want to Explore, dislikes, notes and history are stored locally on this device. They are not shared with other family members using the same hosted ATM site.</p><p>Use <b>Export my ATM data</b> to download a small JSON backup. <b>Restore backup</b> can restore one of those files on this device. Restoring replaces the current local ATM personal data.</p><div class="mini-actions"><button id="exportGuide" class="btn primary">Export my ATM data</button><button id="importGuide" class="btn">Restore backup</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></article><article class="panel guide-card"><h2>▤ Updates & artwork</h2><p>ATM Mobile is a PWA. New versions are published to the same address and installed copies normally update when reopened online. Artist images come through the secure ATM artwork service; the YouTube API key is not stored in this app.</p><div class="version-line"><b>ATM Mobile v${APP_VERSION}</b><span id="versionStatus">Checking for updates…</span></div></article></section>`, '');
   document.getElementById('exportGuide').onclick = exportPersonalData;
   const importBtn = document.getElementById('importGuide');
   const importFile = document.getElementById('importFile');
@@ -554,6 +613,7 @@ function render() {
   else if (state.page === 'favourites') favourites();
   else if (state.page === 'explore') exploreList();
   else if (state.page === 'vibe') vibe();
+  else if (state.page === 'musicfor') musicFor();
   else if (state.page === 'guide') guide();
   else home();
 }
