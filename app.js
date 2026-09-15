@@ -3,7 +3,7 @@ let byName = new Map();
 let deferredInstall = null;
 let vibeData = { genres: [], styles: [], moods: [] };
 
-const APP_VERSION = '0.9.0';
+const APP_VERSION = '0.10.0';
 const storeKey = 'atm-mobile-v01'; // Intentionally stable so personal data survives app updates.
 const artworkCacheKey = 'atm-mobile-artwork-v2';
 const ARTWORK_ENDPOINT = 'https://atm-artwork.zanderiii88.workers.dev/';
@@ -20,6 +20,7 @@ const state = {
   mode: 'Similar',
   prefs: {},
   recent: [],
+  searchRecent: [],
   vibe: { genres: [], styles: [], moods: [] },
   vibeMatch: 'all',
   vibeSort: 'az',
@@ -29,10 +30,16 @@ const state = {
   musicForPreset: '',
   musicForMode: 'ranked',
   musicForShuffleSeed: 0,
+  discoverOrder: 'ranked',
+  discoverShuffleSeed: 0,
+  vibeOrder: 'ranked',
+  vibeShuffleSeed: 0,
   ...persisted,
 };
 state.vibe = { genres: [], styles: [], moods: [], ...(state.vibe || {}) };
 state.listSort = { favourite: 'az', explore: 'az', ...(state.listSort || {}) };
+state.searchRecent = Array.isArray(state.searchRecent) ? state.searchRecent : [];
+if (!state.searchRecent.length && Array.isArray(state.recent)) state.searchRecent = state.recent.filter(x => x.action === 'discover').map(x => x.artist).slice(0, 12);
 
 let artworkCache = loadArtworkCache();
 const artworkPending = new Map();
@@ -48,6 +55,7 @@ function saveState() {
     mode: state.mode,
     prefs: state.prefs || {},
     recent: state.recent || [],
+    searchRecent: state.searchRecent || [],
     vibe: state.vibe || { genres: [], styles: [], moods: [] },
     vibeMatch: state.vibeMatch || 'all',
     vibeSort: state.vibeSort || 'az',
@@ -57,6 +65,10 @@ function saveState() {
     musicForPreset: state.musicForPreset || '',
     musicForMode: state.musicForMode || 'ranked',
     musicForShuffleSeed: Number(state.musicForShuffleSeed || 0),
+    discoverOrder: state.discoverOrder || 'ranked',
+    discoverShuffleSeed: Number(state.discoverShuffleSeed || 0),
+    vibeOrder: state.vibeOrder || 'ranked',
+    vibeShuffleSeed: Number(state.vibeShuffleSeed || 0),
   }));
 }
 function loadArtworkCache() {
@@ -288,11 +300,15 @@ function homeIcon(kind) {
 function homeActionCard(page, title, kicker, detail, icon) {
   return `<button class="home-action-card" data-nav="${page}"><span class="home-action-icon">${homeIcon(icon)}</span><span class="home-action-copy"><b>${title}</b><small>${kicker}</small>${detail ? `<em>${detail}</em>` : ''}</span><i>→</i></button>`;
 }
-function homeListCard(page, count, title, detail) {
-  return `<button class="home-list-card" data-nav="${page}"><span class="home-list-count">${esc(count)}</span><span class="home-list-copy"><b>${title}</b><small>${detail}</small></span><i>→</i></button>`;
+function listIcon(kind) {
+  if (kind === 'favourite') return navIcon('favourite');
+  return `<svg class="nav-svg list-search-svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="5.5"></circle><path d="M14.5 14.5 20 20"></path></svg>`;
+}
+function homeListCard(page, count, title, detail, icon) {
+  return `<button class="home-list-card" data-nav="${page}"><span class="home-list-icon">${listIcon(icon)}</span><span class="home-list-copy"><b>${title}</b><small>${detail}</small><strong class="home-list-count">${esc(count)}</strong></span><i>→</i></button>`;
 }
 function homeCatalogueCard(count) {
-  return `<div class="home-catalogue-card"><strong>${esc(count)}</strong><span>Artists in ATM</span></div>`;
+  return `<button class="home-catalogue-card" data-nav="catalogue"><strong>${esc(Number(count).toLocaleString())}</strong><span>Artists in ATM</span><i>Browse A–Z →</i></button>`;
 }
 
 function home() {
@@ -300,7 +316,7 @@ function home() {
   const explore = Object.entries(prefs()).filter(([, p]) => p.explore).map(([n]) => n);
   const recent = (state.recent || []).slice(0, 4);
   const discovery = `${homeActionCard('discover', 'Artist Match', 'Find similar artists', 'Start with an artist you know', 'match')}${homeActionCard('lucky', 'I’m Feeling Lucky', 'Surprise me', 'Pick something from the catalogue', 'lucky')}${homeActionCard('vibe', 'Vibes', 'Explore by vibe', 'Genres, styles & moods', 'vibe')}${homeActionCard('musicfor', 'Music For...', 'Choose the moment', 'Moments, moods & dancing', 'musicfor')}`;
-  layout(`${hero()}<section class="section"><div class="eyebrow">Artists That Matter / ATM</div><h1 class="title">Your music map.</h1><p class="subtitle">Start with something you love, build your own lists, or describe the kind of thing you fancy and let ATM find the artists.</p></section><section class="section"><div class="eyebrow home-section-label">Discover & explore</div><div class="home-discovery-grid">${discovery}</div></section><section class="section"><div class="eyebrow home-section-label">Your lists</div><div class="home-list-grid">${homeListCard('explore', explore.length, 'Want to Explore', 'Your listening queue')}${homeListCard('favourites', favs.length, 'Favourites', 'Your starred artists')}</div></section><section class="section"><div class="eyebrow home-section-label">Our catalogue</div>${homeCatalogueCard(artists.length)}</section><section class="section panel pad"><div class="eyebrow">Recently viewed</div>${recent.length ? recent.map(x => rowHtml(x.artist, humanAction(x.action))).join('') : '<div class="empty">Your recent artists will appear here.</div>'}</section><section class="section install-card panel"><div class="version-line"><b>ATM Mobile v${APP_VERSION} · ${artists.length.toLocaleString()} artists</b><span id="versionStatus">Checking for updates…</span></div><p class="small">Your favourites, Want to Explore list, dislikes, notes and history stay on this device.</p><div class="mini-actions"><button class="btn" data-nav="guide">Guide</button><button id="exportHome" class="btn">Export my ATM data</button><button id="installHome" class="btn" style="display:none">Install ATM</button></div></section>`, 'home');
+  layout(`${hero()}<section class="section"><div class="eyebrow">Artists That Matter / ATM</div><h1 class="title">Your music map.</h1><p class="subtitle">Start with something you love, build your own lists, or describe the kind of thing you fancy and let ATM find the artists.</p></section><section class="section"><div class="eyebrow home-section-label">Discover & explore</div><div class="home-discovery-grid">${discovery}</div></section><section class="section"><div class="eyebrow home-section-label">Your lists</div><div class="home-list-grid">${homeListCard('explore', explore.length, 'Want To Explore', 'Your listening queue', 'explore')}${homeListCard('favourites', favs.length, 'Favourites', 'Your starred artists', 'favourite')}</div></section><section class="section"><div class="eyebrow home-section-label">Our catalogue</div>${homeCatalogueCard(artists.length)}</section><section class="section panel pad"><div class="eyebrow">Recently viewed</div>${recent.length ? recent.map(x => rowHtml(x.artist, humanAction(x.action))).join('') : '<div class="empty">Your recent artists will appear here.</div>'}</section><section class="section install-card panel"><div class="version-line"><b>ATM Mobile v${APP_VERSION} · ${artists.length.toLocaleString()} artists</b><span id="versionStatus">Checking for updates…</span></div><p class="small">Your favourites, Want to Explore list, dislikes, notes and history stay on this device.</p><div class="mini-actions"><button class="btn" data-nav="guide">Guide</button><button id="exportHome" class="btn">Export my ATM data</button><button id="installHome" class="btn" style="display:none">Install ATM</button></div></section>`, 'home');
   document.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openArtist(b.dataset.open));
   const ih = document.getElementById('installHome');
   if (deferredInstall && ih) { ih.style.display = 'block'; ih.onclick = installApp; }
@@ -323,9 +339,13 @@ const discoverModes = {
 function discover() {
   const sel = state.selected ? byName.get(state.selected) : null;
   const disliked = new Set(Object.entries(prefs()).filter(([, p]) => p.disliked).map(([n]) => n));
-  const recs = sel ? ATMEngine.recommend(sel, artists, state.mode, 8, disliked) : [];
+  const rankedPool = sel ? ATMEngine.recommend(sel, artists, state.mode, 36, disliked) : [];
+  const randomMode = state.discoverOrder === 'random';
+  const recs = randomMode ? seededShuffle(rankedPool, state.discoverShuffleSeed) : rankedPool;
   const mode = discoverModes[state.mode] || discoverModes.Similar;
-  layout(`<section><div class="eyebrow">Start with an artist</div><h1 class="title">Artist Match</h1><p class="subtitle">Choose an artist you know, then decide how closely ATM should follow their musical neighbourhood.</p><div class="searchbox"><input id="artistSearch" class="field" autocomplete="off" inputmode="search" placeholder="Choose or search for an artist…" value="${sel ? esc(sel.artist) : ''}" aria-label="Choose an artist"><button id="showArtistList" class="search-toggle" type="button" aria-label="Show artist list">⌄</button><div id="suggestions"></div></div><div class="seg discover-seg">${Object.entries(discoverModes).map(([key, info]) => `<button data-mode="${key}" class="${state.mode === key ? 'active' : ''}">${esc(info.label)}</button>`).join('')}</div><div class="mode-help"><b>${esc(mode.label)}</b><span>${esc(mode.help)}</span></div></section>${sel ? selectedHead(sel) + `<section class="section"><div class="eyebrow">Top recommendations</div><div class="cards">${recs.map((r, i) => recCard(r, i + 1)).join('')}</div></section>` : '<div class="panel empty section">Choose an artist above, or tap ✦ Lucky.</div>'}`, 'discover');
+  const hasSearchRecent = (state.searchRecent || []).length > 0;
+  const resultControls = sel ? `<div class="discovery-order-actions"><button id="discoverRanked" class="btn mode-btn ${randomMode ? '' : 'active'}">${musicModeIcon('ranked')}<span>Ranked</span></button><button id="discoverRandom" class="btn mode-btn ${randomMode ? 'active' : ''}">${musicModeIcon('random')}<span>Randomiser</span></button></div>` : '';
+  layout(`<section><div class="eyebrow">Start with an artist</div><h1 class="title">Artist Match</h1><p class="subtitle">Choose an artist you know, then decide how closely ATM should follow their musical neighbourhood.</p><div class="searchbox"><input id="artistSearch" class="field" autocomplete="off" inputmode="search" placeholder="Choose or search for an artist…" value="${sel ? esc(sel.artist) : ''}" aria-label="Choose an artist"><button id="showArtistList" class="search-toggle" type="button" aria-label="Show artist list">⌄</button><div id="suggestions"></div></div>${hasSearchRecent ? '<div class="search-history-actions"><button id="clearArtistSearches" class="btn quiet">Clear recent searches</button></div>' : ''}<div class="seg discover-seg">${Object.entries(discoverModes).map(([key, info]) => `<button data-mode="${key}" class="${state.mode === key ? 'active' : ''}">${esc(info.label)}</button>`).join('')}</div><div class="mode-help"><b>${esc(mode.label)}</b><span>${esc(mode.help)}</span></div></section>${sel ? selectedHead(sel) + `<section class="section"><div class="result-head"><div><div class="eyebrow">Top recommendations</div><h2>${randomMode ? 'Mixed results' : 'Best matches'}</h2><p class="small">${randomMode ? 'Randomiser is reshuffling the wider recommendation pool for this Artist Match mode.' : 'Ranked by ATM’s match score for the selected discovery mode.'}</p></div>${resultControls}</div><div class="cards">${recs.slice(0, 8).map((r, i) => recCard(r, i + 1)).join('')}</div></section>` : '<div class="panel empty section">Choose an artist above, or tap ✦ Lucky.</div>'}`, 'discover');
   bindDiscover();
 }
 function selectedHead(a) {
@@ -342,7 +362,7 @@ function defaultArtistChoices() {
     if (!name || seen.has(name) || !byName.has(name)) return;
     seen.add(name); out.push(byName.get(name));
   };
-  (state.recent || []).forEach(x => push(x.artist));
+  (state.searchRecent || []).forEach(push);
   Object.entries(prefs()).filter(([, p]) => p.favourite).forEach(([name]) => push(name));
   artists.forEach(a => push(a.artist));
   return out;
@@ -380,6 +400,9 @@ function bindDiscover() {
     const pick = e.target.closest('[data-pick]');
     if (!pick) return;
     state.selected = pick.dataset.pick;
+    state.searchRecent = [state.selected, ...(state.searchRecent || []).filter(n => n !== state.selected)].slice(0, 12);
+    state.discoverOrder = 'ranked';
+    state.discoverShuffleSeed = 0;
     touch(state.selected, 'discover');
     saveState();
     render();
@@ -389,7 +412,13 @@ function bindDiscover() {
   inp.oninput = () => { userEdited = true; showList(false); };
   toggle.onclick = e => { e.preventDefault(); e.stopPropagation(); inp.focus(); showList(true); };
   document.onclick = e => { if (!e.target.closest('.searchbox')) hideList(); };
-  document.querySelectorAll('[data-mode]').forEach(b => b.onclick = () => { state.mode = b.dataset.mode; saveState(); render(); });
+  document.querySelectorAll('[data-mode]').forEach(b => b.onclick = () => { state.mode = b.dataset.mode; state.discoverOrder = 'ranked'; state.discoverShuffleSeed = 0; saveState(); render(); });
+  const clearSearches = document.getElementById('clearArtistSearches');
+  if (clearSearches) clearSearches.onclick = () => { state.searchRecent = []; saveState(); render(); toast('Recent Artist Match searches cleared'); };
+  const ranked = document.getElementById('discoverRanked');
+  if (ranked) ranked.onclick = () => { state.discoverOrder = 'ranked'; saveState(); render(); setTimeout(() => document.querySelector('.result-head')?.scrollIntoView({ block: 'start' }), 20); };
+  const random = document.getElementById('discoverRandom');
+  if (random) random.onclick = () => { state.discoverOrder = 'random'; state.discoverShuffleSeed = Date.now(); saveState(); render(); setTimeout(() => document.querySelector('.result-head')?.scrollIntoView({ block: 'start' }), 20); };
   document.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openArtist(b.dataset.open));
   document.querySelectorAll('[data-flag]').forEach(b => b.onclick = () => setFlag(state.selected, b.dataset.flag));
 }
@@ -567,32 +596,34 @@ function vibeArtistMatch(a) {
 }
 function currentVibeResults() {
   const disliked = new Set(Object.entries(prefs()).filter(([, p]) => p.disliked).map(([n]) => n));
-  let rows = artists.filter(a => !disliked.has(a.artist)).map(vibeArtistMatch).filter(Boolean);
-  if (state.vibeSort === 'best') rows.sort((x, y) => y.score - x.score || x.a.artist.localeCompare(y.a.artist));
-  else rows.sort((x, y) => x.a.artist.localeCompare(y.a.artist));
+  const rows = artists.filter(a => !disliked.has(a.artist)).map(vibeArtistMatch).filter(Boolean);
+  rows.sort((x, y) => y.score - x.score || x.a.artist.localeCompare(y.a.artist));
   return rows;
 }
 function vibe() {
-  const results = state.vibeApplied ? currentVibeResults() : [];
+  const baseResults = state.vibeApplied ? currentVibeResults() : [];
   const selectedPreset = vibePresets.find(p => p.label === state.vibePreset);
-  const quickRows = selectedPreset ? quickVibeResults(selectedPreset) : [];
-  const quickChoices = `<section class="section"><div class="eyebrow">Quick vibes</div><h2>Pick a character</h2><p class="small">A faster route when you know the feel you want but not the genre. These are ranked using the catalogue’s mood and sonic-profile data; the detailed filters below still work exactly as before.</p><div class="occasion-grid quick-vibes">${vibePresets.map(p => `<button class="occasion-card ${state.vibePreset === p.label ? 'active' : ''}" data-quick-vibe="${attr(p.label)}"><b>${esc(p.label)}</b><span>${esc(p.blurb)}</span></button>`).join('')}</div></section>`;
-  const quickResults = selectedPreset ? `<section class="section quick-vibe-results"><div class="result-head"><div><div class="eyebrow">Quick vibe</div><h2>${esc(selectedPreset.label)}</h2><p class="small">${esc(selectedPreset.blurb)} Ranked rather than filtered, so close fits can still surface even when their tags use different wording.</p></div><button id="quickVibeSurprise" class="btn" ${quickRows.length ? '' : 'disabled'}>✦ Pick one</button></div><div class="cards">${quickRows.slice(0, 18).map((row, i) => recCard({ artist: row.a, score: row.score, why: presetReason(row.a, selectedPreset) }, i + 1)).join('')}</div></section>` : '';
-  const resultHtml = !state.vibeApplied ? '<div class="panel empty section">Choose one or more filters, then tap Show artists.</div>' : `<section class="section"><div class="result-head"><div><div class="eyebrow">Filter results</div><h2>${results.length} artist${results.length === 1 ? '' : 's'}</h2></div><div class="result-actions"><select id="vibeSort" class="field select compact"><option value="az" ${state.vibeSort === 'az' ? 'selected' : ''}>A–Z</option><option value="best" ${state.vibeSort === 'best' ? 'selected' : ''}>Best match</option></select><button id="vibeSurprise" class="btn" ${results.length ? '' : 'disabled'}>✦ Surprise me</button></div></div><div class="panel pad vibe-results">${results.length ? results.map(r => rowHtml(r.a.artist, r.a.primary_genre, `Matched: ${r.matched.join(' · ')}`)).join('') : '<div class="empty">No artists match that combination. Try Match any, or remove one filter.</div>'}</div></section>`;
-  layout(`<section><div class="eyebrow">Feel first, genre second</div><h1 class="title">Vibes</h1><p class="subtitle">Pick a ready-made vibe for a ranked shortlist, or build an exact combination of genres, styles and moods.</p></section>${quickChoices}${quickResults}<section class="section"><div class="eyebrow">Build your own</div><h2>Mix the catalogue</h2><p class="small">Use exact catalogue tags when you want tighter control. Anything you’ve disliked is excluded.</p><div id="vibeChips" class="filter-chips">${vibeChips()}</div><div class="match-toggle"><span>Matching</span><button data-vibe-match="all" class="${state.vibeMatch === 'all' ? 'active' : ''}">Match all</button><button data-vibe-match="any" class="${state.vibeMatch === 'any' ? 'active' : ''}">Match any</button></div><p class="small">With Match all, multiple primary genres are treated as alternatives; all selected styles and moods must match.</p></section><section class="section filter-stack"><details open class="filter-panel"><summary>Genres <span>${state.vibe.genres.length || ''}</span></summary><div id="genreOptions" class="check-list genres">${filterList('genres').html}</div></details><details class="filter-panel"><summary>Sub-genres & styles <span>${state.vibe.styles.length || ''}</span></summary><div class="filter-search"><input id="styleFilterSearch" class="field" placeholder="Find a sub-genre or style…"></div><div id="styleOptions" class="check-list">${filterList('styles').html}</div><div id="styleCount" class="filter-count">Showing the most common styles. Search to reach the full list.</div></details><details class="filter-panel"><summary>Moods <span>${state.vibe.moods.length || ''}</span></summary><div class="filter-search"><input id="moodFilterSearch" class="field" placeholder="Find a mood…"></div><div id="moodOptions" class="check-list">${filterList('moods').html}</div><div id="moodCount" class="filter-count">Showing the most common moods. Search to reach the full list.</div></details><div class="vibe-actions"><button id="clearVibe" class="btn">Clear filters</button><button id="showVibeResults" class="btn primary">Show artists${vibeSelectedCount() ? ` (${vibeSelectedCount()} filters)` : ''}</button></div></section>${resultHtml}`, 'vibe');
+  const quickBase = selectedPreset ? quickVibeResults(selectedPreset) : [];
+  const randomMode = state.vibeOrder === 'random';
+  const quickRows = randomMode ? seededShuffle(quickBase, state.vibeShuffleSeed) : quickBase;
+  const results = randomMode ? seededShuffle(baseResults, state.vibeShuffleSeed) : baseResults;
+  const vibeControls = rows => `<div class="vibe-result-actions"><button data-vibe-order="ranked" class="btn mode-btn ${randomMode ? '' : 'active'}">${musicModeIcon('ranked')}<span>Ranked</span></button><button data-vibe-order="random" class="btn mode-btn ${randomMode ? 'active' : ''}">${musicModeIcon('random')}<span>Randomiser</span></button><button class="btn vibe-pick-one" ${rows.length ? '' : 'disabled'}>✦ Pick one</button></div>`;
+  const quickChoices = `<section class="section"><div class="eyebrow">Quick vibes</div><h2>Pick a character</h2><p class="small">A faster route when you know the feel you want but not the genre. These use the catalogue’s mood and sonic-profile data; the detailed filters below still work exactly as before.</p><div class="occasion-grid quick-vibes">${vibePresets.map(p => `<button class="occasion-card ${state.vibePreset === p.label ? 'active' : ''}" data-quick-vibe="${attr(p.label)}"><b>${esc(p.label)}</b><span>${esc(p.blurb)}</span></button>`).join('')}</div></section>`;
+  const quickResults = selectedPreset ? `<section class="section quick-vibe-results"><div class="result-head"><div><div class="eyebrow">Quick vibe</div><h2>${esc(selectedPreset.label)}</h2><p class="small">${esc(selectedPreset.blurb)} ${randomMode ? 'Randomiser is mixing the qualifying artists.' : 'Ranked by how closely each artist fits this vibe.'}</p></div>${vibeControls(quickRows)}</div><div class="cards">${quickRows.slice(0, 18).map((row, i) => recCard({ artist: row.a, score: row.score, why: presetReason(row.a, selectedPreset) }, i + 1)).join('')}</div></section>` : '';
+  const resultHtml = !state.vibeApplied ? '<div class="panel empty section">Choose one or more filters, then tap Show artists.</div>' : `<section class="section vibe-filter-results"><div class="result-head"><div><div class="eyebrow">Filter results</div><h2>${results.length} artist${results.length === 1 ? '' : 's'}</h2><p class="small">${randomMode ? 'Randomiser is mixing the matching artists.' : 'Ranked by the strength of the selected genre, style and mood matches.'}</p></div>${vibeControls(results)}</div><div class="panel pad vibe-results">${results.length ? results.map(r => rowHtml(r.a.artist, r.a.primary_genre, `Matched: ${r.matched.join(' · ')}`)).join('') : '<div class="empty">No artists match that combination. Try Match any, or remove one filter.</div>'}</div></section>`;
+  layout(`<section><div class="eyebrow">Feel first, genre second</div><h1 class="title">Vibes</h1><p class="subtitle">Pick a ready-made vibe for a shortlist, or build an exact combination of genres, styles and moods.</p></section>${quickChoices}${quickResults}<section class="section"><div class="eyebrow">Build your own</div><h2>Mix the catalogue</h2><p class="small">Use exact catalogue tags when you want tighter control. Anything you’ve disliked is excluded.</p><div id="vibeChips" class="filter-chips">${vibeChips()}</div><div class="match-toggle"><span>Matching</span><button data-vibe-match="all" class="${state.vibeMatch === 'all' ? 'active' : ''}">Match all</button><button data-vibe-match="any" class="${state.vibeMatch === 'any' ? 'active' : ''}">Match any</button></div><p class="small">With Match all, multiple primary genres are treated as alternatives; all selected styles and moods must match.</p></section><section class="section filter-stack"><details open class="filter-panel"><summary>Genres <span>${state.vibe.genres.length || ''}</span></summary><div id="genreOptions" class="check-list genres">${filterList('genres').html}</div></details><details class="filter-panel"><summary>Sub-genres & styles <span>${state.vibe.styles.length || ''}</span></summary><div class="filter-search"><input id="styleFilterSearch" class="field" placeholder="Find a sub-genre or style…"></div><div id="styleOptions" class="check-list">${filterList('styles').html}</div><div id="styleCount" class="filter-count">Showing the most common styles. Search to reach the full list.</div></details><details class="filter-panel"><summary>Moods <span>${state.vibe.moods.length || ''}</span></summary><div class="filter-search"><input id="moodFilterSearch" class="field" placeholder="Find a mood…"></div><div id="moodOptions" class="check-list">${filterList('moods').html}</div><div id="moodCount" class="filter-count">Showing the most common moods. Search to reach the full list.</div></details><div class="vibe-actions"><button id="clearVibe" class="btn">Clear filters</button><button id="showVibeResults" class="btn primary">Show artists${vibeSelectedCount() ? ` (${vibeSelectedCount()} filters)` : ''}</button></div></section>${resultHtml}`, 'vibe');
   bindVibe();
-  document.querySelectorAll('[data-quick-vibe]').forEach(button => button.onclick = () => { state.vibePreset = button.dataset.quickVibe; saveState(); render(); setTimeout(() => document.querySelector('.quick-vibe-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); });
+  document.querySelectorAll('[data-quick-vibe]').forEach(button => button.onclick = () => { state.vibePreset = button.dataset.quickVibe; state.vibeOrder = 'ranked'; state.vibeShuffleSeed = 0; saveState(); render(); setTimeout(() => document.querySelector('.quick-vibe-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); });
+  document.querySelectorAll('[data-vibe-order]').forEach(button => button.onclick = () => { state.vibeOrder = button.dataset.vibeOrder; if (state.vibeOrder === 'random') state.vibeShuffleSeed = Date.now(); saveState(); render(); });
+  document.querySelectorAll('.vibe-pick-one').forEach(button => button.onclick = () => { const rows = selectedPreset && button.closest('.quick-vibe-results') ? quickRows : results; if (rows.length) openArtist(rows[Math.floor(Math.random() * Math.min(18, rows.length))].a.artist); });
   document.querySelectorAll('[data-open]').forEach(button => button.onclick = () => openArtist(button.dataset.open));
-  const quickSurprise = document.getElementById('quickVibeSurprise');
-  if (quickSurprise && selectedPreset) quickSurprise.onclick = () => { const rows = quickVibeResults(selectedPreset); if (rows.length) openArtist(rows[Math.floor(Math.random() * rows.length)].a.artist); };
 }
-
 function bindVibe() {
   function bindChecks(container) {
     container.querySelectorAll('input[data-vibe-type]').forEach(box => box.onchange = () => setVibeValue(box.dataset.vibeType, box.value, box.checked));
   }
   document.querySelectorAll('.check-list').forEach(bindChecks);
-  document.querySelectorAll('[data-vibe-match]').forEach(b => b.onclick = () => { state.vibeMatch = b.dataset.vibeMatch; state.vibeApplied = false; saveState(); render(); });
+  document.querySelectorAll('[data-vibe-match]').forEach(b => b.onclick = () => { state.vibeMatch = b.dataset.vibeMatch; state.vibeApplied = false; state.vibeOrder = 'ranked'; state.vibeShuffleSeed = 0; saveState(); render(); });
   updateVibeSelectionUi();
   const styleSearch = document.getElementById('styleFilterSearch');
   const moodSearch = document.getElementById('moodFilterSearch');
@@ -606,8 +637,8 @@ function bindVibe() {
   }
   if (styleSearch) styleSearch.oninput = () => redrawOptions('styles', styleSearch.value, 'styleOptions', 'styleCount');
   if (moodSearch) moodSearch.oninput = () => redrawOptions('moods', moodSearch.value, 'moodOptions', 'moodCount');
-  document.getElementById('clearVibe').onclick = () => { state.vibe = { genres: [], styles: [], moods: [] }; state.vibeApplied = false; saveState(); render(); };
-  document.getElementById('showVibeResults').onclick = () => { if (!vibeSelectedCount()) return toast('Choose at least one filter'); state.vibeApplied = true; saveState(); render(); setTimeout(() => document.querySelector('.result-head')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); };
+  document.getElementById('clearVibe').onclick = () => { state.vibe = { genres: [], styles: [], moods: [] }; state.vibeApplied = false; state.vibeOrder = 'ranked'; state.vibeShuffleSeed = 0; saveState(); render(); };
+  document.getElementById('showVibeResults').onclick = () => { if (!vibeSelectedCount()) return toast('Choose at least one filter'); state.vibeApplied = true; state.vibeOrder = 'ranked'; state.vibeShuffleSeed = 0; saveState(); render(); setTimeout(() => document.querySelector('.result-head')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); };
   const sort = document.getElementById('vibeSort');
   if (sort) sort.onchange = () => { state.vibeSort = sort.value; saveState(); render(); };
   const surprise = document.getElementById('vibeSurprise');
@@ -678,14 +709,44 @@ function musicFor() {
   if (random) random.onclick = () => { state.musicForMode = 'random'; state.musicForShuffleSeed = Date.now(); saveState(); render(); setTimeout(() => document.querySelector('.music-results')?.scrollIntoView({ block: 'start' }), 20); };
 }
 
+function catalogueLetter(name) {
+  const first = String(name || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').charAt(0).toUpperCase();
+  return /[A-Z]/.test(first) ? first : '#';
+}
+function catalogueSortKey(name) {
+  return String(name || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+function catalogue() {
+  const groups = new Map();
+  artists.forEach(a => { const letter = catalogueLetter(a.artist); if (!groups.has(letter)) groups.set(letter, []); groups.get(letter).push(a); });
+  groups.forEach(rows => rows.sort((a, b) => catalogueSortKey(a.artist).localeCompare(catalogueSortKey(b.artist)) || a.artist.localeCompare(b.artist)));
+  const letters = ['#', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].filter(letter => groups.has(letter));
+  const sections = letters.map(letter => `<details class="catalogue-letter" data-letter="${letter}"><summary><span>${letter}</span><small>${groups.get(letter).length} artist${groups.get(letter).length === 1 ? '' : 's'}</small></summary><div class="catalogue-letter-list">${groups.get(letter).map(a => `<button class="catalogue-artist" data-open="${attr(a.artist)}"><span>${esc(a.artist)}</span><small>${esc(a.primary_genre || '')}</small><i>→</i></button>`).join('')}</div></details>`).join('');
+  layout(`<section><div class="eyebrow">Browse the catalogue</div><h1 class="title">Artists in ATM</h1><p class="subtitle">All ${artists.length.toLocaleString()} artists, alphabetically. Search directly or open a letter to browse.</p><div class="catalogue-search"><input id="catalogueSearch" class="field" inputmode="search" placeholder="Search all artists…"></div></section><section id="catalogueSearchResults" class="section" hidden></section><section id="catalogueLetters" class="section catalogue-letters">${sections}</section>`, '');
+  const input = document.getElementById('catalogueSearch');
+  const resultBox = document.getElementById('catalogueSearchResults');
+  const letterBox = document.getElementById('catalogueLetters');
+  const bindOpen = root => root.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openArtist(b.dataset.open));
+  bindOpen(letterBox);
+  input.oninput = () => {
+    const q = input.value.trim().toLocaleLowerCase();
+    if (!q) { resultBox.hidden = true; resultBox.innerHTML = ''; letterBox.hidden = false; return; }
+    const matches = artists.filter(a => a.artist.toLocaleLowerCase().includes(q));
+    letterBox.hidden = true; resultBox.hidden = false;
+    resultBox.innerHTML = `<div class="panel pad"><div class="catalogue-result-head"><b>${matches.length} result${matches.length === 1 ? '' : 's'}</b><small>Search matches across the full catalogue</small></div>${matches.length ? matches.map(a => `<button class="catalogue-artist" data-open="${attr(a.artist)}"><span>${esc(a.artist)}</span><small>${esc(a.primary_genre || '')}</small><i>→</i></button>`).join('') : '<div class="empty">No matching artists.</div>'}</div>`;
+    bindOpen(resultBox);
+  };
+}
+
 function guideHeading(iconHtml, text) { return `<h2 class="guide-title"><span class="guide-icon">${iconHtml}</span><span>${text}</span></h2>`; }
 function guide() {
   layout(`<section><div class="eyebrow">Help & how it works</div><h1 class="title">Guide</h1><p class="subtitle">ATM is designed to answer two simple questions: “I like this — what else?” and “I fancy this kind of thing — who should I try?”</p></section><section class="guide-stack">
   <article class="panel guide-card">${guideHeading(navIcon('home'),'Home')}<p>The home screen groups the four ways to find music together: <b>Artist Match</b>, <b>I’m Feeling Lucky</b>, <b>Vibes</b> and <b>Music For...</b>. Your personal lists sit below them, followed by the catalogue total.</p></article>
-  <article class="panel guide-card">${guideHeading(homeIcon('match'),'Artist Match')}<p>Pick any artist from the full catalogue as your reference point. <b>Closest Match</b> prioritises shared style, scene, sonic profile and era. <b>Broaden It</b> keeps a real connection while deliberately widening the net. <b>Wildcard</b> looks for a plausible sideways jump rather than a near-neighbour.</p></article>
-  <article class="panel guide-card">${guideHeading(homeIcon('vibe'),'Vibes')}<p><b>Quick Vibes</b> are ready-made sonic characters such as Dreamy, Nocturnal, Heavy or Warm &amp; Soulful. <b>Build your own</b> combines primary genres, sub-genres/styles and moods for tighter control.</p></article>
+  <article class="panel guide-card">${guideHeading(homeIcon('match'),'Artist Match')}<p>Pick any artist from the full catalogue as your reference point. <b>Closest Match</b>, <b>Broaden It</b> and <b>Wildcard</b> change the kind of musical relationship ATM looks for. <b>Ranked</b> keeps the strongest results first; <b>Randomiser</b> reshuffles a wider pool without changing the selected mode. Recent Artist Match searches can be cleared independently.</p></article>
+  <article class="panel guide-card">${guideHeading(homeIcon('vibe'),'Vibes')}<p><b>Quick Vibes</b> are ready-made sonic characters such as Dreamy, Nocturnal, Heavy or Warm &amp; Soulful. <b>Build your own</b> combines primary genres, sub-genres/styles and moods for tighter control. Results can be kept <b>Ranked</b> or reshuffled with <b>Randomiser</b>.</p></article>
   <article class="panel guide-card">${guideHeading(homeIcon('musicfor'),'Music For...')}<p>Choose a real-life moment such as <b>Rainy Days</b>, <b>Drifting Off</b>, <b>Night Driving</b> or <b>“Bedtime” 😉</b>. <b>Ranked</b> keeps the best profile matches first, while <b>Randomiser</b> reshuffles the qualifying pool. <b>Pick one</b> jumps straight to one artist from the current shortlist.</p></article>
-  <article class="panel guide-card">${guideHeading(navIcon('favourite'),'Your lists')}<p><b>Favourite</b> is for artists you already value. <b>Want to Explore</b> is your listening queue. Both can be searched and sorted. <b>Dislike</b> keeps an artist out of Lucky, Vibes and Music For... results.</p></article>
+  <article class="panel guide-card">${guideHeading(`<span class="guide-list-pair">${listIcon('explore')}${listIcon('favourite')}</span>`,'Your lists')}<p><b>Favourite</b> is for artists you already value. <b>Want to Explore</b> is your listening queue. Both can be searched and sorted. <b>Dislike</b> keeps an artist out of Lucky, Vibes and Music For... results.</p></article>
+  <article class="panel guide-card"><h2>Artists in ATM</h2><p>The catalogue total on Home opens a full A–Z browser. Search across all artists or expand a letter to browse that section.</p></article>
   <article class="panel guide-card">${guideHeading(homeIcon('lucky'),"I'm Feeling Lucky")}<p>Picks a random artist from ATM, excluding dislikes. Artist pages link to YouTube Music first, with Spotify as a secondary option.</p></article>
   <article class="panel guide-card">${guideHeading(navIcon('home'),'Navigation')}<p>ATM uses normal app/browser history, so Back returns through the artist pages and screens you visited.</p></article>
   <article class="panel guide-card"><h2>▣ Your data & backup</h2><p>Favourites, Want to Explore, dislikes, notes and history are stored locally on this device. Use <b>Export my ATM data</b> and <b>Restore backup</b> to protect or move those preferences.</p><div class="mini-actions"><button id="exportGuide" class="btn primary">Export my ATM data</button><button id="importGuide" class="btn">Restore backup</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></article>
@@ -707,9 +768,11 @@ function exportPersonalData() {
     exportedAt: new Date().toISOString(),
     prefs: state.prefs || {},
     recent: state.recent || [],
+    searchRecent: state.searchRecent || [],
     discovery: { selected: state.selected, mode: state.mode },
     vibe: { filters: state.vibe, match: state.vibeMatch, sort: state.vibeSort, preset: state.vibePreset || '' },
     musicFor: { preset: state.musicForPreset || '', mode: state.musicForMode || 'ranked' },
+    resultOrdering: { discover: state.discoverOrder || 'ranked', vibe: state.vibeOrder || 'ranked' },
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -727,6 +790,7 @@ async function restorePersonalData(file) {
     if (!confirm('Restore this ATM backup? This will replace the personal ATM data currently stored on this device.')) return;
     state.prefs = data.prefs || {};
     state.recent = data.recent || [];
+    state.searchRecent = Array.isArray(data.searchRecent) ? data.searchRecent : [];
     if (data.discovery) {
       state.selected = data.discovery.selected || state.selected;
       state.mode = data.discovery.mode || state.mode;
@@ -741,6 +805,12 @@ async function restorePersonalData(file) {
       state.musicForPreset = data.musicFor.preset || '';
       state.musicForMode = data.musicFor.mode || 'ranked';
       state.musicForShuffleSeed = 0;
+    }
+    if (data.resultOrdering) {
+      state.discoverOrder = data.resultOrdering.discover || 'ranked';
+      state.vibeOrder = data.resultOrdering.vibe || 'ranked';
+      state.discoverShuffleSeed = 0;
+      state.vibeShuffleSeed = 0;
     }
     saveState();
     toast('ATM backup restored');
@@ -775,6 +845,7 @@ function render() {
   else if (state.page === 'vibe') vibe();
   else if (state.page === 'musicfor') musicFor();
   else if (state.page === 'guide') guide();
+  else if (state.page === 'catalogue') catalogue();
   else home();
 }
 async function installApp() {
