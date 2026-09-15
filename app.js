@@ -3,11 +3,15 @@ let byName = new Map();
 let deferredInstall = null;
 let vibeData = { genres: [], styles: [], moods: [] };
 
-const APP_VERSION = '0.7.1';
+const APP_VERSION = '0.8.0';
 const storeKey = 'atm-mobile-v01'; // Intentionally stable so personal data survives app updates.
-const artworkCacheKey = 'atm-mobile-artwork-v1';
+const artworkCacheKey = 'atm-mobile-artwork-v2';
 const ARTWORK_ENDPOINT = 'https://atm-artwork.zanderiii88.workers.dev/';
-const ARTWORK_MAX_AGE = 1000 * 60 * 60 * 24 * 60;
+const ARTWORK_MAX_AGE = 1000 * 60 * 60 * 24 * 180;
+const YOUTUBE_ARTWORK_MAX_AGE = 1000 * 60 * 60 * 24 * 29;
+const ARTWORK_MISS_MAX_AGE = 1000 * 60 * 60 * 24;
+const AUDIODB_SEARCH = 'https://www.theaudiodb.com/api/v1/json/123/search.php?s=';
+let knownArtwork = {};
 
 const persisted = loadState();
 const state = {
@@ -23,6 +27,8 @@ const state = {
   vibePreset: '',
   listSort: { favourite: 'az', explore: 'az' },
   musicForPreset: '',
+  musicForMode: 'ranked',
+  musicForShuffleSeed: 0,
   ...persisted,
 };
 state.vibe = { genres: [], styles: [], moods: [], ...(state.vibe || {}) };
@@ -49,6 +55,8 @@ function saveState() {
     vibePreset: state.vibePreset || '',
     listSort: state.listSort || { favourite: 'az', explore: 'az' },
     musicForPreset: state.musicForPreset || '',
+    musicForMode: state.musicForMode || 'ranked',
+    musicForShuffleSeed: Number(state.musicForShuffleSeed || 0),
   }));
 }
 function loadArtworkCache() {
@@ -95,32 +103,79 @@ function art(name) {
   const l = name.trim().charAt(0).toUpperCase();
   return `<div class="art" data-artist="${attr(name)}" style="background:radial-gradient(circle at 72% 18%,hsla(${h},65%,48%,.32),transparent 34%),radial-gradient(circle at 18% 82%,hsla(${(h + 65) % 360},70%,43%,.17),transparent 44%),#101820"><div class="art-letter">${esc(l)}</div>${p.favourite ? '<div class="star">★</div>' : ''}</div>`;
 }
+function artworkKey(name) {
+  return String(name || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ').trim();
+}
 function cachedArtwork(name) {
   const entry = artworkCache[name];
-  if (!entry || !entry.url || !entry.ts) return null;
-  if (Date.now() - entry.ts > ARTWORK_MAX_AGE) {
+  if (!entry || !entry.ts) return null;
+  const isYouTube = entry.source === 'YouTube' || !!entry.channel;
+  const maxAge = entry.miss ? ARTWORK_MISS_MAX_AGE : (isYouTube ? YOUTUBE_ARTWORK_MAX_AGE : ARTWORK_MAX_AGE);
+  if (Date.now() - entry.ts > maxAge) {
     delete artworkCache[name];
     saveArtworkCache();
     return null;
   }
-  return entry.url;
+  return entry.miss ? '__MISS__' : (entry.url || null);
+}
+function storeArtwork(name, result) {
+  if (!result?.url) return null;
+  artworkCache[name] = { url: result.url, ts: Date.now(), source: result.source || '', provider_id: result.id || '' };
+  saveArtworkCache();
+  return result.url;
+}
+function markArtworkMiss(name) {
+  artworkCache[name] = { miss: true, ts: Date.now() };
+  saveArtworkCache();
+}
+function knownArtworkFor(name) {
+  const item = knownArtwork?.[name];
+  if (!item) return null;
+  if (typeof item === 'string') return { url: item, source: 'ATM artwork map' };
+  return item.url ? item : null;
+}
+async function fetchAudioDbArtwork(name) {
+  try {
+    const response = await fetch(`${AUDIODB_SEARCH}${encodeURIComponent(name)}`, { mode: 'cors', cache: 'default' });
+    if (!response.ok) return null;
+    const data = await response.json();
+    const candidate = data?.artists?.[0];
+    if (!candidate) return null;
+    const wanted = artworkKey(name);
+    const aliases = [candidate.strArtist, candidate.strArtistStripped, ...(String(candidate.strArtistAlternate || '').split(/[,;/]/))].filter(Boolean).map(artworkKey);
+    if (!aliases.includes(wanted)) return null;
+    let image = candidate.strArtistThumb || candidate.strArtistWideThumb || candidate.strArtistFanart || '';
+    if (!image) return null;
+    if (/theaudiodb\.com\/images\//i.test(image) && !/\/(small|medium|tiny)$/.test(image)) image += '/small';
+    return { url: image, source: 'TheAudioDB', id: candidate.idArtist || '' };
+  } catch { return null; }
+}
+async function fetchWorkerArtwork(name) {
+  try {
+    const url = `${ARTWORK_ENDPOINT}?artist=${encodeURIComponent(name)}`;
+    const response = await fetch(url, { mode: 'cors', cache: 'default' });
+    if (!response.ok) return null;
+    const data = await response.json();
+    if (!data?.ok || !data.image) return null;
+    return { url: data.image, source: 'YouTube', id: data.channel || '' };
+  } catch { return null; }
 }
 async function fetchArtwork(name) {
   const cached = cachedArtwork(name);
+  if (cached === '__MISS__') return null;
   if (cached) return cached;
+  const known = knownArtworkFor(name);
+  if (known) return storeArtwork(name, known);
   if (artworkPending.has(name)) return artworkPending.get(name);
   const request = (async () => {
     try {
-      const url = `${ARTWORK_ENDPOINT}?artist=${encodeURIComponent(name)}`;
-      const response = await fetch(url, { mode: 'cors', cache: 'default' });
-      if (!response.ok) return null;
-      const data = await response.json();
-      if (!data?.ok || !data.image) return null;
-      artworkCache[name] = { url: data.image, ts: Date.now(), channel: data.channel || '' };
-      saveArtworkCache();
-      return data.image;
-    } catch { return null; }
-    finally { artworkPending.delete(name); }
+      const audioDb = await fetchAudioDbArtwork(name);
+      if (audioDb) return storeArtwork(name, audioDb);
+      const youtube = await fetchWorkerArtwork(name);
+      if (youtube) return storeArtwork(name, youtube);
+      markArtworkMiss(name);
+      return null;
+    } finally { artworkPending.delete(name); }
   })();
   artworkPending.set(name, request);
   return request;
@@ -137,7 +192,8 @@ async function loadArtworkElement(el) {
   el.dataset.artLoaded = '1';
   const name = el.dataset.artist;
   const cached = cachedArtwork(name);
-  if (cached) { applyArtwork(el, cached); return; }
+  if (cached && cached !== '__MISS__') { applyArtwork(el, cached); return; }
+  if (cached === '__MISS__') return;
   const url = await fetchArtwork(name);
   if (url && document.body.contains(el)) applyArtwork(el, url);
 }
@@ -204,7 +260,7 @@ function lucky() {
 
 function layout(content, active = 'home') {
   const showBack = state.page !== 'home';
-  document.getElementById('app').innerHTML = `<main class="shell"><div class="topbar"><div class="topbar-left">${showBack ? '<button id="backBtn" class="top-icon" aria-label="Back">←</button>' : ''}<button class="brand-button" data-nav="home"><span class="mini-mark">Λ</span><span class="mini-name">ATM / Artists That Matter</span></button></div><div class="top-actions"><button class="top-icon" data-nav="guide" aria-label="Guide">?</button><button id="installTop" class="btn icon install">Install</button></div></div>${content}</main><nav class="bottomnav five">${nav('home', 'home', 'Home', active)}${nav('discover', 'match-search', 'Match', active)}${nav('vibe', 'vibe-wave', 'Vibes', active)}${nav('lucky', 'lucky', 'Lucky', active)}${nav('favourites', 'favourite', 'Favourites', active)}</nav>`;
+  document.getElementById('app').innerHTML = `<main class="shell"><div class="topbar"><div class="topbar-left">${showBack ? '<button id="backBtn" class="top-icon" aria-label="Back">←</button>' : ''}<button class="brand-button" data-nav="home"><span class="mini-mark">Λ</span><span class="mini-name">ATM / Artists That Matter</span></button></div><div class="top-actions"><button class="top-icon" data-nav="guide" aria-label="Guide">?</button><button id="installTop" class="btn icon install">Install</button></div></div>${content}</main><nav class="bottomnav five">${nav('home', 'home', 'Home', active)}${nav('discover', 'match-people', 'Match', active)}${nav('vibe', 'vibe-wave', 'Vibes', active)}${nav('lucky', 'lucky', 'Lucky', active)}${nav('favourites', 'favourite', 'Favourites', active)}</nav>`;
   bindNav();
   const back = document.getElementById('backBtn');
   if (back) back.onclick = () => history.back();
@@ -216,15 +272,15 @@ function nav(id, icon, label, active) { return `<button class="navbtn ${active =
 function bindNav() { document.querySelectorAll('[data-nav]').forEach(b => b.onclick = () => go(b.dataset.nav)); }
 function navIcon(kind) {
   if (kind === 'home') return `<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5"></path><path d="M6.5 10.5V19h11v-8.5"></path></svg>`;
-  if (kind === 'match-search') return `<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="5.5"></circle><path d="M14.5 14.5 20 20"></path></svg>`;
+  if (kind === 'match-people') return `<svg class="nav-svg nav-match-svg" viewBox="0 0 30 24" aria-hidden="true"><circle cx="5" cy="6" r="3"></circle><path d="M1 17c0-4 1.5-6 4-6s4 2 4 6"></path><path d="M11 11h8m-3-3 3 3-3 3"></path><circle cx="25" cy="6" r="3"></circle><path d="M21 17c0-4 1.5-6 4-6s4 2 4 6"></path></svg>`;
   if (kind === 'vibe-wave') return `<svg class="nav-svg nav-vibe-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13.5c1.2 0 1.2-5 2.4-5s1.2 8 2.4 8 1.2-11 2.4-11 1.2 14 2.4 14 1.2-10 2.4-10 1.2 6 2.4 6"></path></svg>`;
   if (kind === 'lucky') return `<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 14.6 9.4 20.5 12 14.6 14.6 12 20.5 9.4 14.6 3.5 12 9.4 9.4z"></path></svg>`;
-  if (kind === 'favourite') return `<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5 4.9 13.9a4.7 4.7 0 0 1 6.6-6.8L12 7.7l.5-.6a4.7 4.7 0 0 1 6.6 6.8z"></path></svg>`;
+  if (kind === 'favourite') return `<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.5 6 .9-4.4 4.3 1 6-5.3-2.8-5.3 2.8 1-6-4.4-4.3 6-.9z"></path></svg>`;
   return kind;
 }
 function homeIcon(kind) {
   if (kind === 'match') return `<svg class="home-svg match-svg" viewBox="0 0 64 32" aria-hidden="true"><circle cx="10" cy="8" r="5"></circle><path d="M2 27c0-7 3-11 8-11s8 4 8 11"></path><path d="M23 16h16m-5-5 5 5-5 5"></path><circle cx="54" cy="8" r="5"></circle><path d="M46 27c0-7 3-11 8-11s8 4 8 11"></path></svg>`;
-  if (kind === 'musicfor') return `<svg class="home-svg musicfor-svg" viewBox="0 0 108 34" aria-hidden="true"><g transform="translate(0 2)"><circle cx="11" cy="22" r="8"></circle><path d="M18 15 27 6"></path><path d="M24 6h8"></path><path d="M8 29h18"></path></g><g transform="translate(38 3)"><path d="M4 18h24l-2.5-8H12l-3.5 5z"></path><path d="M28 18h4"></path><circle cx="11" cy="21.5" r="2.8"></circle><circle cx="22" cy="21.5" r="2.8"></circle><path d="M8.5 10V7h11"></path></g><g transform="translate(76 3)"><path d="M2 21V8"></path><path d="M2 16h23v5H2"></path><path d="M8 16V8h10c4.5 0 7 2.5 7 8"></path><path d="M20 10.5c1.7 0 3 1.3 3 3"></path><path d="M2 12h5"></path></g></svg>`;
+  if (kind === 'musicfor') return `<svg class="home-svg musicfor-svg" viewBox="0 0 112 36" aria-hidden="true"><g transform="translate(0 1)"><path d="M5 14h25v13H5z"></path><path d="M2 17h3m25 0h4"></path><path d="M9 11h17"></path><path d="M13 7c-2-2 1-3 0-5m6 5c-2-2 1-3 0-5m6 5c-2-2 1-3 0-5"></path><path d="M11 27v3m13-3v3"></path></g><g transform="translate(40 4)"><path d="M4 18h25l-3-9H12l-4 6z"></path><path d="M29 18h4"></path><circle cx="11" cy="22" r="3"></circle><circle cx="23" cy="22" r="3"></circle><path d="M9 9V6h12"></path></g><g transform="translate(79 4)"><path d="M2 22V8"></path><path d="M2 17h27v5H2"></path><path d="M8 17V9h11c5 0 8 2.5 8 8"></path><path d="M2 13h5"></path></g></svg>`;
   if (kind === 'lucky') return `<span class="home-glyph" aria-hidden="true">✦</span>`;
   if (kind === 'vibe') return `<svg class="home-svg vibe-svg" viewBox="0 0 64 32" aria-hidden="true"><path d="M2 16c2 0 2-9 4-9s2 18 4 18 2-24 4-24 2 30 4 30 2-22 4-22 2 14 4 14 2-8 4-8 2 5 4 5"></path></svg>`;
   return `<svg class="home-svg vibe-svg" viewBox="0 0 64 32" aria-hidden="true"><path d="M2 16c2 0 2-9 4-9s2 18 4 18 2-24 4-24 2 30 4 30 2-22 4-22 2 14 4 14 2-8 4-8 2 5 4 5"></path></svg>`;
@@ -563,6 +619,7 @@ const musicForPresets = [
   { group: 'Time & place', label: 'Rainy Days', blurb: 'Reflective, textured and a little grey around the edges.', target: { energy: 4, darkness: 6, accessibility: 6 }, words: ['reflective', 'melancholic', 'atmospheric', 'dream', 'intimate'] },
   { group: 'Time & place', label: 'Sunday Morning', blurb: 'Warm, unhurried listening for a slower start.', target: { energy: 3, aggression: 1, darkness: 3, accessibility: 7 }, words: ['warm', 'gentle', 'serene', 'laid-back', 'soul', 'folk'] },
   { group: 'Time & place', label: '3AM', blurb: 'Nocturnal, inward-looking and slightly strange.', target: { energy: 4, darkness: 8, experimental: 7 }, words: ['nocturnal', 'hypnotic', 'ambient', 'dream', 'introspective'] },
+  { group: 'Time & place', label: 'Drifting Off', blurb: 'Very quiet, soft-edged ambient music for letting the day disappear.', target: { energy: 1, aggression: 1, darkness: 3, experimental: 6, rhythm: 2, organic_electronic: 9 }, genres: ['Electronic'], words: ['ambient', 'drone', 'minimal', 'serene', 'meditative', 'gentle', 'quiet'] },
   { group: 'Time & place', label: 'Sunset', blurb: 'Glowing, spacious music for the end of the day.', target: { energy: 5, darkness: 3, accessibility: 7 }, words: ['warm', 'dreamy', 'serene', 'lush', 'psychedelic'] },
   { group: 'Time & place', label: 'Night Driving', blurb: 'Propulsive, cinematic and built for lights passing by.', target: { energy: 7, darkness: 6, rhythm: 8, organic_electronic: 8 }, words: ['nocturnal', 'driving', 'synth', 'electronic', 'cinematic'] },
   { group: 'Going out', label: 'Getting Ready to Go Out', blurb: 'Confident, bright and steadily raising the temperature.', target: { energy: 8, rhythm: 8, accessibility: 8 }, words: ['confident', 'euphoric', 'dance', 'pop', 'funk'] },
@@ -570,6 +627,7 @@ const musicForPresets = [
   { group: 'Time & place', label: 'That First Coffee', blurb: 'A gentle lift before the day properly begins.', target: { energy: 5, aggression: 1, darkness: 2, accessibility: 8 }, words: ['warm', 'playful', 'soulful', 'bright', 'acoustic'] },
   { group: 'Heart stuff', label: 'Heartbreak', blurb: 'Songs for the raw bit, the reflective bit and everything after.', target: { energy: 4, darkness: 7, accessibility: 8 }, words: ['heartbreak', 'melancholic', 'romantic', 'vulnerable', 'sad'] },
   { group: 'Heart stuff', label: 'Falling in Love', blurb: 'Warm, open-hearted and a little bit giddy.', target: { energy: 6, darkness: 2, accessibility: 8 }, words: ['romantic', 'joyful', 'warm', 'dreamy', 'euphoric'] },
+  { group: 'Heart stuff', label: '"Bedtime" 😉', blurb: 'Low-lit, intimate and decidedly not about going straight to sleep.', target: { energy: 4, aggression: 1, darkness: 5, rhythm: 6, accessibility: 8 }, words: ['sensual', 'sultry', 'intimate', 'romantic', 'r&b', 'neo-soul', 'trip hop', 'downtempo'] },
   { group: 'Heart stuff', label: 'Moping', blurb: 'Low-energy company for leaning into it.', target: { energy: 2, darkness: 7, accessibility: 7 }, words: ['melancholic', 'sad', 'intimate', 'reflective', 'slow'] },
   { group: 'Heart stuff', label: 'Brooding', blurb: 'Dark, tense and deliberate rather than defeated.', target: { energy: 5, aggression: 5, darkness: 9 }, words: ['brooding', 'dark', 'ominous', 'tense', 'gothic'] },
   { group: 'Change the energy', label: 'Need to Wake Up', blurb: 'Immediate, bright and hard to sleep through.', target: { energy: 9, rhythm: 8, accessibility: 8 }, words: ['energetic', 'urgent', 'bright', 'punk', 'dance'] },
@@ -581,6 +639,17 @@ const musicForPresets = [
 ];
 
 function musicForScore(a, preset) { return profilePresetScore(a, preset); }
+function seededShuffle(rows, seed) {
+  const out = [...rows];
+  let x = (Number(seed) || Date.now()) >>> 0;
+  const rand = () => { x += 0x6D2B79F5; let t = x; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  for (let i = out.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [out[i], out[j]] = [out[j], out[i]]; }
+  return out;
+}
+function musicModeIcon(kind) {
+  if (kind === 'random') return `<svg class="mode-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="8" cy="8" r="1"></circle><circle cx="16" cy="8" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="8" cy="16" r="1"></circle><circle cx="16" cy="16" r="1"></circle></svg>`;
+  return `<svg class="mode-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16"></path><path d="M6 19v-5h4v5"></path><path d="M10 19V8h4v11"></path><path d="M14 19v-8h4v8"></path><path d="M11 5h2"></path></svg>`;
+}
 function musicForResults(preset) {
   const disliked = new Set(Object.entries(prefs()).filter(([, p]) => p.disliked).map(([name]) => name));
   return artists.filter(a => !disliked.has(a.artist)).map(a => ({ a, score: musicForScore(a, preset) }))
@@ -593,18 +662,35 @@ function musicFor() {
   const choices = groups.map(group => `<div class="occasion-group"><div class="eyebrow">${esc(group)}</div><div class="occasion-grid">${musicForPresets.filter(p => p.group === group).map(p => `<button class="occasion-card ${selectedLabel === p.label ? 'active' : ''}" data-occasion="${attr(p.label)}"><b>${esc(p.label)}</b><span>${esc(p.blurb)}</span></button>`).join('')}</div></div>`).join('');
   let results = '';
   if (selected) {
-    const rows = musicForResults(selected);
-    results = `<section class="section music-results"><div class="result-head"><div><div class="eyebrow">Music for…</div><h2>${esc(selected.label)}</h2><p class="small">${esc(selected.blurb)} Suggestions use the ATM profile data and exclude disliked artists.</p></div><button id="occasionSurprise" class="btn" ${rows.length ? '' : 'disabled'}>✦ Pick one</button></div><div class="cards">${rows.slice(0, 18).map((row, i) => recCard({ artist: row.a, score: row.score, why: presetReason(row.a, selected) }, i + 1)).join('')}</div></section>`;
+    const rankedRows = musicForResults(selected);
+    const randomMode = state.musicForMode === 'random';
+    const rows = randomMode ? seededShuffle(rankedRows, state.musicForShuffleSeed) : rankedRows;
+    results = `<section class="section music-results"><div class="result-head"><div><div class="eyebrow">Music for…</div><h2>${esc(selected.label)}</h2><p class="small">${esc(selected.blurb)} ${randomMode ? 'Randomiser is mixing the qualifying artists.' : 'Ranked by how closely each artist fits the ATM profile.'} Disliked artists are excluded.</p></div><div class="music-result-actions"><button id="musicRanked" class="btn mode-btn ${randomMode ? '' : 'active'}">${musicModeIcon('ranked')}<span>Ranked</span></button><button id="musicRandom" class="btn mode-btn ${randomMode ? 'active' : ''}">${musicModeIcon('random')}<span>Randomiser</span></button><button id="occasionSurprise" class="btn" ${rows.length ? '' : 'disabled'}>✦ Pick one</button></div></div><div class="cards">${rows.slice(0, 18).map((row, i) => recCard({ artist: row.a, score: row.score, why: presetReason(row.a, selected) }, i + 1)).join('')}</div></section>`;
   }
   layout(`<section><div class="eyebrow">Choose the moment</div><h1 class="title">Music for…</h1><p class="subtitle">Pick what the music is for, then let ATM use the catalogue’s mood, energy, rhythm and style profiles to make a shortlist.</p></section><section class="section occasion-stack">${choices}</section>${results || '<div class="panel empty section">Choose a moment above to see matching artists.</div>'}`, '');
-  document.querySelectorAll('[data-occasion]').forEach(button => button.onclick = () => { state.musicForPreset = button.dataset.occasion; saveState(); render(); setTimeout(() => document.querySelector('.music-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); });
+  document.querySelectorAll('[data-occasion]').forEach(button => button.onclick = () => { state.musicForPreset = button.dataset.occasion; state.musicForMode = 'ranked'; state.musicForShuffleSeed = 0; saveState(); render(); setTimeout(() => document.querySelector('.music-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); });
   document.querySelectorAll('[data-open]').forEach(button => button.onclick = () => openArtist(button.dataset.open));
   const surprise = document.getElementById('occasionSurprise');
-  if (surprise && selected) surprise.onclick = () => { const rows = musicForResults(selected); if (rows.length) openArtist(rows[Math.floor(Math.random() * rows.length)].a.artist); };
+  if (surprise && selected) surprise.onclick = () => { const base = musicForResults(selected); const rows = state.musicForMode === 'random' ? seededShuffle(base, state.musicForShuffleSeed) : base; if (rows.length) openArtist(rows[Math.floor(Math.random() * Math.min(18, rows.length))].a.artist); };
+  const ranked = document.getElementById('musicRanked');
+  if (ranked) ranked.onclick = () => { state.musicForMode = 'ranked'; saveState(); render(); setTimeout(() => document.querySelector('.music-results')?.scrollIntoView({ block: 'start' }), 20); };
+  const random = document.getElementById('musicRandom');
+  if (random) random.onclick = () => { state.musicForMode = 'random'; state.musicForShuffleSeed = Date.now(); saveState(); render(); setTimeout(() => document.querySelector('.music-results')?.scrollIntoView({ block: 'start' }), 20); };
 }
 
+function guideHeading(iconHtml, text) { return `<h2 class="guide-title"><span class="guide-icon">${iconHtml}</span><span>${text}</span></h2>`; }
 function guide() {
-  layout(`<section><div class="eyebrow">Help & how it works</div><h1 class="title">Guide</h1><p class="subtitle">ATM is designed to answer two simple questions: “I like this — what else?” and “I fancy this kind of thing — who should I try?”</p></section><section class="guide-stack"><article class="panel guide-card"><h2>Home</h2><p>The home screen groups the four ways to find music together: <b>Artist Match</b>, <b>I’m Feeling Lucky</b>, <b>Vibes</b> and <b>Music For...</b>. Your personal lists sit below them, followed by the catalogue total.</p></article><article class="panel guide-card"><h2>⌕ Artist Match</h2><p>Pick any artist from the full catalogue as your reference point. <b>Closest Match</b> prioritises shared style, scene, sonic profile and era. <b>Broaden It</b> keeps a real connection while deliberately widening the net. <b>Wildcard</b> looks for a plausible sideways jump rather than a near-neighbour.</p><p>There is no extra distance slider: the three modes are intentionally distinct so the choice itself is clear and predictable.</p></article><article class="panel guide-card"><h2>〰 Vibes</h2><p><b>Quick Vibes</b> are ready-made sonic characters such as Dreamy, Nocturnal, Heavy or Warm &amp; Soulful. They rank the catalogue using mood words plus the underlying energy, rhythm, darkness and other profile scores, so artists do not need an identical tag to qualify.</p><p><b>Build your own</b> keeps the precise filters: combine primary genres, sub-genres/styles and moods, then tap <b>Show artists</b>. Match all is strict; Match any is deliberately broader. Disliked artists are excluded.</p></article><article class="panel guide-card"><h2>Music For...</h2><p>Choose a real-life moment such as <b>Rainy Days</b>, <b>Night Driving</b>, <b>Moping</b> or one of the dancing options. ATM scores the catalogue using mood, energy, rhythm and style, then gives you a focused shortlist with a short explanation of why each artist fits.</p></article><article class="panel guide-card"><h2>★ Your lists</h2><p><b>Favourite</b> is for artists you already value. <b>Want to Explore</b> is your listening queue. Both lists can be searched and sorted A–Z or by recently added. <b>Dislike</b> removes an artist from those lists and keeps them out of Lucky, Vibe and Music for… results.</p></article><article class="panel guide-card"><h2>✦ Lucky & listening</h2><p><b>I’m Feeling Lucky</b> picks a random artist from ATM, excluding dislikes. Artist pages link directly to YouTube Music first, with Spotify as a secondary option.</p></article><article class="panel guide-card"><h2>↩ Navigation</h2><p>ATM uses normal app/browser history, so Back should return through the artist pages and screens you visited rather than throwing you somewhere unrelated.</p></article><article class="panel guide-card"><h2>▣ Your data & backup</h2><p>Favourites, Want to Explore, dislikes, notes and history are stored locally on this device. They are not shared with other family members using the same hosted ATM site.</p><p>Use <b>Export my ATM data</b> to download a small JSON backup. <b>Restore backup</b> can restore one of those files on this device. Restoring replaces the current local ATM personal data.</p><div class="mini-actions"><button id="exportGuide" class="btn primary">Export my ATM data</button><button id="importGuide" class="btn">Restore backup</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></article><article class="panel guide-card"><h2>▤ Updates & artwork</h2><p>ATM Mobile is a PWA. New versions are published to the same address and installed copies normally update when reopened online. Artist images come through the secure ATM artwork service; the YouTube API key is not stored in this app.</p><div class="version-line"><b>ATM Mobile v${APP_VERSION} · ${artists.length.toLocaleString()} artists</b><span id="versionStatus">Checking for updates…</span></div></article></section>`, '');
+  layout(`<section><div class="eyebrow">Help & how it works</div><h1 class="title">Guide</h1><p class="subtitle">ATM is designed to answer two simple questions: “I like this — what else?” and “I fancy this kind of thing — who should I try?”</p></section><section class="guide-stack">
+  <article class="panel guide-card">${guideHeading(navIcon('home'),'Home')}<p>The home screen groups the four ways to find music together: <b>Artist Match</b>, <b>I’m Feeling Lucky</b>, <b>Vibes</b> and <b>Music For...</b>. Your personal lists sit below them, followed by the catalogue total.</p></article>
+  <article class="panel guide-card">${guideHeading(homeIcon('match'),'Artist Match')}<p>Pick any artist from the full catalogue as your reference point. <b>Closest Match</b> prioritises shared style, scene, sonic profile and era. <b>Broaden It</b> keeps a real connection while deliberately widening the net. <b>Wildcard</b> looks for a plausible sideways jump rather than a near-neighbour.</p></article>
+  <article class="panel guide-card">${guideHeading(homeIcon('vibe'),'Vibes')}<p><b>Quick Vibes</b> are ready-made sonic characters such as Dreamy, Nocturnal, Heavy or Warm &amp; Soulful. <b>Build your own</b> combines primary genres, sub-genres/styles and moods for tighter control.</p></article>
+  <article class="panel guide-card">${guideHeading(homeIcon('musicfor'),'Music For...')}<p>Choose a real-life moment such as <b>Rainy Days</b>, <b>Drifting Off</b>, <b>Night Driving</b> or <b>“Bedtime” 😉</b>. <b>Ranked</b> keeps the best profile matches first, while <b>Randomiser</b> reshuffles the qualifying pool. <b>Pick one</b> jumps straight to one artist from the current shortlist.</p></article>
+  <article class="panel guide-card">${guideHeading(navIcon('favourite'),'Your lists')}<p><b>Favourite</b> is for artists you already value. <b>Want to Explore</b> is your listening queue. Both can be searched and sorted. <b>Dislike</b> keeps an artist out of Lucky, Vibes and Music For... results.</p></article>
+  <article class="panel guide-card">${guideHeading(homeIcon('lucky'),"I'm Feeling Lucky")}<p>Picks a random artist from ATM, excluding dislikes. Artist pages link to YouTube Music first, with Spotify as a secondary option.</p></article>
+  <article class="panel guide-card">${guideHeading(navIcon('home'),'Navigation')}<p>ATM uses normal app/browser history, so Back returns through the artist pages and screens you visited.</p></article>
+  <article class="panel guide-card"><h2>▣ Your data & backup</h2><p>Favourites, Want to Explore, dislikes, notes and history are stored locally on this device. Use <b>Export my ATM data</b> and <b>Restore backup</b> to protect or move those preferences.</p><div class="mini-actions"><button id="exportGuide" class="btn primary">Export my ATM data</button><button id="importGuide" class="btn">Restore backup</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></article>
+  <article class="panel guide-card"><h2>▤ Updates & artwork</h2><p>ATM first checks its known artwork map, then tries <a class="inline-link" href="https://www.theaudiodb.com/" target="_blank" rel="noopener">TheAudioDB</a> for a matched artist thumbnail. If that cannot provide an image, ATM falls back to the existing secure YouTube artwork service. Successful resolutions are cached locally to reduce repeat lookups; YouTube-derived metadata is refreshed within 30 days. Artwork/data from TheAudioDB remains attributed to TheAudioDB.</p><div class="version-line"><b>ATM Mobile v${APP_VERSION} · ${artists.length.toLocaleString()} artists</b><span id="versionStatus">Checking for updates…</span></div></article>
+  </section>`, '');
   document.getElementById('exportGuide').onclick = exportPersonalData;
   const importBtn = document.getElementById('importGuide');
   const importFile = document.getElementById('importFile');
@@ -612,6 +698,7 @@ function guide() {
   importFile.onchange = () => { if (importFile.files?.[0]) restorePersonalData(importFile.files[0]); };
   checkVersion();
 }
+
 function exportPersonalData() {
   const payload = {
     app: 'Artists That Matter Mobile',
@@ -622,6 +709,7 @@ function exportPersonalData() {
     recent: state.recent || [],
     discovery: { selected: state.selected, mode: state.mode },
     vibe: { filters: state.vibe, match: state.vibeMatch, sort: state.vibeSort, preset: state.vibePreset || '' },
+    musicFor: { preset: state.musicForPreset || '', mode: state.musicForMode || 'ranked' },
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -648,6 +736,11 @@ async function restorePersonalData(file) {
       state.vibeMatch = data.vibe.match || 'all';
       state.vibeSort = data.vibe.sort || 'az';
       state.vibePreset = data.vibe.preset || '';
+    }
+    if (data.musicFor) {
+      state.musicForPreset = data.musicFor.preset || '';
+      state.musicForMode = data.musicFor.mode || 'ranked';
+      state.musicForShuffleSeed = 0;
     }
     saveState();
     toast('ATM backup restored');
@@ -705,11 +798,13 @@ window.addEventListener('popstate', e => {
   }
 });
 
-fetch('catalog.json')
-  .then(r => { if (!r.ok) throw new Error('catalog'); return r.json(); })
-  .then(d => {
+Promise.all([
+  fetch('catalog.json').then(r => { if (!r.ok) throw new Error('catalog'); return r.json(); }),
+  fetch('artwork.json').then(r => r.ok ? r.json() : { artists: {} }).catch(() => ({ artists: {} })),
+]).then(([d, artwork]) => {
     artists = d.artists;
     byName = new Map(artists.map(a => [a.artist, a]));
+    knownArtwork = artwork?.artists || {};
     buildVibeData();
     state.page = 'home';
     pushRoute(true);
