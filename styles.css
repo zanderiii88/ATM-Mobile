@@ -19,7 +19,8 @@
 /* v0.8.0 refinements */
 .nav-match-svg{width:27px}
 .music-result-actions{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}
-.mode-btn{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:8px 10px;font-size:10px}
+.music-result-actions .btn{display:inline-flex;align-items:center;justify-content:center;width:112px;min-height:40px;padding:8px 10px;font-size:10px;line-height:1.2}
+.mode-btn{gap:7px}
 .mode-btn.active{border-color:rgba(81,215,196,.42);background:rgba(81,215,196,.11);color:#eefaf8}
 .mode-icon{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
 .guide-title{display:flex;align-items:center;gap:10px}
@@ -29,4 +30,4 @@
 .guide-icon .nav-svg{width:24px;height:24px}
 .inline-link{color:#b8ddd8;text-decoration:none;border-bottom:1px solid rgba(184,221,216,.35)}
 .inline-link:hover{color:#fff}
-@media(max-width:430px){.music-result-actions{width:100%;justify-content:flex-start}.music-result-actions .btn{flex:1 1 auto}.guide-icon{width:42px;min-width:42px}.guide-icon .home-svg{width:40px}.guide-icon .musicfor-svg{width:52px}}
+@media(max-width:430px){.music-result-actions{width:100%;justify-content:flex-start}.music-result-actions .btn{flex:1 1 0;width:auto}.guide-icon{width:42px;min-width:42px}.guide-icon .home-svg{width:40px}.guide-icon .musicfor-svg{width:52px}}
