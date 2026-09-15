@@ -1,0 +1,50 @@
+{
+  "version": "0.12.0",
+  "artist_count": 2500,
+  "trusted_anchor_profiles": 1772,
+  "primary_template_recalibrations": 728,
+  "secondary_numeric_outlier_corrections": 217,
+  "total_profiles_numeric_changed": 945,
+  "duplicate_vector_stats_before": {
+    "unique_vectors": 1743,
+    "max_group": 230,
+    "groups_ge10": 11,
+    "artists_in_groups_ge10": 702,
+    "groups_ge5": 14,
+    "artists_in_groups_ge5": 728
+  },
+  "duplicate_vector_stats_after": {
+    "unique_vectors": 2410,
+    "max_group": 6,
+    "groups_ge10": 0,
+    "artists_in_groups_ge10": 0,
+    "groups_ge5": 2,
+    "artists_in_groups_ge5": 11
+  },
+  "health_before": {
+    "energy": 8,
+    "aggression": 8,
+    "darkness": 8,
+    "experimental": 5,
+    "organic_electronic": 3,
+    "accessibility": 5,
+    "rhythm": 6,
+    "studio": 5,
+    "texture": 6,
+    "dissonance": 5,
+    "production": 5
+  },
+  "health_after": {
+    "energy": 8,
+    "aggression": 7,
+    "darkness": 8,
+    "experimental": 8,
+    "organic_electronic": 8,
+    "accessibility": 5,
+    "rhythm": 8,
+    "studio": 9,
+    "texture": 8,
+    "dissonance": 8,
+    "production": 8
+  }
+}

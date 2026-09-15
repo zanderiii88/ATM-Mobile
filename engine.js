@@ -5,6 +5,32 @@
     const cand=new Set(candidate.map(x=>String(x).toLocaleLowerCase()));
     return selected.filter(x=>cand.has(String(x).toLocaleLowerCase())).length/Math.max(1,selected.length);
   }
+  const RELATED_FAMILY_GROUPS=[
+    ['industrial','industrial_metal','industrial_rock','electronic_rock','electro_industrial','electroindustrial','ebm','darkwave','coldwave','postindustrial','noise_rock','industrial_techno'],
+    ['dream_shoegaze','shoegaze','dream_pop','dreampop','noise_pop','ethereal_wave','slowcore'],
+    ['postpunk_goth','postpunk','goth','gothic_rock','darkwave','coldwave','new_wave'],
+    ['metalcore','metallic_hardcore','posthardcore','hardcore','mathcore','deathcore'],
+    ['thrash','heavymetal','speedmetal','groove_metal','altmetal','industrial_metal'],
+    ['blackmetal','deathmetal','doom','sludge','postmetal','avant_metal'],
+    ['techno_house','house','techno','progressive_house','french_house','nu_disco','electro','electro_house','trance'],
+    ['idm_ambient','ambient','idm','experimental_electronic','downtempo','glitch'],
+    ['synthwave','darksynth','dreamwave','outrun','space_synth','synthpop','electropop'],
+    ['alt_hiphop','eastcoast_rap','westcoast_rap','abstract_rap','underground_rap','boombap','jazzrap','experimental_rap','poprap','southern_trap','trap','grime'],
+    ['soul','neosoul','contemporary_rnb','alt_rnb','funk','funk_disco','jazzfunk'],
+    ['indierock','altrock','garage','poprock','powerpop','grunge_alt','hardrock'],
+    ['indiefolk','singer_songwriter','folkrock','country','americana','alt_country'],
+    ['jazz','jazzfusion','hardbop','postbop','souljazz','jazzfunk']
+  ].map(g=>new Set(g));
+  function familyPair(a,b){
+    if(!a||!b) return 0; a=String(a).toLocaleLowerCase(); b=String(b).toLocaleLowerCase();
+    if(a===b) return 1;
+    for(const g of RELATED_FAMILY_GROUPS) if(g.has(a)&&g.has(b)) return .55;
+    return 0;
+  }
+  function familyOverlap(candidate,selected){
+    selected=nonempty(selected); candidate=nonempty(candidate); if(!selected.length) return 0;
+    return selected.reduce((sum,s)=>sum+candidate.reduce((best,c)=>Math.max(best,familyPair(s,c)),0),0)/selected.length;
+  }
   function close(a,b,span=9,fallback=.5){ if(a===null||a===undefined||b===null||b===undefined) return fallback; return Math.max(0,1-Math.abs(Number(a)-Number(b))/span); }
   function moodRoot(m){ return m ? String(m).split(' /')[0].trim().toLocaleLowerCase() : ''; }
   function fingerprint(a,b){
@@ -15,14 +41,16 @@
     const genre=!!(a.primary_genre && a.primary_genre===b.primary_genre);
     const era=close(a.era_mid,b.era_mid,35);
     const mr=moodRoot(a.mood), mood=!!mr && mr===moodRoot(b.mood);
-    return {tag:ratioOverlap(ta,tb),family:ratioOverlap(fa,fb),sonic,genre,era,mood,
+    return {tag:ratioOverlap(ta,tb),family:familyOverlap(fa,fb),sonic,genre,era,mood,
       texture:close(a.texture,b.texture),dissonance:close(a.dissonance,b.dissonance),production:close(a.production,b.production)};
   }
   function scores(candidate,selected,fp){
     const spec=Number(candidate.specificity||.70), selectedSpec=Number(selected.specificity||.70), group=Number(candidate.profile_group_size||1);
-    const sr=(32*fp.tag+18*fp.family+22*fp.sonic+8*(fp.genre?1:0)+6*fp.era+4*(fp.mood?1:0)+4*fp.texture+4*fp.dissonance+4*fp.production)/102;
-    const ps=Math.max(.72,1-Math.min(group-1,70)*.004);
-    const similar=Math.min(.58+.36*Math.min(spec,selectedSpec), sr*(.84+.16*spec)*ps);
+    // Closest Match now prioritises style/family/sonic identity over the broad primary-genre bucket.
+    // Soft family affinity helps real crossover relationships (e.g. industrial rock/metal/darkwave) without making them exact matches.
+    const sr=(34*fp.tag+20*fp.family+24*fp.sonic+3*(fp.genre?1:0)+4*fp.era+3*(fp.mood?1:0)+4*fp.texture+4*fp.dissonance+4*fp.production)/100;
+    const ps=Math.max(.82,1-Math.min(group-1,70)*.006);
+    const similar=Math.min(.60+.34*Math.min(spec,selectedSpec), sr*(.86+.14*spec)*ps);
     const ar=(22*fp.tag+22*fp.family+26*fp.sonic+2*(fp.genre?1:0)+2*fp.era+6*(fp.mood?1:0)+7*fp.texture+7*fp.dissonance+6*fp.production)/100;
     const pa=Math.max(.76,Math.max(.72,1-Math.min(group-1,70)*.004));
     const adjacent=Math.min(.60+.32*Math.min(spec,selectedSpec), ar*(.86+.14*spec)*pa);
