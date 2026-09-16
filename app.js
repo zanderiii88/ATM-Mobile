@@ -3,7 +3,7 @@ let byName = new Map();
 let deferredInstall = null;
 let vibeData = { genres: [], styles: [], moods: [] };
 
-const APP_VERSION = '0.13.0';
+const APP_VERSION = '0.13.2';
 const storeKey = 'atm-mobile-v01'; // Intentionally stable so personal data survives app updates.
 const artworkCacheKey = 'atm-mobile-artwork-v2';
 const ARTWORK_ENDPOINT = 'https://atm-artwork.zanderiii88.workers.dev/';
@@ -272,7 +272,7 @@ function lucky() {
 
 function layout(content, active = 'home') {
   const showBack = state.page !== 'home';
-  document.getElementById('app').innerHTML = `<main class="shell"><div class="topbar"><div class="topbar-left">${showBack ? '<button id="backBtn" class="top-icon" aria-label="Back">←</button>' : ''}<button class="brand-button" data-nav="home"><span class="mini-mark">Λ</span><span class="mini-name">ATM / Artists That Matter</span></button></div><div class="top-actions"><button class="top-icon" data-nav="guide" aria-label="Guide">?</button><button id="installTop" class="btn icon install">Install</button></div></div>${content}</main><nav class="bottomnav six">${nav('home', 'home', 'Home', active)}${nav('discover', 'match-people', 'Match', active)}${nav('vibe', 'vibe-wave', 'Vibes', active)}${nav('musicfor', 'music-car', 'Music For', active)}${nav('lucky', 'lucky', 'Lucky', active)}${nav('favourites', 'favourite', 'Favourites', active)}</nav>`;
+  document.getElementById('app').innerHTML = `<main class="shell"><div class="topbar"><div class="topbar-left">${showBack ? '<button id="backBtn" class="top-icon" aria-label="Back">←</button>' : ''}<button class="brand-button" data-nav="home"><span class="mini-mark">Λ</span><span class="mini-name">ATM / Artists That Matter</span></button></div><div class="top-actions"><button class="top-icon" data-nav="guide" aria-label="Guide">?</button><button id="installTop" class="btn icon install">Install</button></div></div>${content}</main><nav class="bottomnav six">${nav('home', 'home', 'Home', active)}${nav('discover', 'match-people', 'Match', active)}${nav('vibe', 'vibe-wave', 'Vibes', active)}${nav('musicfor', 'music-cassette', 'Music For', active)}${nav('lucky', 'lucky', 'Lucky', active)}${nav('favourites', 'favourite', 'Favourites', active)}</nav>`;
   bindNav();
   const back = document.getElementById('backBtn');
   if (back) back.onclick = () => history.back();
@@ -286,7 +286,7 @@ function navIcon(kind) {
   if (kind === 'home') return `<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5"></path><path d="M6.5 10.5V19h11v-8.5"></path></svg>`;
   if (kind === 'match-people') return `<svg class="nav-svg nav-match-svg" viewBox="0 0 30 24" aria-hidden="true"><circle cx="5" cy="6" r="3"></circle><path d="M1 17c0-4 1.5-6 4-6s4 2 4 6"></path><path d="M11 11h8m-3-3 3 3-3 3"></path><circle cx="25" cy="6" r="3"></circle><path d="M21 17c0-4 1.5-6 4-6s4 2 4 6"></path></svg>`;
   if (kind === 'vibe-wave') return `<svg class="nav-svg nav-vibe-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13.5c1.2 0 1.2-5 2.4-5s1.2 8 2.4 8 1.2-11 2.4-11 1.2 14 2.4 14 1.2-10 2.4-10 1.2 6 2.4 6"></path></svg>`;
-  if (kind === 'music-car') return `<svg class="nav-svg nav-music-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15.5h14l-1.8-5a2 2 0 0 0-1.9-1.3H8.7a2 2 0 0 0-1.9 1.3z"></path><path d="M4 15.5v3h2m12 0h2v-3"></path><circle cx="8" cy="18.5" r="1.7"></circle><circle cx="16" cy="18.5" r="1.7"></circle><path d="M8.5 12.5h7"></path></svg>`;
+  if (kind === 'music-cassette') return `<svg class="nav-svg nav-music-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.2"></rect><circle cx="9" cy="11.5" r="2.1"></circle><circle cx="15" cy="11.5" r="2.1"></circle><path d="M11.1 11.5h1.8"></path><path d="M7 16h10"></path><path d="M9.2 16 8.1 18.5m6.7-2.5 1.1 2.5"></path></svg>`;
   if (kind === 'lucky') return `<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 14.6 9.4 20.5 12 14.6 14.6 12 20.5 9.4 14.6 3.5 12 9.4 9.4z"></path></svg>`;
   if (kind === 'favourite') return `<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.5 6 .9-4.4 4.3 1 6-5.3-2.8-5.3 2.8 1-6-4.4-4.3 6-.9z"></path></svg>`;
   return kind;
@@ -725,9 +725,14 @@ function playlistStrip(preset) {
 function musicFor() {
   const selectedLabel = state.musicForPreset || '';
   const selected = musicForPresets.find(p => p.label === selectedLabel);
-  const groups = [...new Set(musicForPresets.map(p => p.group))];
+  const groups = [...new Set(musicForPresets.map(p => p.group))].sort((a, b) => {
+    const aPlaylist = musicForPresets.some(p => p.group === a && hasPlaylist(p));
+    const bPlaylist = musicForPresets.some(p => p.group === b && hasPlaylist(p));
+    if (aPlaylist !== bPlaylist) return aPlaylist ? -1 : 1;
+    return a.localeCompare(b);
+  });
   const choices = groups.map(group => {
-    const groupPresets = musicForPresets.filter(p => p.group === group);
+    const groupPresets = musicForPresets.filter(p => p.group === group).sort((a, b) => a.label.localeCompare(b.label));
     const playlistGroup = groupPresets.some(hasPlaylist);
     return `<div class="occasion-group ${playlistGroup ? 'roadtrip-group' : ''}" data-occasion-group="${attr(group)}"><div class="occasion-group-head"><div class="eyebrow">${esc(group)}</div>${playlistGroup ? '<span class="roadtrip-service">ATM playlists · YouTube Music + Spotify</span>' : ''}</div><div class="occasion-grid">${groupPresets.map(p => `<button class="occasion-card ${selectedLabel === p.label ? 'active' : ''}" data-occasion="${attr(p.label)}"><b>${esc(p.label)}</b><span>${esc(p.blurb)}</span>${hasPlaylist(p) ? '<small class="occasion-playlist-note">▶ ATM playlist · YouTube + Spotify</small>' : ''}</button>`).join('')}</div></div>`;
   }).join('');
