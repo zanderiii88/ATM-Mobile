@@ -3,7 +3,7 @@ let byName = new Map();
 let deferredInstall = null;
 let vibeData = { genres: [], styles: [], moods: [] };
 
-const APP_VERSION = '0.15.1';
+const APP_VERSION = '0.16.0';
 const storeKey = 'atm-mobile-v01'; // Intentionally stable so personal data survives app updates.
 const artworkCacheKey = 'atm-mobile-artwork-v2';
 const ARTWORK_ENDPOINT = 'https://atm-artwork.zanderiii88.workers.dev/';
@@ -47,6 +47,7 @@ const legacyMusicForLabels = {
   'Getting Hyped': 'Get Hyped',
   'Getting Ready to Go Out': 'Going Out',
   'That First Coffee': 'First Coffee',
+  'Dancing… to Funk & Disco': 'Dancing… to Funk',
 };
 state.musicForPreset = legacyMusicForLabels[state.musicForPreset] || state.musicForPreset || '';
 
@@ -323,7 +324,7 @@ function homeCatalogueCard(count) {
 }
 function whatsNewCard() {
   if (state.whatsNewDismissed === APP_VERSION) return '';
-  return `<section class="section whats-new-card"><button id="dismissWhatsNew" class="whats-new-dismiss" type="button" aria-label="Dismiss What’s New">×</button><div class="whats-new-copy"><div class="whats-new-kicker"><span class="new-badge">NEW</span><span>More ATM Mixtapes</span></div><h2>Music For... has filled out.</h2><p>Twenty-one more moments now have curated <b>YouTube Music</b> and <b>Spotify</b> mixtapes, including <b>Dancing… In The Pit</b>.</p></div><button id="whatsNewPlaylists" class="btn primary whats-new-action">Explore Music For... →</button></section>`;
+  return `<section class="section whats-new-card"><button id="dismissWhatsNew" class="whats-new-dismiss" type="button" aria-label="Dismiss What’s New">×</button><div class="whats-new-copy"><div class="whats-new-kicker"><span class="new-badge">NEW</span><span>Sharper ATM Mixtapes</span></div><h2>Four new playlist identities.</h2><p><b>Funk</b> and <b>Disco</b> now dance separately, while <b>Euroshock</b> and <b>Soft Focus</b> bring new electronic and dream-pop routes. Their recommendations now learn from the actual mixtape character.</p></div><button id="whatsNewPlaylists" class="btn primary whats-new-action">Explore Music For... →</button></section>`;
 }
 
 function home() {
@@ -677,6 +678,8 @@ const musicForPresets = [
   { group: 'ATM Playlists', label: 'Head Nodding', blurb: 'Alternative rap, classic hip-hop and left-field beats for settling into the pocket.', target: { energy: 7, aggression: 5, darkness: 5, experimental: 6, rhythm: 9, accessibility: 7, organic_electronic: 7 }, genres: ['Hip-Hop'], words: ['alternative hip-hop', 'boom bap', 'hip-hop', 'rap', 'experimental hip-hop', 'conscious', 'east coast'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLFeNQCJ3V_14', spotifyPlaylist: 'https://open.spotify.com/playlist/1tNisakRNR3qLxJ5MpojNF', strictGenre: true },
   { group: 'ATM Playlists', label: 'Pop Rocks', blurb: 'Pop-rock throwbacks with big hooks, bright guitars and an 80s-to-early-2000s streak.', target: { energy: 7, aggression: 4, darkness: 3, rhythm: 7, accessibility: 9, organic_electronic: 3 }, genres: ['Rock', 'Pop'], words: ['pop rock', 'power pop', 'alternative rock', 'new wave', 'britpop', 'pop punk', 'arena rock'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLb968UxgeDzU', spotifyPlaylist: 'https://open.spotify.com/playlist/4GVd8XkKRF6kVAnMvZodvJ', strictGenre: true },
   { group: 'ATM Playlists', label: 'Air Guitar', blurb: 'Riffs, solos and guitar-heavy rock built for playing along without an instrument.', target: { energy: 8, aggression: 6, darkness: 4, rhythm: 7, accessibility: 7, organic_electronic: 2 }, genres: ['Rock', 'Metal', 'Punk / Hardcore'], words: ['hard rock', 'classic rock', 'alternative rock', 'heavy metal', 'guitar', 'riff', 'arena rock', 'grunge'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLPDABf3UHXhA', spotifyPlaylist: 'https://open.spotify.com/playlist/2HV2nOpWIISYgNTsRWsurE', strictGenre: true },
+  { group: 'ATM Playlists', label: 'Euroshock', blurb: 'European electro with French-touch swagger, distorted synths and a darker club pulse.', target: { energy: 8, aggression: 4, darkness: 5, experimental: 6, rhythm: 9, organic_electronic: 10, accessibility: 7 }, genres: ['Electronic'], words: ['french house', 'electro', 'electro house', 'electroclash', 'techno', 'synthwave', 'dance-rock'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLWMTSBOaoqq8', spotifyPlaylist: 'https://open.spotify.com/playlist/1aNGGUmsVqA9852SCmxFsN', strictGenre: true, fingerprint: { target: { energy: 8, aggression: 4, darkness: 5, experimental: 6, rhythm: 9, organic_electronic: 10 }, genres: ['Electronic'], families: ['french_house', 'electro_house', 'electro', 'techno_house', 'synthwave', 'industrial', 'disco_house'], words: ['french house', 'french electro', 'electro house', 'electroclash', 'electro-techno', 'dance-rock', 'synthwave', 'industrial dance'], avoidWords: ['dubstep', 'brostep', 'trap', 'future bass', 'big room'], avoidFamilies: ['dubstep', 'trap', 'dnb_jungle'], anchors: ['Cassius', 'Étienne de Crécy', 'Daft Punk', 'Mr. Oizo', 'Justice', 'SebastiAn', 'Kavinsky', 'Vitalic', 'Boys Noize', 'Digitalism', 'Soulwax', 'Simian Mobile Disco', 'The Bloody Beetroots', 'Para One', 'Surkin', 'Danger', 'Zombie Nation', 'Alter Ego', 'Rex the Dog', 'Miss Kittin & The Hacker', 'Gesaffelstein', 'The Hacker', 'DJ Hell', 'Ellen Allien', 'Modeselektor', 'Anthony Rother', 'I-F', 'Legowelt', 'LFO', 'Laurent Garnier', 'Underworld', 'Orbital', 'Trentemøller', 'Röyksopp', 'The Knife', 'Breakbot'] } },
+  { group: 'ATM Playlists', label: 'Soft Focus', blurb: 'Hazy dream pop, bedroom pop and softly psychedelic indie centred on the feel of Her’s.', target: { energy: 4, aggression: 1, darkness: 4, experimental: 6, rhythm: 5, organic_electronic: 5, accessibility: 7 }, genres: ['Pop', 'Rock', 'Electronic'], words: ['dream pop', 'bedroom pop', 'shoegaze', 'indie pop', 'jangle pop', 'slowcore', 'hazy', 'dreamy'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLZ6-6i8ZNK8Y', spotifyPlaylist: 'https://open.spotify.com/playlist/0qLpLSFSvs42lxz5dqNOxp', fingerprint: { target: { energy: 4, aggression: 1, darkness: 4, experimental: 6, rhythm: 5, accessibility: 7 }, genres: ['Pop', 'Rock', 'Electronic'], families: ['dream_shoegaze', 'bedroom_pop', 'indiepop', 'psychedelic', 'slowcore', 'jangle_pop'], words: ['dream pop', 'bedroom pop', 'shoegaze', 'indie pop', 'jangle pop', 'slowcore', 'neo-psychedelia', 'hazy', 'ethereal', 'soft-focus'], anchors: ['Her’s', "Her's", 'Men I Trust', 'No Vacation', 'Crumb', 'Mild High Club', 'Mac DeMarco', 'TOPS', 'The Marías', 'Strawberry Guy', 'Molly Burch', 'Alvvays', 'Fazerdaze', 'Wild Nothing', 'Craft Spells', 'Real Estate', 'Beach Fossils', 'Widowspeak', 'Still Corners', 'Beach House', 'Cigarettes After Sex', 'Mazzy Star', 'Slowdive', 'DIIV', 'Lush', 'Cocteau Twins', 'The Sundays', 'The Radio Dept.', 'Melody’s Echo Chamber', "Melody's Echo Chamber", 'Broadcast', 'Sweet Trip', 'Drug Store Romeos', 'Japanese Breakfast', 'Yumi Zouma', 'Kero Kero Bonito', 'Air', 'Julee Cruise'] } },
   { group: 'ATM Playlists', label: 'Aotearoa Calling', blurb: 'An ATM-curated trip through music from Aotearoa New Zealand, across eras and styles.', youtubePlaylist: 'https://music.youtube.com/playlist?list=PLFTCcEuVOWik', spotifyPlaylist: 'https://open.spotify.com/playlist/7BXylCipqY8eoimCvPAJbD', playlistOnly: true },
   { group: 'Time & place', label: 'Rainy Days', blurb: 'Reflective, textured and a little grey around the edges.', target: { energy: 4, darkness: 6, accessibility: 6 }, words: ['reflective', 'melancholic', 'atmospheric', 'dream', 'intimate'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLXIBtIFPFEkw', spotifyPlaylist: 'https://open.spotify.com/playlist/0jlP53sNEcvLtI2ISicFFG' },
   { group: 'Time & place', label: 'Sunday Morning', blurb: 'Warm, unhurried listening for a slower start.', target: { energy: 3, aggression: 1, darkness: 3, accessibility: 7 }, words: ['warm', 'gentle', 'serene', 'laid-back', 'soul', 'folk'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLH1M4H7OxG-U', spotifyPlaylist: 'https://open.spotify.com/playlist/0PIPElihWPa8jQgHNjny7m' },
@@ -697,11 +700,41 @@ const musicForPresets = [
   { group: 'Change the energy', label: 'Get Hyped', blurb: 'Big energy, momentum and zero interest in subtlety.', target: { energy: 10, aggression: 8, rhythm: 9 }, words: ['hype', 'intense', 'triumphant', 'rap', 'metal'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLftVXCtkJKmw', spotifyPlaylist: 'https://open.spotify.com/playlist/6GlldHLXteTEiBKx3pTO5k' },
   { group: 'Dancing', label: 'Dancing… In The Pit', blurb: 'Heavy, physical and built for the part where standing still is no longer an option.', target: { energy: 10, aggression: 10, darkness: 7, rhythm: 9, accessibility: 6, organic_electronic: 2 }, genres: ['Punk / Hardcore', 'Metal', 'Rock'], words: ['hardcore', 'metalcore', 'post-hardcore', 'crossover thrash', 'nu metal', 'mosh', 'breakdown', 'heavy', 'aggressive'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLectVW8n-XR0', spotifyPlaylist: 'https://open.spotify.com/playlist/132GxRl7lrvqgGnFeubZed', strictGenre: true },
   { group: 'Dancing', label: 'Dancing… to Pop', blurb: 'Hooks first: glossy, immediate and properly danceable.', target: { energy: 8, rhythm: 9, accessibility: 9 }, genres: ['Pop'], words: ['dance-pop', 'electropop', 'synthpop', 'disco'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLFYfnyjPL6ZI', spotifyPlaylist: 'https://open.spotify.com/playlist/1iB2W0wICxf9IP9Zu9WEIG' },
-  { group: 'Dancing', label: 'Dancing… to Funk & Disco', blurb: 'Basslines, groove and a bit of sparkle.', target: { energy: 8, rhythm: 10, accessibility: 8 }, words: ['funk', 'disco', 'boogie', 'soul'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLAU_yWQtXAas', spotifyPlaylist: 'https://open.spotify.com/playlist/17IzkXGncXT1K0jBfvKB4E' },
+  { group: 'Dancing', label: 'Dancing… to Disco', blurb: 'Four-on-the-floor sparkle, sweeping strings, boogie and Hi-NRG release.', target: { energy: 8, aggression: 1, darkness: 2, rhythm: 10, organic_electronic: 7, accessibility: 9 }, genres: ['Soul / R&B / Funk', 'Electronic', 'Pop'], words: ['disco', 'hi-nrg', 'boogie', 'post-disco', 'nu-disco', 'italo disco'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLMTFvv41QcvM', spotifyPlaylist: 'https://open.spotify.com/playlist/5gWLXTCm2tjlHRWThcqOIv', fingerprint: { target: { energy: 8, aggression: 1, darkness: 2, rhythm: 10, organic_electronic: 7, accessibility: 9 }, genres: ['Soul / R&B / Funk', 'Electronic', 'Pop'], families: ['funk_disco', 'boogie', 'disco_house', 'dance_pop'], words: ['disco', 'hi-nrg', 'boogie', 'post-disco', 'nu-disco', 'italo disco', 'four-on-the-floor'], avoidWords: ['future bass', 'big room', 'drum & bass', 'dubstep'], avoidFamilies: ['dnb_jungle', 'future_bass', 'dubstep'], anchors: ['The O’Jays', "The O'Jays", 'KC and the Sunshine Band', 'Heatwave', 'Rose Royce', 'Cheryl Lynn', 'Evelyn “Champagne” King', 'Evelyn King', 'Diana Ross', 'Sister Sledge', 'Chic', 'Bee Gees', 'The Trammps', 'Gloria Gaynor', 'Thelma Houston', 'Donna Summer', 'Cerrone', 'Giorgio Moroder', 'ABBA', 'Boney M.', 'Boney M', 'Sylvester', 'Patrick Cowley', 'Gino Soccio', 'Dan Hartman', 'Change', 'D-Train', 'Shalamar', 'Indeep', 'Grace Jones', 'L’Impératrice', "L'Impératrice", 'Jessie Ware', 'Purple Disco Machine'] } },
+  { group: 'Dancing', label: 'Dancing… to Funk', blurb: 'Syncopated basslines, live-pocket grooves, P-Funk and electro-funk.', target: { energy: 8, aggression: 2, darkness: 2, rhythm: 10, organic_electronic: 4, accessibility: 8 }, genres: ['Soul / R&B / Funk', 'Jazz', 'Rock'], words: ['funk', 'p-funk', 'electro-funk', 'jazz-funk', 'funk rock', 'groove', 'talkbox'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLNj0l9rfqiT0', spotifyPlaylist: 'https://open.spotify.com/playlist/6085mpg4MoWvWdMi7w1qJC', fingerprint: { target: { energy: 8, aggression: 2, darkness: 2, rhythm: 10, organic_electronic: 4, accessibility: 8 }, genres: ['Soul / R&B / Funk', 'Jazz', 'Rock'], families: ['funk_disco', 'funk', 'electrofunk', 'pfunk', 'soul', 'jazz_funk'], words: ['funk', 'p-funk', 'electro-funk', 'jazz-funk', 'funk rock', 'psychedelic funk', 'space funk', 'talkbox', 'syncopated'], avoidWords: ['drum & bass', 'jungle', 'city pop', 'smooth jazz'], avoidFamilies: ['dnb_jungle', 'citypop'], anchors: ['James Brown', 'Sly & The Family Stone', 'The Meters', 'Stevie Wonder', 'Curtis Mayfield', 'The Isley Brothers', 'Parliament', 'Funkadelic', 'Ohio Players', 'Kool & The Gang', 'Tower of Power', 'Average White Band', 'Betty Davis', 'Bootsy Collins', 'Herbie Hancock', 'Earth, Wind & Fire', 'Prince', 'Rick James', 'The Gap Band', 'Zapp', 'Cameo', 'Lakeside', 'Chaka Khan', 'Dâm-Funk', 'Vulfpeck', 'Lettuce', 'Khruangbin', 'Jungle', 'Anderson .Paak', 'Childish Gambino'] } },
   { group: 'Dancing', label: 'Dancing… to House', blurb: 'Four-on-the-floor movement from warm to euphoric.', target: { energy: 8, rhythm: 10, organic_electronic: 9 }, words: ['house', 'garage', 'club', 'dance'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLDABf280JPpA', spotifyPlaylist: 'https://open.spotify.com/playlist/6zOBDliO0Y3vnt27aGkIYJ' },
 ];
 
-function musicForScore(a, preset) { return profilePresetScore(a, preset); }
+function fingerprintScore(a, fingerprint) {
+  if (!fingerprint) return null;
+  const haystack = `${a.primary_genre || ''} ${a.style_tags || ''} ${a.mood || ''} ${a.atmosphere || ''}`.toLowerCase();
+  const families = [a.family1, a.family2, a.family3].filter(Boolean).map(x => String(x).toLowerCase());
+  let score = 0, weight = 0;
+  Object.entries(fingerprint.target || {}).forEach(([key, wanted]) => {
+    const actual = Number(a[key] || 0);
+    score += Math.max(0, 1 - Math.abs(actual - wanted) / 9) * 2;
+    weight += 2;
+  });
+  const wordHits = (fingerprint.words || []).filter(word => haystack.includes(String(word).toLowerCase())).length;
+  const familyHit = (fingerprint.families || []).some(family => families.includes(String(family).toLowerCase()));
+  const genreHit = (fingerprint.genres || []).includes(a.primary_genre);
+  const anchorHit = (fingerprint.anchors || []).some(name => String(name).toLowerCase() === String(a.artist).toLowerCase());
+  if (fingerprint.words?.length) { score += Math.min(1, wordHits / 2) * 4; weight += 4; }
+  if (fingerprint.families?.length) { score += familyHit ? 3 : 0; weight += 3; }
+  if (fingerprint.genres?.length) { score += genreHit ? 2 : 0; weight += 2; }
+  if (fingerprint.anchors?.length) { score += anchorHit ? 4 : 0; weight += 4; }
+  let result = score / Math.max(1, weight);
+  if (!anchorHit && !familyHit && wordHits === 0) result *= .55;
+  const avoidWordHits = (fingerprint.avoidWords || []).filter(word => haystack.includes(String(word).toLowerCase())).length;
+  const avoidFamilyHit = (fingerprint.avoidFamilies || []).some(family => families.includes(String(family).toLowerCase()));
+  if (!anchorHit) result -= Math.min(.35, avoidWordHits * .18 + (avoidFamilyHit ? .25 : 0));
+  return Math.max(0, Math.min(1, result));
+}
+function musicForScore(a, preset) {
+  const scenario = profilePresetScore(a, preset);
+  const editorial = fingerprintScore(a, preset.fingerprint);
+  return editorial === null ? scenario : Math.max(0, Math.min(1, scenario * .72 + editorial * .28));
+}
 function seededShuffle(rows, seed) {
   const out = [...rows];
   let x = (Number(seed) || Date.now()) >>> 0;
