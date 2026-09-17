@@ -3,7 +3,7 @@ let byName = new Map();
 let deferredInstall = null;
 let vibeData = { genres: [], styles: [], moods: [] };
 
-const APP_VERSION = '0.14.0';
+const APP_VERSION = '0.15.1';
 const storeKey = 'atm-mobile-v01'; // Intentionally stable so personal data survives app updates.
 const artworkCacheKey = 'atm-mobile-artwork-v2';
 const ARTWORK_ENDPOINT = 'https://atm-artwork.zanderiii88.workers.dev/';
@@ -41,6 +41,14 @@ state.vibe = { genres: [], styles: [], moods: [], ...(state.vibe || {}) };
 state.listSort = { favourite: 'az', explore: 'az', ...(state.listSort || {}) };
 state.searchRecent = Array.isArray(state.searchRecent) ? state.searchRecent : [];
 if (!state.searchRecent.length && Array.isArray(state.recent)) state.searchRecent = state.recent.filter(x => x.action === 'discover').map(x => x.artist).slice(0, 12);
+const legacyMusicForLabels = {
+  'Need to Calm Down': 'Calm Down',
+  'Need to Wake Up': 'Wake Up',
+  'Getting Hyped': 'Get Hyped',
+  'Getting Ready to Go Out': 'Going Out',
+  'That First Coffee': 'First Coffee',
+};
+state.musicForPreset = legacyMusicForLabels[state.musicForPreset] || state.musicForPreset || '';
 
 let artworkCache = loadArtworkCache();
 const artworkPending = new Map();
@@ -315,7 +323,7 @@ function homeCatalogueCard(count) {
 }
 function whatsNewCard() {
   if (state.whatsNewDismissed === APP_VERSION) return '';
-  return `<section class="section whats-new-card"><button id="dismissWhatsNew" class="whats-new-dismiss" type="button" aria-label="Dismiss What’s New">×</button><div class="whats-new-copy"><div class="whats-new-kicker"><span class="new-badge">NEW</span><span>ATM Mixtapes</span></div><h2>Now on YouTube Music + Spotify.</h2><p>Road Trip mixtapes sit alongside <b>Head Nodding</b>, <b>Pop Rocks</b>, <b>Air Guitar</b> and <b>Aotearoa Calling</b> inside <b>Music For...</b>.</p></div><button id="whatsNewPlaylists" class="btn primary whats-new-action">Explore ATM Mixtapes →</button></section>`;
+  return `<section class="section whats-new-card"><button id="dismissWhatsNew" class="whats-new-dismiss" type="button" aria-label="Dismiss What’s New">×</button><div class="whats-new-copy"><div class="whats-new-kicker"><span class="new-badge">NEW</span><span>More ATM Mixtapes</span></div><h2>Music For... has filled out.</h2><p>Twenty-one more moments now have curated <b>YouTube Music</b> and <b>Spotify</b> mixtapes, including <b>Dancing… In The Pit</b>.</p></div><button id="whatsNewPlaylists" class="btn primary whats-new-action">Explore Music For... →</button></section>`;
 }
 
 function home() {
@@ -670,26 +678,27 @@ const musicForPresets = [
   { group: 'ATM Playlists', label: 'Pop Rocks', blurb: 'Pop-rock throwbacks with big hooks, bright guitars and an 80s-to-early-2000s streak.', target: { energy: 7, aggression: 4, darkness: 3, rhythm: 7, accessibility: 9, organic_electronic: 3 }, genres: ['Rock', 'Pop'], words: ['pop rock', 'power pop', 'alternative rock', 'new wave', 'britpop', 'pop punk', 'arena rock'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLb968UxgeDzU', spotifyPlaylist: 'https://open.spotify.com/playlist/4GVd8XkKRF6kVAnMvZodvJ', strictGenre: true },
   { group: 'ATM Playlists', label: 'Air Guitar', blurb: 'Riffs, solos and guitar-heavy rock built for playing along without an instrument.', target: { energy: 8, aggression: 6, darkness: 4, rhythm: 7, accessibility: 7, organic_electronic: 2 }, genres: ['Rock', 'Metal', 'Punk / Hardcore'], words: ['hard rock', 'classic rock', 'alternative rock', 'heavy metal', 'guitar', 'riff', 'arena rock', 'grunge'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLPDABf3UHXhA', spotifyPlaylist: 'https://open.spotify.com/playlist/2HV2nOpWIISYgNTsRWsurE', strictGenre: true },
   { group: 'ATM Playlists', label: 'Aotearoa Calling', blurb: 'An ATM-curated trip through music from Aotearoa New Zealand, across eras and styles.', youtubePlaylist: 'https://music.youtube.com/playlist?list=PLFTCcEuVOWik', spotifyPlaylist: 'https://open.spotify.com/playlist/7BXylCipqY8eoimCvPAJbD', playlistOnly: true },
-  { group: 'Time & place', label: 'Rainy Days', blurb: 'Reflective, textured and a little grey around the edges.', target: { energy: 4, darkness: 6, accessibility: 6 }, words: ['reflective', 'melancholic', 'atmospheric', 'dream', 'intimate'] },
-  { group: 'Time & place', label: 'Sunday Morning', blurb: 'Warm, unhurried listening for a slower start.', target: { energy: 3, aggression: 1, darkness: 3, accessibility: 7 }, words: ['warm', 'gentle', 'serene', 'laid-back', 'soul', 'folk'] },
-  { group: 'Time & place', label: '3AM', blurb: 'Nocturnal, inward-looking and slightly strange.', target: { energy: 4, darkness: 8, experimental: 7 }, words: ['nocturnal', 'hypnotic', 'ambient', 'dream', 'introspective'] },
-  { group: 'Time & place', label: 'Drifting Off', blurb: 'Very quiet, soft-edged ambient music for letting the day disappear.', target: { energy: 1, aggression: 1, darkness: 3, experimental: 6, rhythm: 2, organic_electronic: 9 }, genres: ['Electronic'], words: ['ambient', 'drone', 'minimal', 'serene', 'meditative', 'gentle', 'quiet'] },
-  { group: 'Time & place', label: 'Sunset', blurb: 'Glowing, spacious music for the end of the day.', target: { energy: 5, darkness: 3, accessibility: 7 }, words: ['warm', 'dreamy', 'serene', 'lush', 'psychedelic'] },
-  { group: 'Time & place', label: 'Night Driving', blurb: 'Propulsive, cinematic and built for lights passing by.', target: { energy: 7, darkness: 6, rhythm: 8, organic_electronic: 8 }, words: ['nocturnal', 'driving', 'synth', 'electronic', 'cinematic'] },
-  { group: 'Going out', label: 'Getting Ready to Go Out', blurb: 'Confident, bright and steadily raising the temperature.', target: { energy: 8, rhythm: 8, accessibility: 8 }, words: ['confident', 'euphoric', 'dance', 'pop', 'funk'] },
-  { group: 'Going out', label: 'After the Party', blurb: 'The comedown: hazy, tender and quietly nocturnal.', target: { energy: 3, darkness: 6, accessibility: 6 }, words: ['hazy', 'intimate', 'melancholic', 'nocturnal', 'ambient'] },
-  { group: 'Time & place', label: 'That First Coffee', blurb: 'A gentle lift before the day properly begins.', target: { energy: 5, aggression: 1, darkness: 2, accessibility: 8 }, words: ['warm', 'playful', 'soulful', 'bright', 'acoustic'] },
-  { group: 'Heart stuff', label: 'Heartbreak', blurb: 'Songs for the raw bit, the reflective bit and everything after.', target: { energy: 4, darkness: 7, accessibility: 8 }, words: ['heartbreak', 'melancholic', 'romantic', 'vulnerable', 'sad'] },
-  { group: 'Heart stuff', label: 'Falling in Love', blurb: 'Warm, open-hearted and a little bit giddy.', target: { energy: 6, darkness: 2, accessibility: 8 }, words: ['romantic', 'joyful', 'warm', 'dreamy', 'euphoric'] },
-  { group: 'Heart stuff', label: '"Bedtime" 😉', blurb: 'Low-lit, intimate and decidedly not about going straight to sleep.', target: { energy: 4, aggression: 1, darkness: 5, rhythm: 6, accessibility: 8 }, words: ['sensual', 'sultry', 'intimate', 'romantic', 'r&b', 'neo-soul', 'trip hop', 'downtempo'] },
-  { group: 'Heart stuff', label: 'Moping', blurb: 'Low-energy company for leaning into it.', target: { energy: 2, darkness: 7, accessibility: 7 }, words: ['melancholic', 'sad', 'intimate', 'reflective', 'slow'] },
-  { group: 'Heart stuff', label: 'Brooding', blurb: 'Dark, tense and deliberate rather than defeated.', target: { energy: 5, aggression: 5, darkness: 9 }, words: ['brooding', 'dark', 'ominous', 'tense', 'gothic'] },
-  { group: 'Change the energy', label: 'Need to Wake Up', blurb: 'Immediate, bright and hard to sleep through.', target: { energy: 9, rhythm: 8, accessibility: 8 }, words: ['energetic', 'urgent', 'bright', 'punk', 'dance'] },
-  { group: 'Change the energy', label: 'Need to Calm Down', blurb: 'Soft edges, low intensity and room to breathe.', target: { energy: 2, aggression: 1, darkness: 3 }, words: ['calm', 'serene', 'ambient', 'gentle', 'minimal'] },
-  { group: 'Change the energy', label: 'Getting Hyped', blurb: 'Big energy, momentum and zero interest in subtlety.', target: { energy: 10, aggression: 8, rhythm: 9 }, words: ['hype', 'intense', 'triumphant', 'rap', 'metal'] },
-  { group: 'Dancing', label: 'Dancing… to Pop', blurb: 'Hooks first: glossy, immediate and properly danceable.', target: { energy: 8, rhythm: 9, accessibility: 9 }, genres: ['Pop'], words: ['dance-pop', 'electropop', 'synthpop', 'disco'] },
-  { group: 'Dancing', label: 'Dancing… to Funk & Disco', blurb: 'Basslines, groove and a bit of sparkle.', target: { energy: 8, rhythm: 10, accessibility: 8 }, words: ['funk', 'disco', 'boogie', 'soul'] },
-  { group: 'Dancing', label: 'Dancing… to House', blurb: 'Four-on-the-floor movement from warm to euphoric.', target: { energy: 8, rhythm: 10, organic_electronic: 9 }, words: ['house', 'garage', 'club', 'dance'] },
+  { group: 'Time & place', label: 'Rainy Days', blurb: 'Reflective, textured and a little grey around the edges.', target: { energy: 4, darkness: 6, accessibility: 6 }, words: ['reflective', 'melancholic', 'atmospheric', 'dream', 'intimate'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLXIBtIFPFEkw', spotifyPlaylist: 'https://open.spotify.com/playlist/0jlP53sNEcvLtI2ISicFFG' },
+  { group: 'Time & place', label: 'Sunday Morning', blurb: 'Warm, unhurried listening for a slower start.', target: { energy: 3, aggression: 1, darkness: 3, accessibility: 7 }, words: ['warm', 'gentle', 'serene', 'laid-back', 'soul', 'folk'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLH1M4H7OxG-U', spotifyPlaylist: 'https://open.spotify.com/playlist/0PIPElihWPa8jQgHNjny7m' },
+  { group: 'Time & place', label: '3AM', blurb: 'Nocturnal, inward-looking and slightly strange.', target: { energy: 4, darkness: 8, experimental: 7 }, words: ['nocturnal', 'hypnotic', 'ambient', 'dream', 'introspective'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLfBhUHe4j7uM', spotifyPlaylist: 'https://open.spotify.com/playlist/2x0TavgHYPezi8ct1ckqJG' },
+  { group: 'Time & place', label: 'Drifting Off', blurb: 'Very quiet, soft-edged ambient music for letting the day disappear.', target: { energy: 1, aggression: 1, darkness: 3, experimental: 6, rhythm: 2, organic_electronic: 9 }, genres: ['Electronic'], words: ['ambient', 'drone', 'minimal', 'serene', 'meditative', 'gentle', 'quiet'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLU1EIlMLfFoU', spotifyPlaylist: 'https://open.spotify.com/playlist/5jIWeJI5Ip5vWFqP8vkxvd' },
+  { group: 'Time & place', label: 'Sunset', blurb: 'Glowing, spacious music for the end of the day.', target: { energy: 5, darkness: 3, accessibility: 7 }, words: ['warm', 'dreamy', 'serene', 'lush', 'psychedelic'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLNRDgrhWkjWM', spotifyPlaylist: 'https://open.spotify.com/playlist/4Vxa1uppKCtBUeuaOXR2x5' },
+  { group: 'Time & place', label: 'Night Driving', blurb: 'Propulsive, cinematic and built for lights passing by.', target: { energy: 7, darkness: 6, rhythm: 8, organic_electronic: 8 }, words: ['nocturnal', 'driving', 'synth', 'electronic', 'cinematic'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLMUTDGCHNHc0', spotifyPlaylist: 'https://open.spotify.com/playlist/5b433sEfE631EDBaUcmX75' },
+  { group: 'Going out', label: 'Going Out', blurb: 'Confident, bright and steadily raising the temperature.', target: { energy: 8, rhythm: 8, accessibility: 8 }, words: ['confident', 'euphoric', 'dance', 'pop', 'funk'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLGY6Thj4wXms', spotifyPlaylist: 'https://open.spotify.com/playlist/1VBk3tROqwzFbuGd1yycOr' },
+  { group: 'Going out', label: 'After the Party', blurb: 'The comedown: hazy, tender and quietly nocturnal.', target: { energy: 3, darkness: 6, accessibility: 6 }, words: ['hazy', 'intimate', 'melancholic', 'nocturnal', 'ambient'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLamfhN9vN29Q', spotifyPlaylist: 'https://open.spotify.com/playlist/3ZB7JWgZ06Z7AoFhtktVJc' },
+  { group: 'Time & place', label: 'First Coffee', blurb: 'A gentle lift before the day properly begins.', target: { energy: 5, aggression: 1, darkness: 2, accessibility: 8 }, words: ['warm', 'playful', 'soulful', 'bright', 'acoustic'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLJ81m9FfymXI', spotifyPlaylist: 'https://open.spotify.com/playlist/43GUo3NuEkjz0wEGMlDAI5' },
+  { group: 'Heart stuff', label: 'Heartbreak', blurb: 'Songs for the raw bit, the reflective bit and everything after.', target: { energy: 4, darkness: 7, accessibility: 8 }, words: ['heartbreak', 'melancholic', 'romantic', 'vulnerable', 'sad'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLXTamMNqlNmg', spotifyPlaylist: 'https://open.spotify.com/playlist/3dP40tDl9y2qMTttceygLE' },
+  { group: 'Heart stuff', label: 'Falling in Love', blurb: 'Warm, open-hearted and a little bit giddy.', target: { energy: 6, darkness: 2, accessibility: 8 }, words: ['romantic', 'joyful', 'warm', 'dreamy', 'euphoric'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLVmAQ-_0-4ss', spotifyPlaylist: 'https://open.spotify.com/playlist/3g0S4GpE0RgZpkcSXUVvNI' },
+  { group: 'Heart stuff', label: '"Bedtime" 😉', blurb: 'Low-lit, intimate and decidedly not about going straight to sleep.', target: { energy: 4, aggression: 1, darkness: 5, rhythm: 6, accessibility: 8 }, words: ['sensual', 'sultry', 'intimate', 'romantic', 'r&b', 'neo-soul', 'trip hop', 'downtempo'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLdK4ir7TI1-E', spotifyPlaylist: 'https://open.spotify.com/playlist/2BTHOrlVO5IBTLSabjfBrO' },
+  { group: 'Heart stuff', label: 'Moping', blurb: 'Low-energy company for leaning into it.', target: { energy: 2, darkness: 7, accessibility: 7 }, words: ['melancholic', 'sad', 'intimate', 'reflective', 'slow'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLdAlAvVNzOPs', spotifyPlaylist: 'https://open.spotify.com/playlist/51Ru63cQEuN6uErS2iKHWD' },
+  { group: 'Heart stuff', label: 'Brooding', blurb: 'Dark, tense and deliberate rather than defeated.', target: { energy: 5, aggression: 5, darkness: 9 }, words: ['brooding', 'dark', 'ominous', 'tense', 'gothic'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLcHkTY80cb6Y', spotifyPlaylist: 'https://open.spotify.com/playlist/2GeU36D63Nc5Lv7Gtkey9h' },
+  { group: 'Change the energy', label: 'Wake Up', blurb: 'Immediate, bright and hard to sleep through.', target: { energy: 9, rhythm: 8, accessibility: 8 }, words: ['energetic', 'urgent', 'bright', 'punk', 'dance'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLLYqMET6grw0', spotifyPlaylist: 'https://open.spotify.com/playlist/2R4BfI4Cm1jCTiLjQf3MTQ' },
+  { group: 'Change the energy', label: 'Calm Down', blurb: 'Soft edges, low intensity and room to breathe.', target: { energy: 2, aggression: 1, darkness: 3 }, words: ['calm', 'serene', 'ambient', 'gentle', 'minimal'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLb_wPPgL3O6M', spotifyPlaylist: 'https://open.spotify.com/playlist/24PlChrzkAXye37T6pp1bT' },
+  { group: 'Change the energy', label: 'Get Hyped', blurb: 'Big energy, momentum and zero interest in subtlety.', target: { energy: 10, aggression: 8, rhythm: 9 }, words: ['hype', 'intense', 'triumphant', 'rap', 'metal'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLftVXCtkJKmw', spotifyPlaylist: 'https://open.spotify.com/playlist/6GlldHLXteTEiBKx3pTO5k' },
+  { group: 'Dancing', label: 'Dancing… In The Pit', blurb: 'Heavy, physical and built for the part where standing still is no longer an option.', target: { energy: 10, aggression: 10, darkness: 7, rhythm: 9, accessibility: 6, organic_electronic: 2 }, genres: ['Punk / Hardcore', 'Metal', 'Rock'], words: ['hardcore', 'metalcore', 'post-hardcore', 'crossover thrash', 'nu metal', 'mosh', 'breakdown', 'heavy', 'aggressive'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLectVW8n-XR0', spotifyPlaylist: 'https://open.spotify.com/playlist/132GxRl7lrvqgGnFeubZed', strictGenre: true },
+  { group: 'Dancing', label: 'Dancing… to Pop', blurb: 'Hooks first: glossy, immediate and properly danceable.', target: { energy: 8, rhythm: 9, accessibility: 9 }, genres: ['Pop'], words: ['dance-pop', 'electropop', 'synthpop', 'disco'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLFYfnyjPL6ZI', spotifyPlaylist: 'https://open.spotify.com/playlist/1iB2W0wICxf9IP9Zu9WEIG' },
+  { group: 'Dancing', label: 'Dancing… to Funk & Disco', blurb: 'Basslines, groove and a bit of sparkle.', target: { energy: 8, rhythm: 10, accessibility: 8 }, words: ['funk', 'disco', 'boogie', 'soul'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLAU_yWQtXAas', spotifyPlaylist: 'https://open.spotify.com/playlist/17IzkXGncXT1K0jBfvKB4E' },
+  { group: 'Dancing', label: 'Dancing… to House', blurb: 'Four-on-the-floor movement from warm to euphoric.', target: { energy: 8, rhythm: 10, organic_electronic: 9 }, words: ['house', 'garage', 'club', 'dance'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLDABf280JPpA', spotifyPlaylist: 'https://open.spotify.com/playlist/6zOBDliO0Y3vnt27aGkIYJ' },
 ];
 
 function musicForScore(a, preset) { return profilePresetScore(a, preset); }
@@ -728,7 +737,7 @@ function musicForAlphaKey(label) {
   return String(label || '').replace(/^[^A-Za-z0-9]+/, '').toLocaleLowerCase();
 }
 function musicForDisplayGroup(preset) {
-  if (['"Bedtime" 😉', 'Drifting Off', 'Getting Hyped', 'Need to Calm Down', 'Need to Wake Up'].includes(preset.label)) return 'Energy';
+  if (['"Bedtime" 😉', 'Drifting Off', 'Get Hyped', 'Calm Down', 'Wake Up'].includes(preset.label)) return 'Energy';
   const map = {
     'ATM Playlists': 'ATM Mixtapes',
     'Road Trips': 'Road Trip',
@@ -755,7 +764,7 @@ function musicFor() {
     const groupPresets = musicForPresets.filter(p => musicForDisplayGroup(p) === group).sort((a, b) => musicForAlphaKey(a.label).localeCompare(musicForAlphaKey(b.label), undefined, { numeric: true }));
     const playlistGroup = groupPresets.some(hasPlaylist);
     const selectedInGroup = groupPresets.some(p => p.label === selectedLabel);
-    return `<details class="occasion-group ${playlistGroup ? 'roadtrip-group' : ''}" data-occasion-group="${attr(group)}" ${(playlistGroup || selectedInGroup) ? 'open' : ''}><summary class="occasion-group-head"><div><div class="eyebrow">${esc(group)}</div><small>${groupPresets.length} option${groupPresets.length === 1 ? '' : 's'}</small></div><div class="occasion-summary-meta">${playlistGroup ? '<span class="roadtrip-service">YouTube Music + Spotify</span>' : '<span class="recommendation-service">ATM recommendations</span>'}<i>⌄</i></div></summary><div class="occasion-grid occasion-group-grid">${groupPresets.map(p => `<button class="occasion-card ${selectedLabel === p.label ? 'active' : ''}" data-occasion="${attr(p.label)}"><b>${esc(p.label)}</b><span>${esc(p.blurb)}</span>${hasPlaylist(p) ? '<small class="occasion-playlist-note">▶ ATM mixtape · YouTube + Spotify</small>' : ''}</button>`).join('')}</div></details>`;
+    return `<details class="occasion-group ${playlistGroup ? 'roadtrip-group' : ''}" data-occasion-group="${attr(group)}" ${selectedInGroup ? 'open' : ''}><summary class="occasion-group-head"><div><div class="eyebrow">${esc(group)}</div><small>${groupPresets.length} option${groupPresets.length === 1 ? '' : 's'}</small></div><div class="occasion-summary-meta">${playlistGroup ? '<span class="roadtrip-service">YouTube Music + Spotify</span>' : '<span class="recommendation-service">ATM recommendations</span>'}<i>⌄</i></div></summary><div class="occasion-grid occasion-group-grid">${groupPresets.map(p => `<button class="occasion-card ${selectedLabel === p.label ? 'active' : ''}" data-occasion="${attr(p.label)}"><b>${esc(p.label)}</b><span>${esc(p.blurb)}</span>${hasPlaylist(p) ? '<small class="occasion-playlist-note">▶ ATM mixtape · YouTube + Spotify</small>' : ''}</button>`).join('')}</div></details>`;
   }).join('');
   let results = '';
   if (selected) {
@@ -876,7 +885,7 @@ async function restorePersonalData(file) {
       state.vibePreset = data.vibe.preset || '';
     }
     if (data.musicFor) {
-      state.musicForPreset = data.musicFor.preset || '';
+      state.musicForPreset = legacyMusicForLabels[data.musicFor.preset] || data.musicFor.preset || '';
       state.musicForMode = data.musicFor.mode || 'ranked';
       state.musicForShuffleSeed = 0;
     }
