@@ -1,0 +1,4199 @@
+{
+  "scope": "315 additions since v0.16.3; triage of all records, not a completed listening audit",
+  "added_count": 315,
+  "shared_vector_artists": 195,
+  "shared_vector_groups": 44,
+  "corrections": [
+    {
+      "artist": "Brandee Younger",
+      "field": "family3",
+      "before": "uk_jazz",
+      "after": "soul_jazz",
+      "rationale": "Official artist biography supports spiritual jazz, R&B and hip-hop; UK-jazz family was a template artefact. https://brandeeyounger.com/"
+    },
+    {
+      "artist": "Terence Blanchard",
+      "field": "similar_to",
+      "before": "Wynton Marsalis, Donald Harrison, Ambrose Akinmusire, Spike Lee",
+      "after": "Wynton Marsalis, Donald Harrison, Ambrose Akinmusire",
+      "rationale": "Remove director, album title or unsupported artist entity from artist recommendations."
+    },
+    {
+      "artist": "The Tony Williams Lifetime",
+      "field": "similar_to",
+      "before": "Miles Davis, Mahavishnu Orchestra, Soft Machine, Emergency!",
+      "after": "Miles Davis, Mahavishnu Orchestra, Soft Machine",
+      "rationale": "Remove director, album title or unsupported artist entity from artist recommendations."
+    },
+    {
+      "artist": "Makaya McCraven",
+      "field": "similar_to",
+      "before": "Jeff Parker, J Dilla, International Anthem Ensemble, Karriem Riggins",
+      "after": "Jeff Parker, J Dilla, Karriem Riggins",
+      "rationale": "Remove director, album title or unsupported artist entity from artist recommendations."
+    },
+    {
+      "artist": "Bolt Thrower",
+      "field": "style_tags",
+      "before": "Death Metal, War Metal, Old-School Death Metal, Death Doom",
+      "after": "Death Metal, Old-School Death Metal, British Death Metal, Death Doom",
+      "rationale": "War-themed lyrics do not make this the black/death subgenre War Metal."
+    },
+    {
+      "artist": "Mayhem",
+      "field": "style_tags",
+      "before": "Norwegian Black Metal, Extreme Metal, Avant-Garde Black Metal, First-Wave Black Metal",
+      "after": "Norwegian Black Metal, Black Metal, Avant-Garde Black Metal, Extreme Metal",
+      "rationale": "Remove misleading First-Wave Black Metal tag from a second-wave reference act."
+    },
+    {
+      "artist": "Bix Beiderbecke",
+      "field": "style_tags",
+      "before": "Early Jazz, Cool Jazz, Cornet Jazz, Chicago Jazz",
+      "after": "Early Jazz, Chicago Jazz, Cornet Jazz, Traditional Jazz",
+      "rationale": "Cool-jazz influence is not the same as membership of the later cool-jazz style."
+    },
+    {
+      "artist": "Bix Beiderbecke",
+      "field": "family2",
+      "before": "cool_jazz",
+      "after": "traditional_jazz",
+      "rationale": "Align era and style; influence alone does not justify cool-jazz classification."
+    },
+    {
+      "artist": "Bix Beiderbecke",
+      "field": "family3",
+      "before": "west_coast_jazz",
+      "after": "chicago_jazz",
+      "rationale": "Replace anachronistic West Coast jazz family."
+    },
+    {
+      "artist": "Lester Young",
+      "field": "family3",
+      "before": "west_coast_jazz",
+      "after": "swing",
+      "rationale": "Remove West Coast template classification; swing is the central recorded context."
+    },
+    {
+      "artist": "Gil Evans",
+      "field": "family3",
+      "before": "west_coast_jazz",
+      "after": "orchestral_jazz",
+      "rationale": "Orchestral arranging is a better defining family than West Coast jazz."
+    },
+    {
+      "artist": "Modern Jazz Quartet",
+      "field": "family3",
+      "before": "west_coast_jazz",
+      "after": "chamber_jazz",
+      "rationale": "Chamber and third-stream identity is more accurate than West Coast geography."
+    },
+    {
+      "artist": "Johnny Winter",
+      "field": "atmosphere",
+      "before": "Albino-Texan fire, rapid lead guitar and rough vocals attacking classic blues forms",
+      "after": "Rapid electric lead guitar, forceful slide playing and rough vocals attacking classic blues forms.",
+      "rationale": "Remove irrelevant physical-characteristic wording."
+    }
+  ],
+  "limitations": [
+    "No bulk rescoring was performed merely to make vectors unique.",
+    "Retained artists have not all been externally reverified.",
+    "Distinct vectors alone do not establish musical accuracy.",
+    "Specificity is a conservative ranking tie-break estimate, not a confidence probability."
+  ],
+  "artists": [
+    {
+      "artist": "A Guy Called Gerald",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Actress",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Agnostic Front",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Earth Crisis",
+        "Integrity"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Albert Collins",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Johnny Winter",
+        "Stevie Ray Vaughan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Alfa Mist",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Makaya McCraven",
+        "Robert Glasper"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Alison Krauss",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Ambrose Akinmusire",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Henry Threadgill",
+        "James Brandon Lewis",
+        "Mary Halvorson",
+        "The Necks"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Amon Düül II",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Andrew Hill",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Art Ensemble of Chicago",
+        "Cecil Taylor",
+        "Evan Parker",
+        "Peter Brötzmann",
+        "Sam Rivers"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Andy Stott",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Anne Briggs",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Anouar Brahem",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Jan Garbarek",
+        "Nduduzo Makhathini",
+        "Tigran Hamasyan",
+        "Tord Gustavsen"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Anti Cimex",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Crass",
+        "Cursed",
+        "Discharge",
+        "G.I.S.M.",
+        "His Hero Is Gone",
+        "Tragedy"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Art Ensemble of Chicago",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Andrew Hill",
+        "Cecil Taylor",
+        "Evan Parker",
+        "Peter Brötzmann",
+        "Sam Rivers"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Art Tatum",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Earl Hines",
+        "Fats Waller",
+        "Oscar Peterson"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Ash Ra Tempel",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "At the Gates",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bolt Thrower",
+        "Entombed",
+        "Immolation",
+        "Incantation",
+        "Obituary",
+        "Pig Destroyer",
+        "Suffocation"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Badfinger",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Bark Psychosis",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Bedhead",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Benny Goodman",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Cab Calloway",
+        "Coleman Hawkins",
+        "Fletcher Henderson",
+        "Glenn Miller"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Bert Jansch",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Big Black",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Big Joe Turner",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Professor Longhair"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Big Joe Williams",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Blind Lemon Jefferson",
+        "Furry Lewis",
+        "Scrapper Blackwell",
+        "Sleepy John Estes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Big Star",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Bill Evans",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bix Beiderbecke",
+        "Gerry Mulligan",
+        "Gil Evans",
+        "Lennie Tristano",
+        "Lester Young",
+        "Modern Jazz Quartet",
+        "Paul Desmond"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Bill Frisell",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "John Scofield",
+        "Pat Metheny"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Bill Monroe",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Billy Cobham",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Chick Corea",
+        "Jaco Pastorius",
+        "Mahavishnu Orchestra",
+        "Return to Forever",
+        "The Tony Williams Lifetime",
+        "Weather Report"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Billy Strings",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Binker and Moses",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Emma-Jean Thackray",
+        "Ezra Collective",
+        "Joe Armon-Jones",
+        "Moses Boyd",
+        "Nérija",
+        "Theon Cross",
+        "Yussef Dayes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Biosphere",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Bix Beiderbecke",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bill Evans",
+        "Gerry Mulligan",
+        "Gil Evans",
+        "Lennie Tristano",
+        "Lester Young",
+        "Modern Jazz Quartet",
+        "Paul Desmond"
+      ],
+      "corrections": [
+        {
+          "artist": "Bix Beiderbecke",
+          "field": "style_tags",
+          "before": "Early Jazz, Cool Jazz, Cornet Jazz, Chicago Jazz",
+          "after": "Early Jazz, Chicago Jazz, Cornet Jazz, Traditional Jazz",
+          "rationale": "Cool-jazz influence is not the same as membership of the later cool-jazz style."
+        },
+        {
+          "artist": "Bix Beiderbecke",
+          "field": "family2",
+          "before": "cool_jazz",
+          "after": "traditional_jazz",
+          "rationale": "Align era and style; influence alone does not justify cool-jazz classification."
+        },
+        {
+          "artist": "Bix Beiderbecke",
+          "field": "family3",
+          "before": "west_coast_jazz",
+          "after": "chicago_jazz",
+          "rationale": "Replace anachronistic West Coast jazz family."
+        }
+      ]
+    },
+    {
+      "artist": "Black Flag",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Circle Jerks",
+        "Minor Threat",
+        "Poison Idea",
+        "Siege",
+        "The Exploited"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Blind Blake",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Blind Boy Fuller",
+        "Etta Baker",
+        "Mississippi John Hurt",
+        "Reverend Gary Davis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Blind Boy Fuller",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Blind Blake",
+        "Etta Baker",
+        "Mississippi John Hurt",
+        "Reverend Gary Davis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Blind Lemon Jefferson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Big Joe Williams",
+        "Furry Lewis",
+        "Scrapper Blackwell",
+        "Sleepy John Estes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Bobby Bland",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Etta James",
+        "Robert Cray"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Bolt Thrower",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "At the Gates",
+        "Entombed",
+        "Immolation",
+        "Incantation",
+        "Obituary",
+        "Pig Destroyer",
+        "Suffocation"
+      ],
+      "corrections": [
+        {
+          "artist": "Bolt Thrower",
+          "field": "style_tags",
+          "before": "Death Metal, War Metal, Old-School Death Metal, Death Doom",
+          "after": "Death Metal, Old-School Death Metal, British Death Metal, Death Doom",
+          "rationale": "War-themed lyrics do not make this the black/death subgenre War Metal."
+        }
+      ]
+    },
+    {
+      "artist": "Bonnie Raitt",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Charlie Musselwhite",
+        "Gary Clark Jr.",
+        "Rory Gallagher",
+        "Taj Mahal"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Booker Little",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Clifford Brown",
+        "Dexter Gordon",
+        "Donald Byrd",
+        "Freddie Hubbard",
+        "Grant Green",
+        "Hank Mobley",
+        "Jackie McLean",
+        "Joe Henderson",
+        "Lee Morgan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Boredoms",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Brad Mehldau",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Branford Marsalis",
+        "Chief Xian aTunde Adjuah",
+        "Esperanza Spalding",
+        "Immanuel Wilkins",
+        "Jason Moran",
+        "Joshua Redman",
+        "Kenny Garrett",
+        "Terence Blanchard",
+        "Wynton Marsalis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Brandee Younger",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Kokoroko",
+        "Matthew Halsall",
+        "Nubya Garcia",
+        "SEED Ensemble",
+        "Shabaka Hutchings"
+      ],
+      "corrections": [
+        {
+          "artist": "Brandee Younger",
+          "field": "family3",
+          "before": "uk_jazz",
+          "after": "soul_jazz",
+          "rationale": "Official artist biography supports spiritual jazz, R&B and hip-hop; UK-jazz family was a template artefact. https://brandeeyounger.com/"
+        }
+      ]
+    },
+    {
+      "artist": "Branford Marsalis",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brad Mehldau",
+        "Chief Xian aTunde Adjuah",
+        "Esperanza Spalding",
+        "Immanuel Wilkins",
+        "Jason Moran",
+        "Joshua Redman",
+        "Kenny Garrett",
+        "Terence Blanchard",
+        "Wynton Marsalis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Bud Powell",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Mary Lou Williams",
+        "Max Roach"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Bukka White",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Kokomo Arnold",
+        "Tommy Johnson"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Buzzcocks",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Cock Sparrer",
+        "The Germs",
+        "X-Ray Spex"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Cab Calloway",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Benny Goodman",
+        "Coleman Hawkins",
+        "Fletcher Henderson",
+        "Glenn Miller"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Candlemass",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Saint Vitus"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Caravan",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "ambiguous_artist_name_check_artwork_and_search"
+      ],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Cardiacs",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Carolina Chocolate Drops",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Cave In",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Helmet"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Cecil Taylor",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Andrew Hill",
+        "Art Ensemble of Chicago",
+        "Evan Parker",
+        "Peter Brötzmann",
+        "Sam Rivers"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "CeDell Davis",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Jessie Mae Hemphill",
+        "Junior Kimbrough",
+        "Mississippi Fred McDowell",
+        "R.L. Burnside",
+        "T-Model Ford"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Celtic Frost",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Emperor",
+        "Mayhem",
+        "Venom"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Cerrone",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Charlie Musselwhite",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bonnie Raitt",
+        "Gary Clark Jr.",
+        "Rory Gallagher",
+        "Taj Mahal"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Chick Corea",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Billy Cobham",
+        "Jaco Pastorius",
+        "Mahavishnu Orchestra",
+        "Return to Forever",
+        "The Tony Williams Lifetime",
+        "Weather Report"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Chief Xian aTunde Adjuah",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "alias_search_and_project_scope_review",
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brad Mehldau",
+        "Branford Marsalis",
+        "Esperanza Spalding",
+        "Immanuel Wilkins",
+        "Jason Moran",
+        "Joshua Redman",
+        "Kenny Garrett",
+        "Terence Blanchard",
+        "Wynton Marsalis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Circle Jerks",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Black Flag",
+        "Minor Threat",
+        "Poison Idea",
+        "Siege",
+        "The Exploited"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Clifford Brown",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Booker Little",
+        "Dexter Gordon",
+        "Donald Byrd",
+        "Freddie Hubbard",
+        "Grant Green",
+        "Hank Mobley",
+        "Jackie McLean",
+        "Joe Henderson",
+        "Lee Morgan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Cock Sparrer",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Buzzcocks",
+        "The Germs",
+        "X-Ray Spex"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Codeine",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Coil",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Coleman Hawkins",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Benny Goodman",
+        "Cab Calloway",
+        "Fletcher Henderson",
+        "Glenn Miller"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Comsat Angels",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Crass",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Anti Cimex",
+        "Cursed",
+        "Discharge",
+        "G.I.S.M.",
+        "His Hero Is Gone",
+        "Tragedy"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Cursed",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "ambiguous_artist_name_check_artwork_and_search"
+      ],
+      "shared_with": [
+        "Anti Cimex",
+        "Crass",
+        "Discharge",
+        "G.I.S.M.",
+        "His Hero Is Gone",
+        "Tragedy"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "D.R.I.",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Exodus",
+        "Power Trip",
+        "Suicidal Tendencies",
+        "Testament"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Descendents",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Jawbreaker",
+        "Propagandhi"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Dexter Gordon",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Booker Little",
+        "Clifford Brown",
+        "Donald Byrd",
+        "Freddie Hubbard",
+        "Grant Green",
+        "Hank Mobley",
+        "Jackie McLean",
+        "Joe Henderson",
+        "Lee Morgan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Digital Mystikz",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Discharge",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Anti Cimex",
+        "Crass",
+        "Cursed",
+        "G.I.S.M.",
+        "His Hero Is Gone",
+        "Tragedy"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "DJ Sprinkles",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Django Reinhardt",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Stéphane Grappelli"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Don Cherry",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Gato Barbieri"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Don Williams",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Donald Byrd",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Booker Little",
+        "Clifford Brown",
+        "Dexter Gordon",
+        "Freddie Hubbard",
+        "Grant Green",
+        "Hank Mobley",
+        "Jackie McLean",
+        "Joe Henderson",
+        "Lee Morgan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Dopplereffekt",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Dwight Yoakam",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Earl Hines",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Art Tatum",
+        "Fats Waller",
+        "Oscar Peterson"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Earl Hooker",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Luther Allison",
+        "Magic Sam"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Earth Crisis",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Agnostic Front",
+        "Integrity"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Emma-Jean Thackray",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Binker and Moses",
+        "Ezra Collective",
+        "Joe Armon-Jones",
+        "Moses Boyd",
+        "Nérija",
+        "Theon Cross",
+        "Yussef Dayes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Emperor",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Celtic Frost",
+        "Mayhem",
+        "Venom"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Entombed",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "At the Gates",
+        "Bolt Thrower",
+        "Immolation",
+        "Incantation",
+        "Obituary",
+        "Pig Destroyer",
+        "Suffocation"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Ernest Tubb",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Esbjörn Svensson Trio",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "alias_search_and_project_scope_review",
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "GoGo Penguin"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Esperanza Spalding",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brad Mehldau",
+        "Branford Marsalis",
+        "Chief Xian aTunde Adjuah",
+        "Immanuel Wilkins",
+        "Jason Moran",
+        "Joshua Redman",
+        "Kenny Garrett",
+        "Terence Blanchard",
+        "Wynton Marsalis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Etta Baker",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Blind Blake",
+        "Blind Boy Fuller",
+        "Mississippi John Hurt",
+        "Reverend Gary Davis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Etta James",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bobby Bland",
+        "Robert Cray"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Evan Parker",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Andrew Hill",
+        "Art Ensemble of Chicago",
+        "Cecil Taylor",
+        "Peter Brötzmann",
+        "Sam Rivers"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Exodus",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "D.R.I.",
+        "Power Trip",
+        "Suicidal Tendencies",
+        "Testament"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Eyehategod",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "High on Fire"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Ezra Collective",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Binker and Moses",
+        "Emma-Jean Thackray",
+        "Joe Armon-Jones",
+        "Moses Boyd",
+        "Nérija",
+        "Theon Cross",
+        "Yussef Dayes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Fats Waller",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Art Tatum",
+        "Earl Hines",
+        "Oscar Peterson"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Faust",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Fennesz",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Flatt & Scruggs",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Fletcher Henderson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Benny Goodman",
+        "Cab Calloway",
+        "Coleman Hawkins",
+        "Glenn Miller"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Freddie Hubbard",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Booker Little",
+        "Clifford Brown",
+        "Dexter Gordon",
+        "Donald Byrd",
+        "Grant Green",
+        "Hank Mobley",
+        "Jackie McLean",
+        "Joe Henderson",
+        "Lee Morgan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Furry Lewis",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Big Joe Williams",
+        "Blind Lemon Jefferson",
+        "Scrapper Blackwell",
+        "Sleepy John Estes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "G.I.S.M.",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Anti Cimex",
+        "Crass",
+        "Cursed",
+        "Discharge",
+        "His Hero Is Gone",
+        "Tragedy"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Galaxie 500",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Gary Clark Jr.",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bonnie Raitt",
+        "Charlie Musselwhite",
+        "Rory Gallagher",
+        "Taj Mahal"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Gato Barbieri",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Don Cherry"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Gentle Giant",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Gerry Mulligan",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bill Evans",
+        "Bix Beiderbecke",
+        "Gil Evans",
+        "Lennie Tristano",
+        "Lester Young",
+        "Modern Jazz Quartet",
+        "Paul Desmond"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Gil Evans",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bill Evans",
+        "Bix Beiderbecke",
+        "Gerry Mulligan",
+        "Lennie Tristano",
+        "Lester Young",
+        "Modern Jazz Quartet",
+        "Paul Desmond"
+      ],
+      "corrections": [
+        {
+          "artist": "Gil Evans",
+          "field": "family3",
+          "before": "west_coast_jazz",
+          "after": "orchestral_jazz",
+          "rationale": "Orchestral arranging is a better defining family than West Coast jazz."
+        }
+      ]
+    },
+    {
+      "artist": "Gillian Welch",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Glassjaw",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "NoMeansNo",
+        "Rites of Spring"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Glenn Miller",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Benny Goodman",
+        "Cab Calloway",
+        "Coleman Hawkins",
+        "Fletcher Henderson"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "GoGo Penguin",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Esbjörn Svensson Trio"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Gong",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Gordon Lightfoot",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Grant Green",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Booker Little",
+        "Clifford Brown",
+        "Dexter Gordon",
+        "Donald Byrd",
+        "Freddie Hubbard",
+        "Hank Mobley",
+        "Jackie McLean",
+        "Joe Henderson",
+        "Lee Morgan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Grooverider",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Guy Clark",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Hank Mobley",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Booker Little",
+        "Clifford Brown",
+        "Dexter Gordon",
+        "Donald Byrd",
+        "Freddie Hubbard",
+        "Grant Green",
+        "Jackie McLean",
+        "Joe Henderson",
+        "Lee Morgan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Hank Snow",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Haruomi Hosono",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Helmet",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Cave In"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Henry Threadgill",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Ambrose Akinmusire",
+        "James Brandon Lewis",
+        "Mary Halvorson",
+        "The Necks"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "High on Fire",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Eyehategod"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Hiromi",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "His Hero Is Gone",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Anti Cimex",
+        "Crass",
+        "Cursed",
+        "Discharge",
+        "G.I.S.M.",
+        "Tragedy"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Hound Dog Taylor",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "James Cotton",
+        "Junior Wells",
+        "Koko Taylor",
+        "Otis Spann",
+        "Pinetop Perkins",
+        "Tampa Red",
+        "Willie Dixon"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Immanuel Wilkins",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brad Mehldau",
+        "Branford Marsalis",
+        "Chief Xian aTunde Adjuah",
+        "Esperanza Spalding",
+        "Jason Moran",
+        "Joshua Redman",
+        "Kenny Garrett",
+        "Terence Blanchard",
+        "Wynton Marsalis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Immolation",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "At the Gates",
+        "Bolt Thrower",
+        "Entombed",
+        "Incantation",
+        "Obituary",
+        "Pig Destroyer",
+        "Suffocation"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Incantation",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "At the Gates",
+        "Bolt Thrower",
+        "Entombed",
+        "Immolation",
+        "Obituary",
+        "Pig Destroyer",
+        "Suffocation"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Integrity",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Agnostic Front",
+        "Earth Crisis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Iris DeMent",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Isao Tomita",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Jackie McLean",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Booker Little",
+        "Clifford Brown",
+        "Dexter Gordon",
+        "Donald Byrd",
+        "Freddie Hubbard",
+        "Grant Green",
+        "Hank Mobley",
+        "Joe Henderson",
+        "Lee Morgan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Jaco Pastorius",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Billy Cobham",
+        "Chick Corea",
+        "Mahavishnu Orchestra",
+        "Return to Forever",
+        "The Tony Williams Lifetime",
+        "Weather Report"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "James Brandon Lewis",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Ambrose Akinmusire",
+        "Henry Threadgill",
+        "Mary Halvorson",
+        "The Necks"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "James Cotton",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Hound Dog Taylor",
+        "Junior Wells",
+        "Koko Taylor",
+        "Otis Spann",
+        "Pinetop Perkins",
+        "Tampa Red",
+        "Willie Dixon"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Jan Garbarek",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Anouar Brahem",
+        "Nduduzo Makhathini",
+        "Tigran Hamasyan",
+        "Tord Gustavsen"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Jason Isbell",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Jason Moran",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brad Mehldau",
+        "Branford Marsalis",
+        "Chief Xian aTunde Adjuah",
+        "Esperanza Spalding",
+        "Immanuel Wilkins",
+        "Joshua Redman",
+        "Kenny Garrett",
+        "Terence Blanchard",
+        "Wynton Marsalis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Jawbreaker",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Descendents",
+        "Propagandhi"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Jelly Roll Morton",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "King Oliver",
+        "Sidney Bechet"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Jessie Mae Hemphill",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "CeDell Davis",
+        "Junior Kimbrough",
+        "Mississippi Fred McDowell",
+        "R.L. Burnside",
+        "T-Model Ford"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Jim Croce",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Jimmy Reed",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Slim Harpo"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Joe Armon-Jones",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Binker and Moses",
+        "Emma-Jean Thackray",
+        "Ezra Collective",
+        "Moses Boyd",
+        "Nérija",
+        "Theon Cross",
+        "Yussef Dayes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Joe Henderson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Booker Little",
+        "Clifford Brown",
+        "Dexter Gordon",
+        "Donald Byrd",
+        "Freddie Hubbard",
+        "Grant Green",
+        "Hank Mobley",
+        "Jackie McLean",
+        "Lee Morgan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "John Renbourn",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "John Scofield",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bill Frisell",
+        "Pat Metheny"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Johnny Winter",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Albert Collins",
+        "Stevie Ray Vaughan"
+      ],
+      "corrections": [
+        {
+          "artist": "Johnny Winter",
+          "field": "atmosphere",
+          "before": "Albino-Texan fire, rapid lead guitar and rough vocals attacking classic blues forms",
+          "after": "Rapid electric lead guitar, forceful slide playing and rough vocals attacking classic blues forms.",
+          "rationale": "Remove irrelevant physical-characteristic wording."
+        }
+      ]
+    },
+    {
+      "artist": "Joshua Redman",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brad Mehldau",
+        "Branford Marsalis",
+        "Chief Xian aTunde Adjuah",
+        "Esperanza Spalding",
+        "Immanuel Wilkins",
+        "Jason Moran",
+        "Kenny Garrett",
+        "Terence Blanchard",
+        "Wynton Marsalis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Junior Kimbrough",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "CeDell Davis",
+        "Jessie Mae Hemphill",
+        "Mississippi Fred McDowell",
+        "R.L. Burnside",
+        "T-Model Ford"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Junior Wells",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Hound Dog Taylor",
+        "James Cotton",
+        "Koko Taylor",
+        "Otis Spann",
+        "Pinetop Perkins",
+        "Tampa Red",
+        "Willie Dixon"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Justin Townes Earle",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Karen Dalton",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Kenny Garrett",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brad Mehldau",
+        "Branford Marsalis",
+        "Chief Xian aTunde Adjuah",
+        "Esperanza Spalding",
+        "Immanuel Wilkins",
+        "Jason Moran",
+        "Joshua Redman",
+        "Terence Blanchard",
+        "Wynton Marsalis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Kerri Chandler",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "King Oliver",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Jelly Roll Morton",
+        "Sidney Bechet"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Koko Taylor",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Hound Dog Taylor",
+        "James Cotton",
+        "Junior Wells",
+        "Otis Spann",
+        "Pinetop Perkins",
+        "Tampa Red",
+        "Willie Dixon"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Kokomo Arnold",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Bukka White",
+        "Tommy Johnson"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Kokoroko",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brandee Younger",
+        "Matthew Halsall",
+        "Nubya Garcia",
+        "SEED Ensemble",
+        "Shabaka Hutchings"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Kris Kristofferson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Larry Heard",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Laurie Spiegel",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Lee Morgan",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Booker Little",
+        "Clifford Brown",
+        "Dexter Gordon",
+        "Donald Byrd",
+        "Freddie Hubbard",
+        "Grant Green",
+        "Hank Mobley",
+        "Jackie McLean",
+        "Joe Henderson"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Lennie Tristano",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bill Evans",
+        "Bix Beiderbecke",
+        "Gerry Mulligan",
+        "Gil Evans",
+        "Lester Young",
+        "Modern Jazz Quartet",
+        "Paul Desmond"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Leroy Carr",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Lonnie Johnson",
+        "Mamie Smith",
+        "Sippie Wallace",
+        "Victoria Spivey"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Lester Young",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bill Evans",
+        "Bix Beiderbecke",
+        "Gerry Mulligan",
+        "Gil Evans",
+        "Lennie Tristano",
+        "Modern Jazz Quartet",
+        "Paul Desmond"
+      ],
+      "corrections": [
+        {
+          "artist": "Lester Young",
+          "field": "family3",
+          "before": "west_coast_jazz",
+          "after": "swing",
+          "rationale": "Remove West Coast template classification; swing is the central recorded context."
+        }
+      ]
+    },
+    {
+      "artist": "Lonnie Johnson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Leroy Carr",
+        "Mamie Smith",
+        "Sippie Wallace",
+        "Victoria Spivey"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Lucinda Williams",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Luther Allison",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Earl Hooker",
+        "Magic Sam"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Lyle Lovett",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Magazine",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Magic Sam",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Earl Hooker",
+        "Luther Allison"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Mahavishnu Orchestra",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Billy Cobham",
+        "Chick Corea",
+        "Jaco Pastorius",
+        "Return to Forever",
+        "The Tony Williams Lifetime",
+        "Weather Report"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Makaya McCraven",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Alfa Mist",
+        "Robert Glasper"
+      ],
+      "corrections": [
+        {
+          "artist": "Makaya McCraven",
+          "field": "similar_to",
+          "before": "Jeff Parker, J Dilla, International Anthem Ensemble, Karriem Riggins",
+          "after": "Jeff Parker, J Dilla, Karriem Riggins",
+          "rationale": "Remove director, album title or unsupported artist entity from artist recommendations."
+        }
+      ]
+    },
+    {
+      "artist": "Mamie Smith",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Leroy Carr",
+        "Lonnie Johnson",
+        "Sippie Wallace",
+        "Victoria Spivey"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Manilla Road",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Marshall Jefferson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Marty Robbins",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Mary Chapin Carpenter",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Mary Halvorson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Ambrose Akinmusire",
+        "Henry Threadgill",
+        "James Brandon Lewis",
+        "The Necks"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Mary Lou Williams",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bud Powell",
+        "Max Roach"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Matthew Halsall",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brandee Younger",
+        "Kokoroko",
+        "Nubya Garcia",
+        "SEED Ensemble",
+        "Shabaka Hutchings"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Max Roach",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bud Powell",
+        "Mary Lou Williams"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Mayhem",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Celtic Frost",
+        "Emperor",
+        "Venom"
+      ],
+      "corrections": [
+        {
+          "artist": "Mayhem",
+          "field": "style_tags",
+          "before": "Norwegian Black Metal, Extreme Metal, Avant-Garde Black Metal, First-Wave Black Metal",
+          "after": "Norwegian Black Metal, Black Metal, Avant-Garde Black Metal, Extreme Metal",
+          "rationale": "Remove misleading First-Wave Black Metal tag from a second-wave reference act."
+        }
+      ]
+    },
+    {
+      "artist": "Minor Threat",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Black Flag",
+        "Circle Jerks",
+        "Poison Idea",
+        "Siege",
+        "The Exploited"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Minutemen",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Mission of Burma",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Mississippi Fred McDowell",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "CeDell Davis",
+        "Jessie Mae Hemphill",
+        "Junior Kimbrough",
+        "R.L. Burnside",
+        "T-Model Ford"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Mississippi John Hurt",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Blind Blake",
+        "Blind Boy Fuller",
+        "Etta Baker",
+        "Reverend Gary Davis"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Modern Jazz Quartet",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bill Evans",
+        "Bix Beiderbecke",
+        "Gerry Mulligan",
+        "Gil Evans",
+        "Lennie Tristano",
+        "Lester Young",
+        "Paul Desmond"
+      ],
+      "corrections": [
+        {
+          "artist": "Modern Jazz Quartet",
+          "field": "family3",
+          "before": "west_coast_jazz",
+          "after": "chamber_jazz",
+          "rationale": "Chamber and third-stream identity is more accurate than West Coast geography."
+        }
+      ]
+    },
+    {
+      "artist": "Mort Garson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Moses Boyd",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Binker and Moses",
+        "Emma-Jean Thackray",
+        "Ezra Collective",
+        "Joe Armon-Jones",
+        "Nérija",
+        "Theon Cross",
+        "Yussef Dayes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Nanci Griffith",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Nduduzo Makhathini",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Anouar Brahem",
+        "Jan Garbarek",
+        "Tigran Hamasyan",
+        "Tord Gustavsen"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Neko Case",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "New York Dolls",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Nickel Creek",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "NoMeansNo",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Glassjaw",
+        "Rites of Spring"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Nubya Garcia",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brandee Younger",
+        "Kokoroko",
+        "Matthew Halsall",
+        "SEED Ensemble",
+        "Shabaka Hutchings"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Nérija",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Binker and Moses",
+        "Emma-Jean Thackray",
+        "Ezra Collective",
+        "Joe Armon-Jones",
+        "Moses Boyd",
+        "Theon Cross",
+        "Yussef Dayes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Obituary",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "At the Gates",
+        "Bolt Thrower",
+        "Entombed",
+        "Immolation",
+        "Incantation",
+        "Pig Destroyer",
+        "Suffocation"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Orchid",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "ambiguous_artist_name_check_artwork_and_search",
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "The Locust"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Oscar Peterson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Art Tatum",
+        "Earl Hines",
+        "Fats Waller"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Otis Spann",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Hound Dog Taylor",
+        "James Cotton",
+        "Junior Wells",
+        "Koko Taylor",
+        "Pinetop Perkins",
+        "Tampa Red",
+        "Willie Dixon"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Oval",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Pan Sonic",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Pat Metheny",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bill Frisell",
+        "John Scofield"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Patrick Cowley",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Patty Griffin",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Patty Loveless",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Paul Desmond",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bill Evans",
+        "Bix Beiderbecke",
+        "Gerry Mulligan",
+        "Gil Evans",
+        "Lennie Tristano",
+        "Lester Young",
+        "Modern Jazz Quartet"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Pentangle",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Peter Brötzmann",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Andrew Hill",
+        "Art Ensemble of Chicago",
+        "Cecil Taylor",
+        "Evan Parker",
+        "Sam Rivers"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Pig Destroyer",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "At the Gates",
+        "Bolt Thrower",
+        "Entombed",
+        "Immolation",
+        "Incantation",
+        "Obituary",
+        "Suffocation"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Pinetop Perkins",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Hound Dog Taylor",
+        "James Cotton",
+        "Junior Wells",
+        "Koko Taylor",
+        "Otis Spann",
+        "Tampa Red",
+        "Willie Dixon"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Plaid",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Plastikman",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "alias_search_and_project_scope_review"
+      ],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Poison Idea",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Black Flag",
+        "Circle Jerks",
+        "Minor Threat",
+        "Siege",
+        "The Exploited"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Power Trip",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "D.R.I.",
+        "Exodus",
+        "Suicidal Tendencies",
+        "Testament"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Prefab Sprout",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Professor Longhair",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Big Joe Turner"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Propagandhi",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Descendents",
+        "Jawbreaker"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "R.L. Burnside",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "CeDell Davis",
+        "Jessie Mae Hemphill",
+        "Junior Kimbrough",
+        "Mississippi Fred McDowell",
+        "T-Model Ford"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Randy Travis",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Ray Price",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Red House Painters",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Return to Forever",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Billy Cobham",
+        "Chick Corea",
+        "Jaco Pastorius",
+        "Mahavishnu Orchestra",
+        "The Tony Williams Lifetime",
+        "Weather Report"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Reverend Gary Davis",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Blind Blake",
+        "Blind Boy Fuller",
+        "Etta Baker",
+        "Mississippi John Hurt"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Rhiannon Giddens",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Ricardo Villalobos",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Richard Hell and the Voidoids",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Richard Thompson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Ride",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Rites of Spring",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Glassjaw",
+        "NoMeansNo"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Robert Cray",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bobby Bland",
+        "Etta James"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Robert Glasper",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Alfa Mist",
+        "Makaya McCraven"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Rodney Crowell",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Roger Miller",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Rory Gallagher",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bonnie Raitt",
+        "Charlie Musselwhite",
+        "Gary Clark Jr.",
+        "Taj Mahal"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Rosanne Cash",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Saint Vitus",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Candlemass"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Sam Rivers",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Andrew Hill",
+        "Art Ensemble of Chicago",
+        "Cecil Taylor",
+        "Evan Parker",
+        "Peter Brötzmann"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Sandy Denny",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Scrapper Blackwell",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Big Joe Williams",
+        "Blind Lemon Jefferson",
+        "Furry Lewis",
+        "Sleepy John Estes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "SEED Ensemble",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brandee Younger",
+        "Kokoroko",
+        "Matthew Halsall",
+        "Nubya Garcia",
+        "Shabaka Hutchings"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Shabaka Hutchings",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "alias_search_and_project_scope_review",
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brandee Younger",
+        "Kokoroko",
+        "Matthew Halsall",
+        "Nubya Garcia",
+        "SEED Ensemble"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Shellac",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Shirley Collins",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Shy FX",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Sidney Bechet",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Jelly Roll Morton",
+        "King Oliver"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Siege",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Black Flag",
+        "Circle Jerks",
+        "Minor Threat",
+        "Poison Idea",
+        "The Exploited"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Sippie Wallace",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Leroy Carr",
+        "Lonnie Johnson",
+        "Mamie Smith",
+        "Victoria Spivey"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Sleepy John Estes",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Big Joe Williams",
+        "Blind Lemon Jefferson",
+        "Furry Lewis",
+        "Scrapper Blackwell"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Slim Harpo",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Jimmy Reed"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Son Volt",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Spacemen 3",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Stars of the Lid",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Steeleye Span",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Steve Coleman",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Vijay Iyer"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Steve Earle",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Stevie Ray Vaughan",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Albert Collins",
+        "Johnny Winter"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Stéphane Grappelli",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Django Reinhardt"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Suffocation",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "At the Gates",
+        "Bolt Thrower",
+        "Entombed",
+        "Immolation",
+        "Incantation",
+        "Obituary",
+        "Pig Destroyer"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Suicidal Tendencies",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "D.R.I.",
+        "Exodus",
+        "Power Trip",
+        "Testament"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "T-Model Ford",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "CeDell Davis",
+        "Jessie Mae Hemphill",
+        "Junior Kimbrough",
+        "Mississippi Fred McDowell",
+        "R.L. Burnside"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Taj Mahal",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bonnie Raitt",
+        "Charlie Musselwhite",
+        "Gary Clark Jr.",
+        "Rory Gallagher"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Tampa Red",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Hound Dog Taylor",
+        "James Cotton",
+        "Junior Wells",
+        "Koko Taylor",
+        "Otis Spann",
+        "Pinetop Perkins",
+        "Willie Dixon"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Terence Blanchard",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brad Mehldau",
+        "Branford Marsalis",
+        "Chief Xian aTunde Adjuah",
+        "Esperanza Spalding",
+        "Immanuel Wilkins",
+        "Jason Moran",
+        "Joshua Redman",
+        "Kenny Garrett",
+        "Wynton Marsalis"
+      ],
+      "corrections": [
+        {
+          "artist": "Terence Blanchard",
+          "field": "similar_to",
+          "before": "Wynton Marsalis, Donald Harrison, Ambrose Akinmusire, Spike Lee",
+          "after": "Wynton Marsalis, Donald Harrison, Ambrose Akinmusire",
+          "rationale": "Remove director, album title or unsupported artist entity from artist recommendations."
+        }
+      ]
+    },
+    {
+      "artist": "Testament",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "D.R.I.",
+        "Exodus",
+        "Power Trip",
+        "Suicidal Tendencies"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "The Birthday Party",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Chameleons",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Cramps",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Exploited",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Black Flag",
+        "Circle Jerks",
+        "Minor Threat",
+        "Poison Idea",
+        "Siege"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "The Feelies",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Germs",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Buzzcocks",
+        "Cock Sparrer",
+        "X-Ray Spex"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "The Gun Club",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Jayhawks",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Locust",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Orchid"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "The Necks",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Ambrose Akinmusire",
+        "Henry Threadgill",
+        "James Brandon Lewis",
+        "Mary Halvorson"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "The Orb",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Raincoats",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Slits",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Sonics",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Sound",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "ambiguous_artist_name_check_artwork_and_search"
+      ],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Stanley Brothers",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "The Tony Williams Lifetime",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Billy Cobham",
+        "Chick Corea",
+        "Jaco Pastorius",
+        "Mahavishnu Orchestra",
+        "Return to Forever",
+        "Weather Report"
+      ],
+      "corrections": [
+        {
+          "artist": "The Tony Williams Lifetime",
+          "field": "similar_to",
+          "before": "Miles Davis, Mahavishnu Orchestra, Soft Machine, Emergency!",
+          "after": "Miles Davis, Mahavishnu Orchestra, Soft Machine",
+          "rationale": "Remove director, album title or unsupported artist entity from artist recommendations."
+        }
+      ]
+    },
+    {
+      "artist": "Theon Cross",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Binker and Moses",
+        "Emma-Jean Thackray",
+        "Ezra Collective",
+        "Joe Armon-Jones",
+        "Moses Boyd",
+        "Nérija",
+        "Yussef Dayes"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Tigran Hamasyan",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Anouar Brahem",
+        "Jan Garbarek",
+        "Nduduzo Makhathini",
+        "Tord Gustavsen"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Tommy Johnson",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Bukka White",
+        "Kokomo Arnold"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Tord Gustavsen",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Anouar Brahem",
+        "Jan Garbarek",
+        "Nduduzo Makhathini",
+        "Tigran Hamasyan"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Tortoise",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Tragedy",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Anti Cimex",
+        "Crass",
+        "Cursed",
+        "Discharge",
+        "G.I.S.M.",
+        "His Hero Is Gone"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Uncle Tupelo",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Van der Graaf Generator",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Vangelis",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Vashti Bunyan",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Venom",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Celtic Frost",
+        "Emperor",
+        "Mayhem"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Victoria Spivey",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Leroy Carr",
+        "Lonnie Johnson",
+        "Mamie Smith",
+        "Sippie Wallace"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Vijay Iyer",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Steve Coleman"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Vince Gill",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Weather Report",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Billy Cobham",
+        "Chick Corea",
+        "Jaco Pastorius",
+        "Mahavishnu Orchestra",
+        "Return to Forever",
+        "The Tony Williams Lifetime"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "William Basinski",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Willie Dixon",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Hound Dog Taylor",
+        "James Cotton",
+        "Junior Wells",
+        "Koko Taylor",
+        "Otis Spann",
+        "Pinetop Perkins",
+        "Tampa Red"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "Wipers",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Wynton Marsalis",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Brad Mehldau",
+        "Branford Marsalis",
+        "Chief Xian aTunde Adjuah",
+        "Esperanza Spalding",
+        "Immanuel Wilkins",
+        "Jason Moran",
+        "Joshua Redman",
+        "Kenny Garrett",
+        "Terence Blanchard"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "X-Ray Spex",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [
+        "Buzzcocks",
+        "Cock Sparrer",
+        "The Germs"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "XTC",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Young Marble Giants",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [],
+      "shared_with": [],
+      "corrections": []
+    },
+    {
+      "artist": "Yussef Dayes",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "era_mid_equals_first_decade_review_reference_period"
+      ],
+      "shared_with": [
+        "Binker and Moses",
+        "Emma-Jean Thackray",
+        "Ezra Collective",
+        "Joe Armon-Jones",
+        "Moses Boyd",
+        "Nérija",
+        "Theon Cross"
+      ],
+      "corrections": []
+    },
+    {
+      "artist": "µ-Ziq",
+      "inclusion_assessment": "Retained provisionally; no evidence-based removal established in this triage",
+      "profile_status": "Editorial estimate; shared scores accepted",
+      "flags": [
+        "alias_search_and_project_scope_review"
+      ],
+      "shared_with": [],
+      "corrections": []
+    }
+  ],
+  "superseded_policy": "v0.17.9: shared numeric vectors alone do not trigger low confidence or ranking penalties. Concrete v0.17.8 corrections retained."
+}
