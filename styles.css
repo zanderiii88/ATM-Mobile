@@ -95,8 +95,8 @@
 @media(max-width:620px){.hero{min-height:218px}.hero-inner{max-width:68%}.whats-new-card{padding-right:44px}.occasion-group-head{flex-direction:row;align-items:center;gap:10px}.occasion-summary-meta{align-items:center}.roadtrip-service{white-space:normal;text-align:right}.occasion-group-grid{padding:12px}.advanced-vibe>summary{align-items:flex-start}}
 @media(max-width:430px){.hero{min-height:210px}.hero-inner{max-width:72%}.hero-home-copy{margin-top:14px;padding-top:11px}.hero-home-copy b{font-size:15px}.hero-home-copy span{font-size:9.5px}.occasion-group>summary{padding:13px}.occasion-summary-meta{gap:6px}.occasion-group-head .eyebrow{letter-spacing:.18em}.roadtrip-service,.recommendation-service{font-size:8px}.whats-new-card{padding-right:40px}}
 
-/* v0.16.1 final home banner overrides */
-.hero:before{background-size:100% 100%,auto 260%;background-position:center,80% 5%;background-repeat:no-repeat}
+/* v0.16.2 repaired panoramic home banner */
+.hero:before{background-size:100% 100%,cover;background-position:center,center;background-repeat:no-repeat}
 .hero-inner{max-width:52%}
-@media(max-width:620px){.hero:before{background-position:center,82% 5%}.hero-inner{max-width:56%}}
-@media(max-width:430px){.hero:before{background-position:center,84% 5%}.hero-inner{max-width:58%}.tagline{font-size:11px;letter-spacing:.07em}}
+@media(max-width:620px){.hero:before{background-position:center,center}.hero-inner{max-width:56%}}
+@media(max-width:430px){.hero:before{background-position:center,center}.hero-inner{max-width:58%}.tagline{font-size:11px;letter-spacing:.07em}}
