@@ -3,7 +3,7 @@ let byName = new Map();
 let deferredInstall = null;
 let vibeData = { genres: [], styles: [], moods: [] };
 
-const APP_VERSION = '0.16.2';
+const APP_VERSION = '0.16.3';
 const storeKey = 'atm-mobile-v01'; // Intentionally stable so personal data survives app updates.
 const artworkCacheKey = 'atm-mobile-artwork-v2';
 const ARTWORK_ENDPOINT = 'https://atm-artwork.zanderiii88.workers.dev/';
@@ -283,7 +283,7 @@ function lucky() {
 
 function layout(content, active = 'home') {
   const showBack = state.page !== 'home';
-  document.getElementById('app').innerHTML = `<main class="shell"><div class="topbar"><div class="topbar-left">${showBack ? '<button id="backBtn" class="top-icon" aria-label="Back">←</button>' : ''}<button class="brand-button" data-nav="home"><span class="mini-mark">Λ</span><span class="mini-name">ATM / Artists That Matter</span></button></div><div class="top-actions"><button class="top-icon" data-nav="guide" aria-label="Guide">?</button><button id="installTop" class="btn icon install">Install</button></div></div>${content}</main><nav class="bottomnav six">${nav('home', 'home', 'Home', active)}${nav('discover', 'match-people', 'Match', active)}${nav('vibe', 'vibe-wave', 'Vibes', active)}${nav('musicfor', 'music-cassette', 'Music For', active)}${nav('lucky', 'lucky', 'Lucky', active)}${nav('favourites', 'favourite', 'Favourites', active)}</nav>`;
+  document.getElementById('app').innerHTML = `<main class="shell"><div class="topbar"><div class="topbar-left">${showBack ? '<button id="backBtn" class="top-icon" aria-label="Back">←</button>' : ''}<button class="brand-button" data-nav="home"><span class="mini-mark">Λ</span><span class="mini-name">ATM / Artists That Matter</span></button></div><div class="top-actions"><button class="top-icon" data-nav="guide" aria-label="Guide">?</button><button id="installTop" class="btn icon install">Install</button></div></div>${content}</main><nav class="bottomnav six">${nav('home', 'home', 'Home', active)}${nav('discover', 'match-people', 'Match', active)}${nav('vibe', 'vibe-wave', 'Vibes', active)}${nav('musicfor', 'music-cassette', 'Mixtapes', active)}${nav('lucky', 'lucky', 'Lucky', active)}${nav('favourites', 'favourite', 'Favourites', active)}</nav>`;
   bindNav();
   const back = document.getElementById('backBtn');
   if (back) back.onclick = () => history.back();
@@ -304,7 +304,7 @@ function navIcon(kind) {
 }
 function homeIcon(kind) {
   if (kind === 'match') return `<svg class="home-svg match-svg" viewBox="0 0 64 32" aria-hidden="true"><circle cx="10" cy="8" r="5"></circle><path d="M2 27c0-7 3-11 8-11s8 4 8 11"></path><path d="M23 16h16m-5-5 5 5-5 5"></path><circle cx="54" cy="8" r="5"></circle><path d="M46 27c0-7 3-11 8-11s8 4 8 11"></path></svg>`;
-  if (kind === 'musicfor') return `<svg class="home-svg musicfor-svg" viewBox="0 0 112 36" aria-hidden="true"><g transform="translate(0 1)"><path d="M5 14h25v13H5z"></path><path d="M2 17h3m25 0h4"></path><path d="M9 11h17"></path><path d="M13 7c-2-2 1-3 0-5m6 5c-2-2 1-3 0-5m6 5c-2-2 1-3 0-5"></path><path d="M11 27v3m13-3v3"></path></g><g transform="translate(40 4)"><path d="M4 18h25l-3-9H12l-4 6z"></path><path d="M29 18h4"></path><circle cx="11" cy="22" r="3"></circle><circle cx="23" cy="22" r="3"></circle><path d="M9 9V6h12"></path></g><g transform="translate(79 4)"><path d="M2 22V8"></path><path d="M2 17h27v5H2"></path><path d="M8 17V9h11c5 0 8 2.5 8 8"></path><path d="M2 13h5"></path></g></svg>`;
+  if (kind === 'musicfor') return `<svg class="home-svg musicfor-svg" viewBox="0 0 64 36" aria-hidden="true"><rect x="8" y="4" width="48" height="28" rx="5"></rect><rect x="15" y="9" width="34" height="13" rx="2"></rect><circle cx="24" cy="15.5" r="4.5"></circle><circle cx="40" cy="15.5" r="4.5"></circle><path d="M28.5 15.5h7"></path><path d="M18 27h28"></path><path d="m23 27-3 5m21-5 3 5"></path></svg>`;
   if (kind === 'lucky') return `<span class="home-glyph" aria-hidden="true">✦</span>`;
   if (kind === 'vibe') return `<svg class="home-svg vibe-svg" viewBox="0 0 64 32" aria-hidden="true"><path d="M2 16c2 0 2-9 4-9s2 18 4 18 2-24 4-24 2 30 4 30 2-22 4-22 2 14 4 14 2-8 4-8 2 5 4 5"></path></svg>`;
   return `<svg class="home-svg vibe-svg" viewBox="0 0 64 32" aria-hidden="true"><path d="M2 16c2 0 2-9 4-9s2 18 4 18 2-24 4-24 2 30 4 30 2-22 4-22 2 14 4 14 2-8 4-8 2 5 4 5"></path></svg>`;
@@ -324,14 +324,14 @@ function homeCatalogueCard(count) {
 }
 function whatsNewCard() {
   if (state.whatsNewDismissed === APP_VERSION) return '';
-  return `<section class="section whats-new-card"><button id="dismissWhatsNew" class="whats-new-dismiss" type="button" aria-label="Dismiss What’s New">×</button><div class="whats-new-copy"><div class="whats-new-kicker"><span class="new-badge">NEW</span><span>Sharper ATM Mixtapes</span></div><h2>Four new playlist identities.</h2><p><b>Funk</b> and <b>Disco</b> now dance separately, while <b>Euroshock</b> and <b>Soft Focus</b> bring new electronic and dream-pop routes. Their recommendations now learn from the actual mixtape character.</p></div><button id="whatsNewPlaylists" class="btn primary whats-new-action">Explore Music For... →</button></section>`;
+  return `<section class="section whats-new-card"><button id="dismissWhatsNew" class="whats-new-dismiss" type="button" aria-label="Dismiss What’s New">×</button><div class="whats-new-copy"><div class="whats-new-kicker"><span class="new-badge">NEW</span><span>Sharper ATM Mixtapes</span></div><h2>Four new playlist identities.</h2><p><b>Funk</b> and <b>Disco</b> now dance separately, while <b>Euroshock</b> and <b>Soft Focus</b> bring new electronic and dream-pop routes. Their recommendations now learn from the actual mixtape character.</p></div><button id="whatsNewPlaylists" class="btn primary whats-new-action">Explore Mixtapes →</button></section>`;
 }
 
 function home() {
   const favs = Object.entries(prefs()).filter(([, p]) => p.favourite).map(([n]) => n);
   const explore = Object.entries(prefs()).filter(([, p]) => p.explore).map(([n]) => n);
   const recent = (state.recent || []).slice(0, 4);
-  const discovery = `${homeActionCard('discover', 'Artist Match', 'Start with an artist you love', 'Find the nearest musical neighbours', 'match')}${homeActionCard('lucky', 'I’m Feeling Lucky', 'Surprise me', 'Pick something from the catalogue', 'lucky')}${homeActionCard('vibe', 'Vibes', 'Explore by feel', 'Quick moods or advanced filters', 'vibe')}${homeActionCard('musicfor', 'Music For...', 'Choose the moment', 'Mixtapes, moments & moods', 'musicfor')}`;
+  const discovery = `${homeActionCard('discover', 'Artist Match', 'Start with an artist you love', 'Find the nearest musical neighbours', 'match')}${homeActionCard('lucky', 'I’m Feeling Lucky', 'Surprise me', 'Pick something from the catalogue', 'lucky')}${homeActionCard('vibe', 'Vibes', 'Explore by feel', 'Quick moods or advanced filters', 'vibe')}${homeActionCard('musicfor', 'Mixtapes', 'Choose the moment', 'Playlists, moments & moods', 'musicfor')}`;
   layout(`${hero()}${whatsNewCard()}<section class="section"><div class="eyebrow home-section-label">Discover & explore</div><div class="home-discovery-grid">${discovery}</div></section><section class="section"><div class="eyebrow home-section-label">Your lists</div><div class="home-list-grid">${homeListCard('explore', explore.length, 'Want To Explore', 'Your listening queue', 'explore')}${homeListCard('favourites', favs.length, 'Favourites', 'Your starred artists', 'favourite')}</div></section><section class="section"><div class="eyebrow home-section-label">Our catalogue</div>${homeCatalogueCard(artists.length)}</section><section class="section panel pad home-recent"><div class="eyebrow">Recently viewed</div>${recent.length ? recent.map(x => rowHtml(x.artist, humanAction(x.action))).join('') : '<div class="empty">Your recent artists will appear here.</div>'}</section>`, 'home');
   document.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openArtist(b.dataset.open));
   const whatsNew = document.getElementById('whatsNewPlaylists');
@@ -808,10 +808,10 @@ function musicFor() {
       const rankedRows = musicForResults(selected);
       const randomMode = state.musicForMode === 'random';
       const rows = randomMode ? seededShuffle(rankedRows, state.musicForShuffleSeed) : rankedRows;
-      results = `<section class="section music-results"><div class="result-head"><div><div class="eyebrow">Music for…</div><h2>${esc(selected.label)}</h2><p class="small">${esc(selected.blurb)} ${randomMode ? 'Randomiser is mixing the qualifying artists.' : 'Ranked by how closely each artist fits the ATM profile.'} Disliked artists are excluded.</p></div><div class="music-result-actions"><button id="musicRanked" class="btn mode-btn ${randomMode ? '' : 'active'}">${musicModeIcon('ranked')}<span>Ranked</span></button><button id="musicRandom" class="btn mode-btn ${randomMode ? 'active' : ''}">${musicModeIcon('random')}<span>Randomiser</span></button><button id="occasionSurprise" class="btn" ${rows.length ? '' : 'disabled'}>✦ Pick one</button></div></div>${strip}<div class="cards">${rows.slice(0, 18).map((row, i) => recCard({ artist: row.a, score: row.score, why: presetReason(row.a, selected) }, i + 1)).join('')}</div></section>`;
+      results = `<section class="section music-results"><div class="result-head"><div><div class="eyebrow">Mixtape</div><h2>${esc(selected.label)}</h2><p class="small">${esc(selected.blurb)} ${randomMode ? 'Randomiser is mixing the qualifying artists.' : 'Ranked by how closely each artist fits the ATM profile.'} Disliked artists are excluded.</p></div><div class="music-result-actions"><button id="musicRanked" class="btn mode-btn ${randomMode ? '' : 'active'}">${musicModeIcon('ranked')}<span>Ranked</span></button><button id="musicRandom" class="btn mode-btn ${randomMode ? 'active' : ''}">${musicModeIcon('random')}<span>Randomiser</span></button><button id="occasionSurprise" class="btn" ${rows.length ? '' : 'disabled'}>✦ Pick one</button></div></div>${strip}<div class="cards">${rows.slice(0, 18).map((row, i) => recCard({ artist: row.a, score: row.score, why: presetReason(row.a, selected) }, i + 1)).join('')}</div></section>`;
     }
   }
-  layout(`<section><div class="eyebrow">Choose the moment</div><h1 class="title">Music for…</h1><p class="subtitle">Pick what the music is for, or jump into an ATM Mixtape. Playlist-enabled sections open on <b>YouTube Music</b> or <b>Spotify</b>.</p></section><section class="section occasion-stack">${choices}</section>${results || '<div class="panel empty section">Choose a moment or playlist above.</div>'}`, 'musicfor');
+  layout(`<section><div class="eyebrow">Choose the moment</div><h1 class="title">Mixtapes</h1><p class="subtitle">Pick a moment, mood or curated ATM playlist. Playlist-enabled sections open on <b>YouTube Music</b> or <b>Spotify</b>.</p></section><section class="section occasion-stack">${choices}</section>${results || '<div class="panel empty section">Choose a moment or playlist above.</div>'}`, 'musicfor');
   document.querySelectorAll('[data-occasion]').forEach(button => button.onclick = () => { state.musicForPreset = button.dataset.occasion; state.musicForMode = 'ranked'; state.musicForShuffleSeed = 0; saveState(); render(); setTimeout(() => document.querySelector('.music-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); });
   document.querySelectorAll('[data-open]').forEach(button => button.onclick = () => openArtist(button.dataset.open));
   const surprise = document.getElementById('occasionSurprise');
@@ -860,9 +860,9 @@ function guide() {
     guideTopic('Where should I start?', `<p>For most people, start with <b>Artist Match</b>: choose an artist you love and ATM will map nearby artists. <b>Lucky</b> is the quickest route when you simply want a surprise.</p>`, true),
     guideTopic('Artist Match', `<p><b>Closest Match</b>, <b>Broaden It</b> and <b>Wildcard</b> change how far ATM travels from your reference artist. <b>Ranked</b> keeps the strongest matches first; <b>Randomiser</b> reshuffles the wider pool.</p>`),
     guideTopic('Vibes', `<p><b>Quick Vibes</b> are the simple route. Open <b>Advanced: Build your own vibe</b> when you want to combine exact genres, styles and moods.</p>`),
-    guideTopic('Music For...', `<p>Choose a situation or mood, or open an <b>ATM Mixtape</b>. Playlist-enabled sections link to both <b>YouTube Music</b> and <b>Spotify</b>; recommendation-only sections use the ATM catalogue to find artists that fit.</p>`),
-    guideTopic('Your lists & dislikes', `<p><b>Favourite</b> is for artists you already value. <b>Want to Explore</b> is your listening queue. <b>Dislike</b> removes an artist from Lucky, Vibes and Music For... recommendations.</p>`),
-    guideTopic('Catalogue & navigation', `<p>The catalogue total on Home opens the complete A–Z artist browser. The six-button bottom bar keeps <b>Home</b>, <b>Match</b>, <b>Vibes</b>, <b>Music For</b>, <b>Lucky</b> and <b>Favourites</b> one tap away.</p>`),
+    guideTopic('Mixtapes', `<p>Choose a situation or mood, or open a curated <b>ATM Mixtape</b>. Playlist-enabled sections link to both <b>YouTube Music</b> and <b>Spotify</b>; recommendation-only sections use the ATM catalogue to find artists that fit.</p>`),
+    guideTopic('Your lists & dislikes', `<p><b>Favourite</b> is for artists you already value. <b>Want to Explore</b> is your listening queue. <b>Dislike</b> removes an artist from Lucky, Vibes and Mixtape recommendations.</p>`),
+    guideTopic('Catalogue & navigation', `<p>The catalogue total on Home opens the complete A–Z artist browser. The six-button bottom bar keeps <b>Home</b>, <b>Match</b>, <b>Vibes</b>, <b>Mixtapes</b>, <b>Lucky</b> and <b>Favourites</b> one tap away.</p>`),
   ].join('');
   const appInfo = `<details class="panel guide-card guide-topic guide-technical"><summary><b>Data, backup & app information</b><i>⌄</i></summary><div class="guide-topic-body"><p>Your favourites, Want to Explore list, dislikes, notes and history are stored locally on this device. Export a backup if you want to protect or move them.</p><div class="mini-actions"><button id="exportGuide" class="btn primary">Export my ATM data</button><button id="importGuide" class="btn">Restore backup</button><button id="installGuide" class="btn" style="display:none">Install ATM</button><input id="importFile" type="file" accept="application/json,.json" hidden></div><hr class="guide-rule"><p class="small">Artwork first checks ATM’s known artwork map, then TheAudioDB, then the existing secure YouTube artwork service. Successful resolutions are cached locally.</p><div class="version-line"><b>ATM Mobile v${APP_VERSION} · ${artists.length.toLocaleString()} artists</b><span id="versionStatus">Checking for updates…</span></div></div></details>`;
   layout(`<section><div class="eyebrow">Help & how it works</div><h1 class="title">Guide</h1><p class="subtitle">The essentials first. Open a topic only when you need more detail.</p></section><section class="guide-stack">${topics}${appInfo}</section>`, '');
@@ -940,9 +940,36 @@ async function checkVersion() {
     const r = await fetch(`version.json?t=${Date.now()}`, { cache: 'no-store' });
     if (!r.ok) throw new Error('version');
     const d = await r.json();
-    if (d.version === APP_VERSION) { el.textContent = '• Up to date'; el.className = 'version-ok'; }
-    else { el.textContent = `• v${d.version} available`; el.className = 'version-update'; }
+    if (d.version === APP_VERSION) {
+      el.textContent = '• Up to date';
+      el.className = 'version-ok';
+      el.onclick = null;
+    } else {
+      el.textContent = `• v${d.version} available — tap to update`;
+      el.className = 'version-update';
+      el.setAttribute('role', 'button');
+      el.tabIndex = 0;
+      el.onclick = activateAppUpdate;
+      el.onkeydown = event => { if (event.key === 'Enter' || event.key === ' ') activateAppUpdate(); };
+    }
   } catch { el.textContent = '• Offline'; }
+}
+
+async function activateAppUpdate() {
+  const el = document.getElementById('versionStatus');
+  if (el) el.textContent = '• Updating…';
+  try {
+    const registration = await navigator.serviceWorker?.getRegistration();
+    if (registration) {
+      await registration.update();
+      if (registration.waiting) registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      else setTimeout(() => location.reload(), 500);
+    } else {
+      location.reload();
+    }
+  } catch {
+    location.reload();
+  }
 }
 
 function toast(msg) {
@@ -1000,5 +1027,27 @@ Promise.all([
   .catch(() => { document.getElementById('app').innerHTML = '<div class="loading"><div class="logo-a">Λ</div><p>ATM could not load its catalogue.<br>Run it from a web server rather than opening index.html directly.</p></div>'; });
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => reg.update()).catch(() => {}));
+  window.addEventListener('load', async () => {
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshing) return;
+      refreshing = true;
+      location.reload();
+    });
+
+    try {
+      const registration = await navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' });
+      if (registration.waiting) registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      registration.addEventListener('updatefound', () => {
+        const worker = registration.installing;
+        if (!worker) return;
+        worker.addEventListener('statechange', () => {
+          if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+            worker.postMessage({ type: 'SKIP_WAITING' });
+          }
+        });
+      });
+      await registration.update();
+    } catch { /* The online app remains usable if service-worker registration fails. */ }
+  });
 }

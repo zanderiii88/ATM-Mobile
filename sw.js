@@ -1,14 +1,69 @@
-const CACHE='atm-mobile-v0162';
-const CORE=['./','index.html','styles.css','engine.js','app.js','catalog.json','artwork.json','manifest.webmanifest','assets/icon-v04-192.png','assets/icon-v04-512.png','assets/icon-maskable-v04-192.png','assets/icon-maskable-v04-512.png','assets/banner_crowd.png'];
-self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener('fetch',e=>{
-  if(e.request.method!=='GET')return;
-  const url=new URL(e.request.url);
-  if(url.origin!==self.location.origin)return;
-  if(url.pathname.endsWith('/version.json')||url.pathname.endsWith('version.json')){
-    e.respondWith(fetch(e.request,{cache:'no-store'}));
+const CACHE = 'atm-mobile-v0163';
+const CORE = [
+  './', 'index.html', 'styles.css', 'engine.js', 'app.js', 'catalog.json',
+  'artwork.json', 'manifest.webmanifest', 'assets/icon-v04-192.png',
+  'assets/icon-v04-512.png', 'assets/icon-maskable-v04-192.png',
+  'assets/icon-maskable-v04-512.png', 'assets/banner_crowd.png'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE)
+      .then(cache => cache.addAll(CORE.map(path => new Request(path, { cache: 'reload' }))))
+      .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)));
+    await self.clients.claim();
+    const windows = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    await Promise.all(windows.map(client => client.navigate(client.url).catch(() => null)));
+  })());
+});
+
+self.addEventListener('message', event => {
+  if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
+});
+
+self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) return;
+
+  const alwaysFresh = event.request.mode === 'navigate' ||
+    /\.(?:html|css|js|json|webmanifest)$/.test(url.pathname);
+
+  if (alwaysFresh) {
+    event.respondWith((async () => {
+      try {
+        const response = await fetch(event.request, { cache: 'no-store' });
+        if (response.ok) {
+          const cache = await caches.open(CACHE);
+          await cache.put(event.request, response.clone());
+        }
+        return response;
+      } catch {
+        return (await caches.match(event.request)) || (await caches.match('./'));
+      }
+    })());
     return;
   }
-  e.respondWith(caches.match(e.request).then(hit=>hit||fetch(e.request).then(r=>{const copy=r.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return r}).catch(()=>caches.match('./'))));
+
+  event.respondWith((async () => {
+    const cached = await caches.match(event.request);
+    if (cached) return cached;
+    try {
+      const response = await fetch(event.request);
+      if (response.ok) {
+        const cache = await caches.open(CACHE);
+        await cache.put(event.request, response.clone());
+      }
+      return response;
+    } catch {
+      return caches.match('./');
+    }
+  })());
 });

@@ -100,3 +100,8 @@
 .hero-inner{max-width:52%}
 @media(max-width:620px){.hero:before{background-position:center,center}.hero-inner{max-width:56%}}
 @media(max-width:430px){.hero:before{background-position:center,center}.hero-inner{max-width:58%}.tagline{font-size:11px;letter-spacing:.07em}}
+
+/* v0.16.3 Mixtapes icon and update action */
+.home-action-icon .musicfor-svg{width:58px;height:34px}
+.version-line .version-update{cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
+@media(max-width:520px){.home-action-icon .musicfor-svg{width:42px;height:26px}}
