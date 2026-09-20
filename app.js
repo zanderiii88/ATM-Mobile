@@ -3,7 +3,7 @@ let byName = new Map();
 let deferredInstall = null;
 let vibeData = { genres: [], styles: [], moods: [] };
 
-const APP_VERSION = '0.18.1';
+const APP_VERSION = '0.19.0';
 const storeKey = 'atm-mobile-v01'; // Intentionally stable so personal data survives app updates.
 const artworkCacheKey = 'atm-mobile-artwork-v2';
 const ARTWORK_ENDPOINT = 'https://atm-artwork.zanderiii88.workers.dev/';
@@ -324,7 +324,7 @@ function homeCatalogueCard(count) {
 }
 function whatsNewCard() {
   if (state.whatsNewDismissed === APP_VERSION) return '';
-  return `<section class="section whats-new-card"><button id="dismissWhatsNew" class="whats-new-dismiss" type="button" aria-label="Dismiss What’s New">×</button><div class="whats-new-copy"><div class="whats-new-kicker"><span class="new-badge">NEW</span><span>Industrial metal and soul additions</span></div><h2>Rammstein, Ministry and 10 more artists added.</h2><p>Explore Rammstein and Ministry alongside new soul, neo-soul and gospel artists including Erykah Badu, Maxwell and Mavis Staples.</p></div><button id="whatsNewPlaylists" class="btn primary whats-new-action">Explore Mixtapes →</button></section>`;
+  return `<section class="section whats-new-card"><button id="dismissWhatsNew" class="whats-new-dismiss" type="button" aria-label="Dismiss What’s New">×</button><div class="whats-new-copy"><div class="whats-new-kicker"><span class="new-badge">NEW</span><span>Global catalogue expansion</span></div><h2>79 artists added across the remaining coverage areas.</h2><p>Discover African and Asian music, Arabic and Turkish traditions, jazz vocalists, soundtracks and more. ATM now includes 3,014 artists.</p></div><button id="whatsNewPlaylists" class="btn primary whats-new-action">Explore Mixtapes →</button></section>`;
 }
 
 function home() {

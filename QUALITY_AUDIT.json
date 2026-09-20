@@ -4195,5 +4195,986 @@
       "corrections": []
     }
   ],
-  "superseded_policy": "v0.17.9: shared numeric vectors alone do not trigger low confidence or ranking penalties. Concrete v0.17.8 corrections retained."
+  "superseded_policy": "v0.17.9: shared numeric vectors alone do not trigger low confidence or ranking penalties. Concrete v0.17.8 corrections retained.",
+  "shared_score_policy_completion": {
+    "version": "0.19.0",
+    "reason": "Restore pre-audit group sizes: repeated vectors alone must not penalise rankings. Engine formulas unchanged.",
+    "restored": [
+      {
+        "artist": "Agnostic Front",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Albert Collins",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Alfa Mist",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Ambrose Akinmusire",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Andrew Hill",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Anouar Brahem",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Anti Cimex",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Art Ensemble of Chicago",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Art Tatum",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "At the Gates",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Benny Goodman",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Big Joe Turner",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Big Joe Williams",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Bill Evans",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Bill Frisell",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Billy Cobham",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Binker and Moses",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Bix Beiderbecke",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Black Flag",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Blind Blake",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Blind Boy Fuller",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Blind Lemon Jefferson",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Bobby Bland",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Bolt Thrower",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Bonnie Raitt",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Booker Little",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Brad Mehldau",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Brandee Younger",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Branford Marsalis",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Bud Powell",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Bukka White",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Buzzcocks",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "Cab Calloway",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Candlemass",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Cave In",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Cecil Taylor",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "CeDell Davis",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Celtic Frost",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "Charlie Musselwhite",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Chick Corea",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Chief Xian aTunde Adjuah",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Circle Jerks",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Clifford Brown",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Cock Sparrer",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "Coleman Hawkins",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Crass",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Cursed",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "D.R.I.",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Descendents",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Dexter Gordon",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Discharge",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Django Reinhardt",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Don Cherry",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Donald Byrd",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Earl Hines",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "Earl Hooker",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Earth Crisis",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Emma-Jean Thackray",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Emperor",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "Entombed",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Esbjörn Svensson Trio",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Esperanza Spalding",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Etta Baker",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Etta James",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Evan Parker",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Exodus",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Eyehategod",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Ezra Collective",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Fats Waller",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "Fletcher Henderson",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Freddie Hubbard",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Furry Lewis",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "G.I.S.M.",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Gary Clark Jr.",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Gato Barbieri",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Gerry Mulligan",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Gil Evans",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Glassjaw",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Glenn Miller",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "GoGo Penguin",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Grant Green",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Hank Mobley",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Helmet",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Henry Threadgill",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "High on Fire",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "His Hero Is Gone",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Hound Dog Taylor",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Immanuel Wilkins",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Immolation",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Incantation",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Integrity",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Jackie McLean",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Jaco Pastorius",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "James Brandon Lewis",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "James Cotton",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Jan Garbarek",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Jason Moran",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Jawbreaker",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Jelly Roll Morton",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Jessie Mae Hemphill",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Jimmy Reed",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Joe Armon-Jones",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Joe Henderson",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "John Scofield",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Johnny Winter",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Joshua Redman",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Junior Kimbrough",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Junior Wells",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Kenny Garrett",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "King Oliver",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Koko Taylor",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Kokomo Arnold",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Kokoroko",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Lee Morgan",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Lennie Tristano",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Leroy Carr",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Lester Young",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Lonnie Johnson",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Luther Allison",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Magic Sam",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Mahavishnu Orchestra",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Makaya McCraven",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Mamie Smith",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Mary Halvorson",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Mary Lou Williams",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Matthew Halsall",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Max Roach",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Mayhem",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "Minor Threat",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Mississippi Fred McDowell",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Mississippi John Hurt",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Modern Jazz Quartet",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Moses Boyd",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Nduduzo Makhathini",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "NoMeansNo",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Nubya Garcia",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Nérija",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Obituary",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Orchid",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Oscar Peterson",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "Otis Spann",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Pat Metheny",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Paul Desmond",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Peter Brötzmann",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Pig Destroyer",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Pinetop Perkins",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Poison Idea",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Power Trip",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Professor Longhair",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Propagandhi",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "R.L. Burnside",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Return to Forever",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Reverend Gary Davis",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Rites of Spring",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Robert Cray",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Robert Glasper",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Rory Gallagher",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Saint Vitus",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Sam Rivers",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Scrapper Blackwell",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "SEED Ensemble",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Shabaka Hutchings",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Sidney Bechet",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Siege",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Sippie Wallace",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Sleepy John Estes",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Slim Harpo",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Steve Coleman",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Stevie Ray Vaughan",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Stéphane Grappelli",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Suffocation",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Suicidal Tendencies",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "T-Model Ford",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "Taj Mahal",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Tampa Red",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Terence Blanchard",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "Testament",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "The Exploited",
+        "before": 6,
+        "after": 1
+      },
+      {
+        "artist": "The Germs",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "The Locust",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "The Necks",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "The Tony Williams Lifetime",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Theon Cross",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Tigran Hamasyan",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Tommy Johnson",
+        "before": 3,
+        "after": 1
+      },
+      {
+        "artist": "Tord Gustavsen",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Tragedy",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Venom",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "Victoria Spivey",
+        "before": 5,
+        "after": 1
+      },
+      {
+        "artist": "Vijay Iyer",
+        "before": 2,
+        "after": 1
+      },
+      {
+        "artist": "Weather Report",
+        "before": 7,
+        "after": 1
+      },
+      {
+        "artist": "Willie Dixon",
+        "before": 8,
+        "after": 1
+      },
+      {
+        "artist": "Wynton Marsalis",
+        "before": 10,
+        "after": 1
+      },
+      {
+        "artist": "X-Ray Spex",
+        "before": 4,
+        "after": 1
+      },
+      {
+        "artist": "Yussef Dayes",
+        "before": 8,
+        "after": 1
+      }
+    ]
+  }
 }
