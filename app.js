@@ -3,7 +3,7 @@ let byName = new Map();
 let deferredInstall = null;
 let vibeData = { genres: [], styles: [], moods: [] };
 
-const APP_VERSION = '0.19.0';
+const APP_VERSION = '0.19.5';
 const storeKey = 'atm-mobile-v01'; // Intentionally stable so personal data survives app updates.
 const artworkCacheKey = 'atm-mobile-artwork-v2';
 const ARTWORK_ENDPOINT = 'https://atm-artwork.zanderiii88.workers.dev/';
@@ -324,7 +324,7 @@ function homeCatalogueCard(count) {
 }
 function whatsNewCard() {
   if (state.whatsNewDismissed === APP_VERSION) return '';
-  return `<section class="section whats-new-card"><button id="dismissWhatsNew" class="whats-new-dismiss" type="button" aria-label="Dismiss What’s New">×</button><div class="whats-new-copy"><div class="whats-new-kicker"><span class="new-badge">NEW</span><span>Global catalogue expansion</span></div><h2>79 artists added across the remaining coverage areas.</h2><p>Discover African and Asian music, Arabic and Turkish traditions, jazz vocalists, soundtracks and more. ATM now includes 3,014 artists.</p></div><button id="whatsNewPlaylists" class="btn primary whats-new-action">Explore Mixtapes →</button></section>`;
+  return `<section class="section whats-new-card"><button id="dismissWhatsNew" class="whats-new-dismiss" type="button" aria-label="Dismiss What’s New">×</button><div class="whats-new-copy"><div class="whats-new-kicker"><span class="new-badge">NEW</span><span>Mixtape reference tracks</span></div><h2>Mixtape matches informed by the original tracks.</h2><p>Euroshock, Soft Focus, Disco and Funk now use the recovered original suggestions as their editorial baseline.</p></div><button id="whatsNewPlaylists" class="btn primary whats-new-action">Explore Mixtapes →</button></section>`;
 }
 
 function home() {
@@ -705,30 +705,76 @@ const musicForPresets = [
   { group: 'Dancing', label: 'Dancing… to House', blurb: 'Four-on-the-floor movement from warm to euphoric.', target: { energy: 8, rhythm: 10, organic_electronic: 9 }, words: ['house', 'garage', 'club', 'dance'], youtubePlaylist: 'https://music.youtube.com/playlist?list=PLDABf280JPpA', spotifyPlaylist: 'https://open.spotify.com/playlist/6zOBDliO0Y3vnt27aGkIYJ' },
 ];
 
+
+// Original suggested tracklists, accepted by user as the working baseline.
+const mixtapeBaselineArtists = {"Euroshock": ["Cassius", "Étienne de Crécy", "Daft Punk", "Mr. Oizo", "Justice", "SebastiAn", "Kavinsky", "Vitalic", "Boys Noize", "Digitalism", "Soulwax", "Simian Mobile Disco", "The Bloody Beetroots", "Para One", "Surkin", "Danger", "Zombie Nation", "Alter Ego", "Rex the Dog", "Miss Kittin & The Hacker", "Gesaffelstein", "The Hacker", "DJ Hell", "Ellen Allien", "Modeselektor", "Anthony Rother", "I-F", "Legowelt", "LFO", "Laurent Garnier", "Underworld", "Orbital", "Trentemøller", "Röyksopp", "The Knife", "Breakbot"], "Soft Focus": ["Her’s", "Men I Trust", "No Vacation", "Crumb", "Mild High Club", "Mac DeMarco", "TOPS", "The Marías", "Strawberry Guy", "Molly Burch", "Alvvays", "Fazerdaze", "Wild Nothing", "Craft Spells", "Real Estate", "Beach Fossils", "Widowspeak", "Still Corners", "Beach House", "Cigarettes After Sex", "Mazzy Star", "Slowdive", "DIIV", "Lush", "Cocteau Twins", "The Sundays", "The Radio Dept.", "Melody’s Echo Chamber", "Broadcast", "Sweet Trip", "Drug Store Romeos", "Japanese Breakfast", "Yumi Zouma", "Kero Kero Bonito", "Air", "Julee Cruise"], "Dancing… to Disco": ["The O’Jays", "KC and the Sunshine Band", "Heatwave", "Rose Royce", "Cheryl Lynn", "Evelyn “Champagne” King", "Diana Ross", "Sister Sledge", "Chic", "Bee Gees", "The Trammps", "Gloria Gaynor", "Thelma Houston", "Donna Summer", "Cerrone", "Giorgio Moroder", "ABBA", "Boney M.", "Sylvester", "Patrick Cowley", "Gino Soccio", "Dan Hartman", "Change", "D-Train", "Shalamar", "Indeep", "Grace Jones", "L’Impératrice", "Jessie Ware", "Purple Disco Machine"], "Dancing… to Funk": ["James Brown", "Sly & The Family Stone", "The Meters", "Stevie Wonder", "Curtis Mayfield", "The Isley Brothers", "Parliament", "Funkadelic", "Ohio Players", "Kool & The Gang", "Tower of Power", "Average White Band", "Betty Davis", "Bootsy Collins", "Herbie Hancock", "Earth, Wind & Fire", "Prince", "Rick James", "The Gap Band", "Zapp", "Cameo", "Lakeside", "Chaka Khan", "Dâm-Funk", "Vulfpeck", "Lettuce", "Khruangbin", "Jungle", "Anderson .Paak", "Childish Gambino"]};
+for (const preset of musicForPresets) {
+  if (preset.fingerprint && mixtapeBaselineArtists[preset.label]) preset.fingerprint.anchors = mixtapeBaselineArtists[preset.label];
+}
+// Editorial interpretation of song choices, not extracted audio features.
+const mixtapeBaselineRules = {
+  'Dancing… to Disco': { coreWords: ['disco', 'hi-nrg', 'boogie'], maxTraits: {} },
+  'Dancing… to Funk': { coreWords: ['funk', 'p-funk', 'jazz-funk', 'electro-funk'], maxTraits: {} },
+  'Soft Focus': { coreWords: [], maxTraits: { aggression: 4, energy: 7 } },
+  'Euroshock': { coreWords: ['electro', 'house', 'techno', 'synthwave', 'synth-pop', 'electropop'], maxTraits: {} }
+};
+for (const preset of musicForPresets) {
+  if (preset.fingerprint && mixtapeBaselineRules[preset.label]) Object.assign(preset.fingerprint, mixtapeBaselineRules[preset.label]);
+}
+// Editorial references are not a verified live playlist manifest.
+const mixtapeProfileCache = new WeakMap();
+const mixtapeScoreCache = new WeakMap();
+const mixtapeText = value => String(value || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+function mixtapeWordHit(text, word) { return (` ${mixtapeText(text)} `).includes(` ${mixtapeText(word)} `); }
+function mixtapeReferences(fingerprint) {
+  const cached = mixtapeProfileCache.get(fingerprint);
+  if (cached && cached.catalog === artists) return cached.rows;
+  const names = new Set((fingerprint.anchors || []).map(mixtapeText));
+  const rows = artists.filter(a => names.has(mixtapeText(a.artist)));
+  mixtapeProfileCache.set(fingerprint, { catalog: artists, rows });
+  return rows;
+}
 function fingerprintScore(a, fingerprint) {
   if (!fingerprint) return null;
-  const haystack = `${a.primary_genre || ''} ${a.style_tags || ''} ${a.mood || ''} ${a.atmosphere || ''}`.toLowerCase();
-  const families = [a.family1, a.family2, a.family3].filter(Boolean).map(x => String(x).toLowerCase());
+  let cached = mixtapeScoreCache.get(fingerprint);
+  if (!cached || cached.catalog !== artists) { cached = { catalog: artists, scores: new WeakMap() }; mixtapeScoreCache.set(fingerprint, cached); }
+  if (cached.scores.has(a)) return cached.scores.get(a);
+  // Broad genre headings must not count as evidence for a specific style.
+  const haystack = `${a.style_tags || ''} ${a.mood || ''} ${a.atmosphere || ''}`;
+  const families = [a.family1, a.family2, a.family3].filter(Boolean).map(mixtapeText);
   let score = 0, weight = 0;
   Object.entries(fingerprint.target || {}).forEach(([key, wanted]) => {
-    const actual = Number(a[key] || 0);
-    score += Math.max(0, 1 - Math.abs(actual - wanted) / 9) * 2;
+    if (a[key] === null || a[key] === undefined || !Number.isFinite(Number(a[key]))) return;
+    score += Math.max(0, 1 - Math.abs(Number(a[key]) - wanted) / 9) * 2;
     weight += 2;
   });
-  const wordHits = (fingerprint.words || []).filter(word => haystack.includes(String(word).toLowerCase())).length;
-  const familyHit = (fingerprint.families || []).some(family => families.includes(String(family).toLowerCase()));
+  const wordHits = (fingerprint.words || []).filter(word => mixtapeWordHit(haystack, word)).length;
+  const familyHit = (fingerprint.families || []).some(family => families.includes(mixtapeText(family)));
   const genreHit = (fingerprint.genres || []).includes(a.primary_genre);
-  const anchorHit = (fingerprint.anchors || []).some(name => String(name).toLowerCase() === String(a.artist).toLowerCase());
   if (fingerprint.words?.length) { score += Math.min(1, wordHits / 2) * 4; weight += 4; }
   if (fingerprint.families?.length) { score += familyHit ? 3 : 0; weight += 3; }
   if (fingerprint.genres?.length) { score += genreHit ? 2 : 0; weight += 2; }
-  if (fingerprint.anchors?.length) { score += anchorHit ? 4 : 0; weight += 4; }
   let result = score / Math.max(1, weight);
-  if (!anchorHit && !familyHit && wordHits === 0) result *= .55;
-  const avoidWordHits = (fingerprint.avoidWords || []).filter(word => haystack.includes(String(word).toLowerCase())).length;
-  const avoidFamilyHit = (fingerprint.avoidFamilies || []).some(family => families.includes(String(family).toLowerCase()));
-  if (!anchorHit) result -= Math.min(.35, avoidWordHits * .18 + (avoidFamilyHit ? .25 : 0));
-  return Math.max(0, Math.min(1, result));
+  // Nearest three references preserve multiple strands; exclude self and give
+  // no direct membership bonus. Reference artists remain subject to exclusions.
+  const referenceScores = mixtapeReferences(fingerprint).filter(r => r.artist !== a.artist).map(r => {
+    const fp = ATMEngine.fingerprint(a, r);
+    return .45 * fp.tag + .30 * fp.family + .25 * fp.sonic;
+  }).sort((a,b) => b-a).slice(0,3);
+  if (referenceScores.length >= 3) result = .60 * result + .40 * referenceScores.reduce((a,b) => a+b,0) / 3;
+  if (!familyHit && wordHits === 0) result *= .55;
+  const avoidWordHits = (fingerprint.avoidWords || []).filter(word => mixtapeWordHit(haystack, word)).length;
+  const avoidFamilyHit = (fingerprint.avoidFamilies || []).some(family => families.includes(mixtapeText(family)));
+  result -= Math.min(.35, avoidWordHits * .18 + (avoidFamilyHit ? .25 : 0));
+  // Whole-artist profiles can drift away from the selected songs. Keep a soft
+  // style check; reference membership does not waive it.
+  if (fingerprint.coreWords?.length && !fingerprint.coreWords.some(w => mixtapeWordHit(a.style_tags, w))) result *= .70;
+  for (const [key, ceiling] of Object.entries(fingerprint.maxTraits || {})) {
+    if (a[key] !== null && a[key] !== undefined && Number.isFinite(Number(a[key]))) result -= Math.min(.25, Math.max(0, Number(a[key]) - ceiling) * .07);
+  }
+  result = Math.max(0, Math.min(1, result));
+  cached.scores.set(a, result);
+  return result;
 }
 function musicForScore(a, preset) {
   const scenario = profilePresetScore(a, preset);

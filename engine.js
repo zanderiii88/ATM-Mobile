@@ -5,7 +5,16 @@
     const cand=new Set(candidate.map(x=>String(x).toLocaleLowerCase()));
     return selected.filter(x=>cand.has(String(x).toLocaleLowerCase())).length/Math.max(1,selected.length);
   }
+  // Canonical spellings only; these aliases do not merge distinct styles.
+  const FAMILY_ALIASES={alternative_metal:'altmetal',thrash_metal:'thrash',dream_pop:'dreampop',electroindustrial:'electro_industrial',boom_bap:'boombap'};
+  const canonicalFamily=x=>FAMILY_ALIASES[String(x).toLocaleLowerCase()]||String(x).toLocaleLowerCase();
   const RELATED_FAMILY_GROUPS=[
+    ['art_pop','experimental_pop','progressive_pop','prog_artrock'],
+    ['country','country_pop','americana','alt_country','singer_songwriter'],
+    ['ska','2_tone','rocksteady','reggae'],
+    ['desert_blues','tuareg','blues'],
+    ['arabic_classical','tarab','arabic_pop'],
+    ['soul','progressive_soul','rhythm_and_blues','funk','funk_disco'],
     ['industrial','industrial_metal','industrial_rock','electronic_rock','electro_industrial','electroindustrial','ebm','darkwave','coldwave','postindustrial','noise_rock','industrial_techno'],
     ['dream_shoegaze','shoegaze','dream_pop','dreampop','noise_pop','ethereal_wave','slowcore'],
     ['postpunk_goth','postpunk','goth','gothic_rock','darkwave','coldwave','new_wave'],
@@ -20,16 +29,18 @@
     ['indierock','altrock','garage','poprock','powerpop','grunge_alt','hardrock'],
     ['indiefolk','singer_songwriter','folkrock','country','americana','alt_country'],
     ['jazz','jazzfusion','hardbop','postbop','souljazz','jazzfunk']
-  ].map(g=>new Set(g));
+  ].map(g=>new Set(g.map(canonicalFamily)));
   function familyPair(a,b){
-    if(!a||!b) return 0; a=String(a).toLocaleLowerCase(); b=String(b).toLocaleLowerCase();
+    if(!a||!b) return 0; a=canonicalFamily(a); b=canonicalFamily(b);
     if(a===b) return 1;
     for(const g of RELATED_FAMILY_GROUPS) if(g.has(a)&&g.has(b)) return .55;
     return 0;
   }
   function familyOverlap(candidate,selected){
     selected=nonempty(selected); candidate=nonempty(candidate); if(!selected.length) return 0;
-    return selected.reduce((sum,s)=>sum+candidate.reduce((best,c)=>Math.max(best,familyPair(s,c)),0),0)/selected.length;
+    // Primary family carries twice the weight of a secondary crossover family.
+    const weights=selected.map((_,i)=>i===0?2:1);
+    return selected.reduce((sum,s,i)=>sum+weights[i]*candidate.reduce((best,c)=>Math.max(best,familyPair(s,c)),0),0)/weights.reduce((a,b)=>a+b,0);
   }
   function close(a,b,span=9,fallback=.5){ if(a===null||a===undefined||b===null||b===undefined) return fallback; return Math.max(0,1-Math.abs(Number(a)-Number(b))/span); }
   function moodRoot(m){ return m ? String(m).split(' /')[0].trim().toLocaleLowerCase() : ''; }
@@ -62,9 +73,9 @@
     const shared=[1,2,3,4].map(i=>selected['tag'+i]).filter(t=>t&&ctags.has(String(t).toLocaleLowerCase()));
     const bits=[];
     if(shared.length>=2) bits.push('Strong overlap in '+shared.slice(0,3).join(', ')); else if(shared.length) bits.push('Shared '+shared[0]+' DNA');
-    else if(fp.family>=.5) bits.push('Closely related scene/style family'); else if(fp.sonic>=.78) bits.push('Very similar sonic shape');
+    else if(fp.family>=.5) bits.push('Closely related scene/style family'); else if(fp.sonic>=.78) bits.push('Similar numerical sonic profile');
     if(fp.sonic>=.78) bits.push('similar energy and texture'); else if(fp.texture>=.85&&fp.production>=.8) bits.push('comparable texture and production');
-    if(fp.era>=.8) bits.push('nearby era'); if(fp.mood) bits.push('matching mood'); if(!fp.genre&&fp.sonic>=.72) bits.push('a useful cross-genre connection');
+    if(fp.era>=.8) bits.push('nearby era'); if(fp.mood) bits.push('matching mood'); if(!fp.genre&&fp.sonic>=.72&&(fp.tag>0||fp.family>0)) bits.push('a useful cross-genre connection');
     if(!bits.length) bits.push('An adjacent match across mood, era and sonic profile');
     let t=bits.slice(0,3).join('; '); return t.charAt(0).toUpperCase()+t.slice(1)+'.';
   }
@@ -74,14 +85,18 @@
     for(const candidate of catalog){
       if(candidate.artist===selected.artist||disliked.has(candidate.artist)) continue;
       const fp=fingerprint(candidate,selected), sc=scores(candidate,selected,fp); let base,score;
+      // Broader modes still need an identifiable style bridge. Numerical resemblance
+      // alone is a fallback, not a reason to outrank connected candidates.
+      const bridge=Math.max(fp.tag,fp.family);
+      const connection=.65+.35*Math.min(1,bridge/.35);
       const novelty=.50*(1-fp.tag)+.30*(1-fp.family)+.20*(fp.genre?0:1);
       if(mk==='adjacent'){
         base=sc.adjacent;
         // Broaden It intentionally gives some weight to lateral fit and novelty.
-        score=.78*sc.adjacent+.12*sc.wildcard+.10*novelty;
+        score=(.78*sc.adjacent+.12*sc.wildcard+.10*novelty)*connection;
       } else if(mk==='wildcard'){
         base=sc.wildcard;
-        score=sc.wildcard;
+        score=sc.wildcard*connection;
       } else {
         base=sc.similar;
         score=sc.similar;

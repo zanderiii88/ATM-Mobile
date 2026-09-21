@@ -1,0 +1,181 @@
+[
+  {
+    "artist": "Björk",
+    "before": {
+      "family1": "experimental",
+      "family2": null,
+      "family3": null
+    },
+    "after": {
+      "family1": "art_pop",
+      "family2": "experimental_electronic",
+      "family3": "experimental_pop"
+    }
+  },
+  {
+    "artist": "Curtis Mayfield",
+    "before": {
+      "family1": "soul_r_b_funk",
+      "family2": null,
+      "family3": null
+    },
+    "after": {
+      "family1": "soul",
+      "family2": "progressive_soul",
+      "family3": "funk"
+    }
+  },
+  {
+    "artist": "Dolly Parton",
+    "before": {
+      "family1": "pop",
+      "family2": "soul_pop",
+      "family3": "adult_contemporary"
+    },
+    "after": {
+      "family1": "country",
+      "family2": "country_pop",
+      "family3": "singer_songwriter"
+    }
+  },
+  {
+    "artist": "FKA twigs",
+    "before": {
+      "family1": "neosoul",
+      "family2": null,
+      "family3": null
+    },
+    "after": {
+      "family1": "art_pop",
+      "family2": "alt_rnb",
+      "family3": "experimental_electronic"
+    }
+  },
+  {
+    "artist": "HEALTH",
+    "before": {
+      "family1": "industrial",
+      "family2": "noise_rock",
+      "family3": "darkwave"
+    },
+    "after": {
+      "family1": "industrial",
+      "family2": "electronic_rock",
+      "family3": "noise_rock"
+    }
+  },
+  {
+    "artist": "James Brown",
+    "before": {
+      "family1": "funk_disco",
+      "family2": null,
+      "family3": null
+    },
+    "after": {
+      "family1": "funk",
+      "family2": "soul",
+      "family3": "rhythm_and_blues"
+    }
+  },
+  {
+    "artist": "Kate Bush",
+    "before": {
+      "family1": "prog_artrock",
+      "family2": null,
+      "family3": null
+    },
+    "after": {
+      "family1": "art_pop",
+      "family2": "prog_artrock",
+      "family3": "progressive_pop"
+    }
+  },
+  {
+    "artist": "Ministry",
+    "before": {
+      "family1": "industrial",
+      "family2": "metal",
+      "family3": "thrash_metal"
+    },
+    "after": {
+      "family1": "industrial_metal",
+      "family2": "industrial",
+      "family3": "thrash"
+    }
+  },
+  {
+    "artist": "Rammstein",
+    "before": {
+      "family1": "industrial",
+      "family2": "metal",
+      "family3": "alternative_metal"
+    },
+    "after": {
+      "family1": "industrial_metal",
+      "family2": "industrial",
+      "family3": "altmetal"
+    }
+  },
+  {
+    "artist": "Stevie Wonder",
+    "before": {
+      "family1": "funk_disco",
+      "family2": null,
+      "family3": null
+    },
+    "after": {
+      "family1": "soul",
+      "family2": "funk",
+      "family3": "progressive_soul"
+    }
+  },
+  {
+    "artist": "Tinariwen",
+    "before": {
+      "family1": "blues",
+      "family2": "funk_disco",
+      "family3": null
+    },
+    "after": {
+      "family1": "desert_blues",
+      "family2": "blues",
+      "family3": "tuareg"
+    }
+  },
+  {
+    "artist": "Brian Eno",
+    "before": {
+      "style_tags": "Art Rock, Electronic, Experimental, Minimalism",
+      "tag1": "Art Rock",
+      "tag2": "Electronic",
+      "tag3": "Experimental",
+      "tag4": "Minimalism",
+      "family1": "prog_artrock",
+      "family2": "experimental",
+      "family3": null
+    },
+    "after": {
+      "style_tags": "Ambient, Art Rock, Experimental Electronic, Minimalism",
+      "tag1": "Ambient",
+      "tag2": "Art Rock",
+      "tag3": "Experimental Electronic",
+      "tag4": "Minimalism",
+      "family1": "ambient",
+      "family2": "experimental_electronic",
+      "family3": "prog_artrock"
+    }
+  },
+  {
+    "artist": "Karlheinz Stockhausen",
+    "before": {
+      "family1": "experimental",
+      "family2": "electro",
+      "family3": "electronic"
+    },
+    "after": {
+      "family1": "experimental",
+      "family2": "electroacoustic",
+      "family3": "modern_classical"
+    }
+  }
+]

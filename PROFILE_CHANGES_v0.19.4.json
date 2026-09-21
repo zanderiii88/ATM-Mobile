@@ -1,0 +1,1854 @@
+[
+  {
+    "artist": "AC/DC",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Extremely direct, high-energy blues-based hard rock. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Extremely direct, high-energy blues-based hard rock. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Adeem the Artist",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2020,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2020s reference sound"
+    }
+  },
+  {
+    "artist": "Aerosmith",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Akiko Yano",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Algiers",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2015,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Alice Cooper",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Theatrical hard rock balancing hooks, horror imagery and spectacle.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Theatrical hard rock balancing hooks, horror imagery and spectacle. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Amy Grant",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "Angel Olsen",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2015,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Anita Baker",
+    "before": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Anri",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Japanese city pop with bright hooks, boogie rhythms and a distinctly summery coastal feel.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "Japanese city pop with bright hooks, boogie rhythms and a distinctly summery coastal feel. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Ari Lennox",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2020,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2020s reference sound"
+    }
+  },
+  {
+    "artist": "Babyface",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "Billy Ocean",
+    "before": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Bobby Brown",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "Bootsy Collins",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Iconic bassist and P-Funk figure known for elastic grooves and flamboyant space-funk.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Iconic bassist and P-Funk figure known for elastic grooves and flamboyant space-funk. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Brian Eno",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Pioneering producer/composer central to ambient music and experimental art rock. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.1: editorial correction distinguishing ambient/electroacoustic traditions from dance electro; no measured audio analysis.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Pioneering producer/composer central to ambient music and experimental art rock. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.1: editorial correction distinguishing ambient/electroacoustic traditions from dance electro; no measured audio analysis. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Bruce Springsteen",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Specific profile: heartland rock and singer-songwriter music rooted in rock & roll, folk and blue-collar narrative.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Specific profile: heartland rock and singer-songwriter music rooted in rock & roll, folk and blue-collar narrative. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Bryan Adams",
+    "before": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Cabaret Voltaire",
+    "before": {
+      "era_mid": 1995,
+      "notes": "Sheffield electronic pioneers whose tape collage, post-punk, funk and machine rhythms fed directly into industrial and EBM.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Sheffield electronic pioneers whose tape collage, post-punk, funk and machine rhythms fed directly into industrial and EBM. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Casiopea",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 audit: profile recalibrated from researched genre/style identity, sonic traits and recommendation context.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "v0.6.0 audit: profile recalibrated from researched genre/style identity, sonic traits and recommendation context. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Cerrone",
+    "before": {
+      "era_mid": 1995,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Chic",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 audit: profile recalibrated from researched genre/style identity, sonic traits and recommendation context.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "v0.6.0 audit: profile recalibrated from researched genre/style identity, sonic traits and recommendation context. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Chris Stapleton",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2015,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Christopher Cross",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Cosaquitos en Globo",
+    "before": {
+      "accessibility": 2,
+      "darkness": 7,
+      "family3": null,
+      "primary_genre": "Experimental / Avant-Garde",
+      "studio": 7,
+      "organic_electronic": 5,
+      "similar_to": "Galen Tipton, Captain Beefheart & His Magic Band, Silver, Wood & Ivory, Gideon Smith & The Dixie Damned",
+      "atmosphere": "Abstract, unpredictable, challenging",
+      "tag3": "",
+      "production": 6,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "texture": 5,
+      "tag4": "",
+      "family1": "experimental",
+      "style_tags": "Experimental, Avant-Garde",
+      "dissonance": 5,
+      "tag1": "Experimental",
+      "aggression": 5,
+      "mood": "Unsettling / Exploratory",
+      "tag2": "Avant-Garde",
+      "family2": null,
+      "rhythm": 5,
+      "era_mid": 2000,
+      "era": "1970s-2020s",
+      "source": "Original library",
+      "experimental": 10
+    },
+    "after": {
+      "accessibility": 8,
+      "darkness": 4,
+      "family3": "electropop",
+      "primary_genre": "Electronic",
+      "studio": 9,
+      "organic_electronic": 9,
+      "similar_to": "The Midnight, FM-84, Timecop1983",
+      "atmosphere": "Vocal-led retro electronic pop, melodic synths and programmed rhythms",
+      "tag3": "Retrowave",
+      "production": 8,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification. Generic avant-garde profile replaced using artist-published synth-pop/synthwave identity. Numeric traits and related artists are editorial estimates, not measured or source-verified values.",
+      "texture": 6,
+      "tag4": "Electropop",
+      "family1": "synthpop",
+      "style_tags": "Synth-Pop, Synthwave, Retrowave, Electropop",
+      "dissonance": 2,
+      "tag1": "Synth-Pop",
+      "aggression": 2,
+      "mood": "Nostalgic / Melodic",
+      "tag2": "Synthwave",
+      "family2": "synthwave",
+      "rhythm": 8,
+      "era_mid": 2020,
+      "era": "2020s reference sound",
+      "source": "Original library; https://cosaquitosenglobo.bandcamp.com/album/recall",
+      "experimental": 4
+    }
+  },
+  {
+    "artist": "Cymande",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1972,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "D'Angelo",
+    "before": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2000s reference sound"
+    }
+  },
+  {
+    "artist": "Dan Deacon",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2010,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Def Leppard",
+    "before": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Devo",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Specific profile: brainy, robotic new wave mixing synth-pop, post-punk and dance-rock with a deliberately mechanical aesthetic.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Specific profile: brainy, robotic new wave mixing synth-pop, post-punk and dance-rock with a deliberately mechanical aesthetic. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Diamond Head",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Earth, Wind & Fire",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Expansive funk and soul with dazzling horn arrangements, layered vocals and disco-era pop precision.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Expansive funk and soul with dazzling horn arrangements, layered vocals and disco-era pop precision. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Elliott Smith",
+    "before": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2000s reference sound"
+    }
+  },
+  {
+    "artist": "Elvis Costello",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Specific profile: literate new wave/pub rock with punk urgency, sharp songwriting and pop craft.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Specific profile: literate new wave/pub rock with punk urgency, sharp songwriting and pop craft. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Evelyn “Champagne” King",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Faust",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1972,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Fleet Foxes",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2010,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Focus",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1972,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Foreigner",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Frank Ocean",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2015,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Fumio Itabashi",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Gang of Four",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Specific profile: politically charged post-punk built from stuttering guitar, pounding drums and tough funk rhythm.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Specific profile: politically charged post-punk built from stuttering guitar, pounding drums and tough funk rhythm. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Gary Numan",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "George Clinton",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "George Strait",
+    "before": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "George Thorogood & The Destroyers",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1985,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Giorgio Moroder",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Gloria Estefan",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "Godspeed You! Black Emperor",
+    "before": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2000s reference sound"
+    }
+  },
+  {
+    "artist": "Hannah Frances",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2024,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2020s reference sound"
+    }
+  },
+  {
+    "artist": "Haruomi Hosono",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Heart",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Iggy Pop",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Isaac Hayes",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1970,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Issei Noro",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Janelle Monae",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2015,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Jean-Michel Jarre",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Pioneering French electronic composer known for large-scale synthesizer works and immersive, futuristic sound design.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Pioneering French electronic composer known for large-scale synthesizer works and immersive, futuristic sound design. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Jeff Wayne",
+    "before": {
+      "era_mid": 2000,
+      "notes": "User-directed profile: composer of Jeff Wayne's Musical Version of The War of the Worlds; orchestral/progressive musical-theatre focus.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "User-directed profile: composer of Jeff Wayne's Musical Version of The War of the Worlds; orchestral/progressive musical-theatre focus. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Jill Scott",
+    "before": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2000s reference sound"
+    }
+  },
+  {
+    "artist": "Joel Culpepper",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2020,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2020s reference sound"
+    }
+  },
+  {
+    "artist": "John Foxx",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Post-Ultravox electronic work built around minimal synths, urban futurism and a deliberately detached vocal style.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Post-Ultravox electronic work built around minimal synths, urban futurism and a deliberately detached vocal style. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "John Mellencamp",
+    "before": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Johnny Cash",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1970,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Jorge Ben",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1972,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "José González",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2005,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2000s reference sound"
+    }
+  },
+  {
+    "artist": "Journey",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Judas Priest",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Judith Hill",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2015,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Kansas",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Kazumi Watanabe",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Keith Sweat",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "Kelela",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2015,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Kenny Loggins",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Killing Joke",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Klaus Schulze",
+    "before": {
+      "era_mid": 2000,
+      "notes": "A central Berlin School figure known for long-form synthesizer pieces, sequencer patterns and immersive electronic soundscapes.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "A central Berlin School figure known for long-form synthesizer pieces, sequencer patterns and immersive electronic soundscapes. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Kohsuke Mine",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Kool & The Gang",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Laurie Anderson",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.8.0 profile-quality update: performance art, spoken word, minimalism and electronics recalibrated from researched artist identity.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "v0.8.0 profile-quality update: performance art, spoken word, minimalism and electronics recalibrated from researched artist identity. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Laurie Spiegel",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Linkin Park",
+    "before": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2000s reference sound"
+    }
+  },
+  {
+    "artist": "Lô Borges",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1972,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Madness",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Magma",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Masaki Matsubara",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Masayoshi Takanaka",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Colourful guitar-led Japanese fusion with tropical imagery, funk rhythms and exuberant melodic playing. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "Colourful guitar-led Japanese fusion with tropical imagery, funk rhythms and exuberant melodic playing. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Michael Bolton",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "Milton Nascimento",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1972,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Misfits",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Moor Jewelry",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2020,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2020s reference sound"
+    }
+  },
+  {
+    "artist": "Nazareth",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Orchestral Manoeuvres in the Dark",
+    "before": {
+      "era_mid": 2000,
+      "notes": "OMD joined Kraftwerk-inspired electronics to strong pop songwriting, melancholy melodies and art-school experimentation.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "OMD joined Kraftwerk-inspired electronics to strong pop songwriting, melancholy melodies and art-school experimentation. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Pat Benatar",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Patrice Rushen",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Patti Smith",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Peter Gabriel",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1985,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Prefab Sprout",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1985,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Prism",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Public Image Ltd",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Reba McEntire",
+    "before": {
+      "era_mid": 1985,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "Robin Trower",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Ryo Kawasaki",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Simple Minds",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Specific profile: anthemic new wave/art rock balancing guitars, synthesizers and electro-dance rhythms. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1985,
+      "notes": "Specific profile: anthemic new wave/art rock balancing guitars, synthesizers and electro-dance rhythms. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Solange",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2015,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Sparks",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Sturgill Simpson",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2015,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2010s reference sound"
+    }
+  },
+  {
+    "artist": "Sufjan Stevens",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2005,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2000s reference sound"
+    }
+  },
+  {
+    "artist": "Sun Ra",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Suzanne Ciani",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "v0.6.0 approved expansion: researched artist-specific style, mood, atmosphere and sonic profile. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "Suzi Quatro",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "T-Square",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1985,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Taeko Ohnuki",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Takeo Moriyama",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "Tangerine Dream",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 audit: profile recalibrated from researched genre/style identity, sonic traits and recommendation context.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "v0.6.0 audit: profile recalibrated from researched genre/style identity, sonic traits and recommendation context. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Tatsuro Yamashita",
+    "before": {
+      "era_mid": 2000,
+      "notes": "A defining city-pop songwriter and producer known for pristine harmonies, funk rhythms and sophisticated pop craft. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "A defining city-pop songwriter and producer known for pristine harmonies, funk rhythms and sophisticated pop craft. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Ted Nugent",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Tetsuo Sakurai",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "The Bad Dreamers",
+    "before": {
+      "accessibility": 2,
+      "darkness": 7,
+      "family3": null,
+      "primary_genre": "Experimental / Avant-Garde",
+      "studio": 7,
+      "organic_electronic": 5,
+      "similar_to": "Captain Beefheart & His Magic Band, Gideon Smith & The Dixie Damned, Slicarus, Signa",
+      "atmosphere": "Abstract, unpredictable, challenging",
+      "tag3": "",
+      "energy": 5,
+      "production": 6,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "texture": 5,
+      "tag4": "",
+      "family1": "experimental",
+      "style_tags": "Experimental, Avant-Garde",
+      "dissonance": 5,
+      "tag1": "Experimental",
+      "aggression": 4,
+      "mood": "Unsettling / Exploratory",
+      "tag2": "Avant-Garde",
+      "family2": null,
+      "rhythm": 6,
+      "era_mid": 2000,
+      "era": "1970s-2020s",
+      "source": "Original library",
+      "experimental": 10
+    },
+    "after": {
+      "accessibility": 8,
+      "darkness": 4,
+      "family3": "electropop",
+      "primary_genre": "Electronic",
+      "studio": 9,
+      "organic_electronic": 9,
+      "similar_to": "The Midnight, FM-84, Timecop1983",
+      "atmosphere": "Vocal-led retro electronic pop, melodic synths and programmed rhythms",
+      "tag3": "Retrowave",
+      "energy": 6,
+      "production": 8,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification. Generic avant-garde profile replaced using artist-published synth-pop/synthwave identity. Numeric traits and related artists are editorial estimates, not measured or source-verified values.",
+      "texture": 6,
+      "tag4": "Electropop",
+      "family1": "synthpop",
+      "style_tags": "Synth-Pop, Synthwave, Retrowave, Electropop",
+      "dissonance": 2,
+      "tag1": "Synth-Pop",
+      "aggression": 2,
+      "mood": "Nostalgic / Melodic",
+      "tag2": "Synthwave",
+      "family2": "synthwave",
+      "rhythm": 8,
+      "era_mid": 2020,
+      "era": "2020s reference sound",
+      "source": "Original library; https://thebaddreamers.bandcamp.com/",
+      "experimental": 4
+    }
+  },
+  {
+    "artist": "The Feelies",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "The Human League",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 audit: profile recalibrated from researched genre/style identity, sonic traits and recommendation context.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1982,
+      "notes": "v0.6.0 audit: profile recalibrated from researched genre/style identity, sonic traits and recommendation context. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "The Mohawks",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1968,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1960s reference sound"
+    }
+  },
+  {
+    "artist": "The Pop Group",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Refined source-addition profile: artist-specific style, mood, atmosphere and sonic fingerprint differentiated for Discover recommendations. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "The Stylistics",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1972,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "The Supremes",
+    "before": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "tag4": "",
+      "family1": "soul_r_b_funk",
+      "style_tags": "Classic Soul, Philadelphia Soul",
+      "tag2": "Philadelphia Soul",
+      "family2": null,
+      "tag1": "Classic Soul",
+      "family3": null,
+      "era_mid": 2000,
+      "era": "1970s-2020s",
+      "source": "Album of the Year list",
+      "tag3": ""
+    },
+    "after": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "tag4": "Classic Soul",
+      "family1": "soul",
+      "style_tags": "Motown, Pop Soul, Girl Group, Classic Soul",
+      "tag2": "Pop Soul",
+      "family2": "pop_soul",
+      "tag1": "Motown",
+      "family3": "motown",
+      "era_mid": 1965,
+      "era": "1960s reference sound",
+      "source": "Album of the Year list; https://rockhall.com/inductees/supremes/",
+      "tag3": "Girl Group"
+    }
+  },
+  {
+    "artist": "Tom Waits",
+    "before": {
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2000s reference sound"
+    }
+  },
+  {
+    "artist": "Townes Van Zandt",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1970,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Tsuyoshi Yamamoto Trio",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover. v0.12.0 similarity-integrity audit corrected numeric outliers against style-tag and family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Tyler Childress",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2020,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2020s reference sound"
+    }
+  },
+  {
+    "artist": "UB40",
+    "before": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "v0.10.0 1980s/1990s reference expansion: artist-specific style, mood, atmosphere and sonic fingerprint calibrated for ATM Artist Match. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Wilco",
+    "before": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2000s reference sound"
+    }
+  },
+  {
+    "artist": "Wipers",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Editorial profile; shared numeric scores are permitted and do not alone indicate low quality. Scores are estimates, not measured audio features. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  },
+  {
+    "artist": "Wire",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1978,
+      "notes": "Refined style profile: artist-specific genre/style, mood, atmosphere and era; numeric sonic profile recalibrated in v0.12.0 from artist-specific style tags and style-family anchors. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "WITCH",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1975,
+      "notes": "Targeted expansion profile: differentiated genre/style, mood, atmosphere and sonic fingerprint for Discover. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1970s reference sound"
+    }
+  },
+  {
+    "artist": "Yola",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2020,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2020s reference sound"
+    }
+  },
+  {
+    "artist": "Youssou N'Dour",
+    "before": {
+      "era_mid": 2000,
+      "notes": "v0.6.0 audit: profile recalibrated from researched genre/style identity, sonic traits and recommendation context.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1990,
+      "notes": "v0.6.0 audit: profile recalibrated from researched genre/style identity, sonic traits and recommendation context. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1990s reference sound"
+    }
+  },
+  {
+    "artist": "Zach Bryan",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 2020,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "2020s reference sound"
+    }
+  },
+  {
+    "artist": "Zapp",
+    "before": {
+      "era_mid": 2000,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits.",
+      "era": "1970s-2020s"
+    },
+    "after": {
+      "era_mid": 1980,
+      "notes": "Profile quality audit v0.4.1: legacy/generic profile recalibrated using artist style, mood, production and sonic traits. v0.19.4: editorial reference period selected for the best-known sound, not full career dates; no claim of independent date verification.",
+      "era": "1980s reference sound"
+    }
+  }
+]

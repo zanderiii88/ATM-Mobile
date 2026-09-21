@@ -1,0 +1,53 @@
+[
+  {
+    "artist": "Darkthrone",
+    "before": {
+      "style_tags": "Black Metal, Atmospheric Black Metal",
+      "tag1": "Black Metal",
+      "tag2": "Atmospheric Black Metal",
+      "tag3": "",
+      "tag4": "",
+      "family1": "blackmetal",
+      "family2": null,
+      "family3": null
+    },
+    "after": {
+      "style_tags": "Black Metal, Raw Black Metal, Blackened Punk, Heavy Metal",
+      "tag1": "Black Metal",
+      "tag2": "Raw Black Metal",
+      "tag3": "Blackened Punk",
+      "tag4": "Heavy Metal",
+      "family1": "blackmetal",
+      "family2": "heavymetal",
+      "family3": "punk"
+    }
+  },
+  {
+    "artist": "James Brown",
+    "before": {
+      "era": "1970s-2020s",
+      "era_mid": 2000
+    },
+    "after": {
+      "era": "1960s-1970s reference period",
+      "era_mid": 1970
+    }
+  },
+  {
+    "artist": "The Beatles",
+    "before": {
+      "era": "1960s-1980s",
+      "era_mid": 1975,
+      "family1": "psychedelic",
+      "family2": null,
+      "family3": null
+    },
+    "after": {
+      "era": "1960s reference period",
+      "era_mid": 1966,
+      "family1": "poprock",
+      "family2": "psychedelic",
+      "family3": "prog_artrock"
+    }
+  }
+]

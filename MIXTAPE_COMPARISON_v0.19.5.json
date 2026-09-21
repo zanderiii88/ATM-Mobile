@@ -1,0 +1,130 @@
+[
+  {
+    "label": "Euroshock",
+    "before": [
+      "The Toxic Avenger",
+      "Oliver",
+      "Surkin",
+      "Justice",
+      "Le Castle Vania",
+      "Busy P",
+      "Kavinsky",
+      "Mr. Oizo",
+      "Carpenter Brut",
+      "deadmau5",
+      "Underground Resistance",
+      "The Bloody Beetroots"
+    ],
+    "after": [
+      "The Toxic Avenger",
+      "Oliver",
+      "Surkin",
+      "Justice",
+      "Le Castle Vania",
+      "Busy P",
+      "Kavinsky",
+      "Mr. Oizo",
+      "Carpenter Brut",
+      "deadmau5",
+      "Underground Resistance",
+      "The Bloody Beetroots"
+    ],
+    "references": 21
+  },
+  {
+    "label": "Soft Focus",
+    "before": [
+      "Late Again",
+      "The Radio Dept.",
+      "Craft Spells",
+      "Wild Nothing",
+      "Night Tapes",
+      "Cigarettes After Sex",
+      "Beach Fossils",
+      "Slow Crush",
+      "Porches",
+      "Vansire",
+      "Love Spells",
+      "Julee Cruise"
+    ],
+    "after": [
+      "Late Again",
+      "The Radio Dept.",
+      "Craft Spells",
+      "Wild Nothing",
+      "Night Tapes",
+      "Cigarettes After Sex",
+      "Beach Fossils",
+      "Slow Crush",
+      "Porches",
+      "Vansire",
+      "Love Spells",
+      "Julee Cruise"
+    ],
+    "references": 20
+  },
+  {
+    "label": "Dancing… to Disco",
+    "before": [
+      "Giorgio Moroder",
+      "Donna Summer",
+      "Dua Lipa",
+      "Slave",
+      "Lakeside",
+      "Yuksek",
+      "Holy Ghost!",
+      "Breakbot",
+      "Evelyn “Champagne” King",
+      "Madeon",
+      "Patrice Rushen",
+      "Sparkee"
+    ],
+    "after": [
+      "Giorgio Moroder",
+      "Donna Summer",
+      "Dua Lipa",
+      "Slave",
+      "Lakeside",
+      "Yuksek",
+      "Holy Ghost!",
+      "Breakbot",
+      "Evelyn “Champagne” King",
+      "Madeon",
+      "Patrice Rushen",
+      "Sparkee"
+    ],
+    "references": 12
+  },
+  {
+    "label": "Dancing… to Funk",
+    "before": [
+      "Ohio Players",
+      "Average White Band",
+      "Rufus",
+      "Lakeside",
+      "Bootsy Collins",
+      "Earth, Wind & Fire",
+      "The Bar-Kays",
+      "War",
+      "Parliament",
+      "Betty Davis",
+      "Commodores",
+      "The Isley Brothers"
+    ],
+    "after": [
+      "Ohio Players",
+      "Average White Band",
+      "Rufus",
+      "Lakeside",
+      "Bootsy Collins",
+      "Earth, Wind & Fire",
+      "The Bar-Kays",
+      "War",
+      "Parliament",
+      "Betty Davis",
+      "Commodores",
+      "The Isley Brothers"
+    ],
+    "references": 26
+  }
+]
