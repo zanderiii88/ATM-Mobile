@@ -6,10 +6,11 @@
     return selected.filter(x=>cand.has(String(x).toLocaleLowerCase())).length/Math.max(1,selected.length);
   }
   // Canonical spellings only; these aliases do not merge distinct styles.
-  const FAMILY_ALIASES={alternative_metal:'altmetal',thrash_metal:'thrash',dream_pop:'dreampop',electroindustrial:'electro_industrial',boom_bap:'boombap'};
+  const FAMILY_ALIASES={speed_metal:'speedmetal',heavy_metal:'heavymetal',progressive_metal:'progmetal',alternative_metal:'altmetal',thrash_metal:'thrash',dream_pop:'dreampop',electroindustrial:'electro_industrial',boom_bap:'boombap'};
   const canonicalFamily=x=>FAMILY_ALIASES[String(x).toLocaleLowerCase()]||String(x).toLocaleLowerCase();
   const RELATED_FAMILY_GROUPS=[
-    ['art_pop','experimental_pop','progressive_pop','prog_artrock'],
+    ['art_pop','artpop','experimental_pop','progressive_pop','prog_artrock','symphonic_rock','artrock'],
+    ['progmetal','prog_artrock','artrock_experimental','experimental_rock'],
     ['country','country_pop','americana','alt_country','singer_songwriter'],
     ['ska','2_tone','rocksteady','reggae'],
     ['desert_blues','tuareg','blues'],
@@ -52,19 +53,19 @@
     const genre=!!(a.primary_genre && a.primary_genre===b.primary_genre);
     const era=close(a.era_mid,b.era_mid,35);
     const mr=moodRoot(a.mood), mood=!!mr && mr===moodRoot(b.mood);
-    return {tag:ratioOverlap(ta,tb),family:familyOverlap(fa,fb),sonic,genre,era,mood,
+    return {tag:(ratioOverlap(ta,tb)+ratioOverlap(tb,ta))/2,family:(familyOverlap(fa,fb)+familyOverlap(fb,fa))/2,sonic,genre,era,mood,
       texture:close(a.texture,b.texture),dissonance:close(a.dissonance,b.dissonance),production:close(a.production,b.production)};
   }
   function scores(candidate,selected,fp){
-    const spec=Number(candidate.specificity||.70), selectedSpec=Number(selected.specificity||.70), group=Number(candidate.profile_group_size||1);
+    const spec=Number(candidate.specificity||.70), selectedSpec=Number(selected.specificity||.70), group=Math.max(Number(candidate.profile_group_size||1),Number(selected.profile_group_size||1));
     // Closest Match now prioritises style/family/sonic identity over the broad primary-genre bucket.
     // Soft family affinity helps real crossover relationships (e.g. industrial rock/metal/darkwave) without making them exact matches.
     const sr=(34*fp.tag+20*fp.family+24*fp.sonic+3*(fp.genre?1:0)+4*fp.era+3*(fp.mood?1:0)+4*fp.texture+4*fp.dissonance+4*fp.production)/100;
     const ps=Math.max(.82,1-Math.min(group-1,70)*.006);
-    const similar=Math.min(.60+.34*Math.min(spec,selectedSpec), sr*(.86+.14*spec)*ps);
+    const similar=Math.min(.60+.34*Math.min(spec,selectedSpec), sr*(.86+.14*Math.min(spec,selectedSpec))*ps);
     const ar=(22*fp.tag+22*fp.family+26*fp.sonic+2*(fp.genre?1:0)+2*fp.era+6*(fp.mood?1:0)+7*fp.texture+7*fp.dissonance+6*fp.production)/100;
     const pa=Math.max(.76,Math.max(.72,1-Math.min(group-1,70)*.004));
-    const adjacent=Math.min(.60+.32*Math.min(spec,selectedSpec), ar*(.86+.14*spec)*pa);
+    const adjacent=Math.min(.60+.32*Math.min(spec,selectedSpec), ar*(.86+.14*Math.min(spec,selectedSpec))*pa);
     const wildcard=Math.max(0,Math.min(.82,.78-Math.abs(adjacent-.58)*1.05-.07*(fp.genre?1:0)-.05*fp.family));
     return {similar,adjacent,wildcard};
   }

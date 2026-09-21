@@ -1,4 +1,4 @@
-const CACHE = 'atm-mobile-v0195';
+const CACHE = 'atm-mobile-v0200';
 const CORE = [
   './', 'index.html', 'styles.css', 'engine.js', 'app.js', 'catalog.json',
   'artwork.json', 'manifest.webmanifest', 'assets/icon-v04-192.png',
